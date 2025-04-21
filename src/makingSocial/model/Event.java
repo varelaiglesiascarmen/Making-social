@@ -1,17 +1,38 @@
 package makingSocial.model;
 
-public class Event extends HostUser{
+public class Event{
     // attribute
-    private String event_ID;
-    private int date;
-    private int schedule;
-    private String location;
-    private String dressCode;
-    private int allowedAge;
-    private String themed;
-    private boolean access = true;
-    // hereda de hostUser
-    private String host_ID;
+        // id evento
+        private String event_ID;
+        // fecha
+        private int date;
+        // horario
+        private int schedule;
+        // localizacion
+        private String location;
+        // etiqueta
+        private String dressCode;
+        // edad permitida
+        private int allowedAge;
+        // tematica
+        private String themed;
+        // true = private event
+        private boolean access = true;
+        // id anfitrion
+        private String host_ID;
+
+    // constructor
+    public Event(String event_ID, int date, int schedule, String location, String dressCode, int allowedAge, String themed, boolean access, String host_ID) {
+        this.event_ID = event_ID;
+        this.date = date;
+        this.schedule = schedule;
+        this.location = location;
+        this.dressCode = dressCode;
+        this.allowedAge = allowedAge;
+        this.themed = themed;
+        this.access = access;
+        this.host_ID = host_ID;
+    }
 
     //getters & setters
     public int getDate() {
