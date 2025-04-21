@@ -6,7 +6,7 @@ public class User {
         private String userName;
         private String password;
         private String mail;
-        // userType = true , es Host
+        // Host = true , Guest = false
         private boolean userType = true;
 
     // constructor
