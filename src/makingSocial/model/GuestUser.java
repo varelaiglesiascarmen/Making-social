@@ -4,6 +4,8 @@ public class GuestUser {
     // attribute
         // id_invitado
         private String guestUser_ID;
+        // nombre_usuario
+        private String userName;
         // nombre
         private String name;
         // estado civil
@@ -14,9 +16,10 @@ public class GuestUser {
         private int age;
 
     // constructor
-    public GuestUser(String guestUser_ID, String name, String maritalStatus, String RRSS, int age) {
+    public GuestUser(String guestUser_ID, String name, String userName, String maritalStatus, String RRSS, int age) {
         this.guestUser_ID = guestUser_ID;
         this.name = name;
+        this.userName = userName;
         this.maritalStatus = maritalStatus;
         this.RRSS = RRSS;
         this.age = age;
@@ -37,6 +40,14 @@ public class GuestUser {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String newUserName) {
+        this.userName = newUserName;
     }
 
     public String getMaritalStatus() {
@@ -70,6 +81,7 @@ public class GuestUser {
         return "GuestUser{" +
                 "guestUser_ID='" + guestUser_ID + '\'' +
                 ", name='" + name + '\'' +
+                ", userName='" + userName + '\'' +
                 ", maritalStatus='" + maritalStatus + '\'' +
                 ", RRSS='" + RRSS + '\'' +
                 ", age=" + age +
