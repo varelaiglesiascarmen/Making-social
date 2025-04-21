@@ -4,16 +4,13 @@ public class Logs {
     // Faltan los módulos necesarios (clases)
 
 
-    // Login_Controller Logs
+    // Login_Controller Logs (logs sobre el inicio de sesión del usuario)
 
 
-    // SignIn_Controller Logs
+    // Sesion Out Logs (fin de la sesión)
 
 
-    // Sesion Out Logs
+    // System Error Logs (recolecta los errores de los bloques try-catch, también se incluye los try-catch de SignIn_Controller, registro por primera vez)
 
 
-    // System Error Logs (recolecta
-
-    //
 }
