@@ -1,8 +1,13 @@
 package makingSocial.model;
 
+import makingSocial.controller.DBConnection;
+
 import java.util.Random;
 import java.util.Scanner;
 import java.util.UUID;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class HostUser {
 
@@ -63,16 +68,23 @@ public class HostUser {
 
     // Generar codigo id evento / generate id code from event
 
-        Random id_generate = new Random(10);
+        Random id_generate = new Random();
         String event_ID = UUID.randomUUID().toString();
 
         /* UUID.randomUUID() → Genera un nuevo UUID aleatorio.
            .toString() → Convierte ese UUID en una cadena legible (String), para que puedas guardarla o imprimirla.
            String event_ID = ... → Guarda esa cadena en una variable llamada event_ID. */
 
-    // Compartir data la bbdd / share data at our ddbb
-
-
 
     }
+
+    public void insertEvent(String event_ID, int date, int schedule, String location, String dressCode, int allowedAge, String themed, boolean access, String host_ID){
+        String sql = "INSERT INTO EVENTS (EVENT_ID, DATA, SCHEDULE, LOCATION, ALLOWED_AGE, THEMED, ACCESS, HOST_ID) VALUES (?, ?, ?)";
+
+        // Le falta acceso a los datos
+
+        }
+
+    }
+
 }
