@@ -1,0 +1,6 @@
+# Ignorar en github carpeta .idea
+# ------------------
+    *.idea/
+    *.idea/modules.xml
+    *.idea/misc.xml
+    *.iml
