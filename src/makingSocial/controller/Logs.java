@@ -15,5 +15,5 @@ public class Logs {
 
     // System Error Logs (recolecta
 
-
+    //
 }
