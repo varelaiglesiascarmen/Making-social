@@ -75,7 +75,6 @@ public class HostUser {
            .toString() → Convierte ese UUID en una cadena legible (String), para que puedas guardarla o imprimirla.
            String event_ID = ... → Guarda esa cadena en una variable llamada event_ID. */
 
-
     }
 
     public void insertEvent(String event_ID, int date, int schedule, String location, String dressCode, int allowedAge, String themed, boolean access, String host_ID){
@@ -83,7 +82,9 @@ public class HostUser {
 
         // Le falta acceso a los datos
 
-        }
+    }
+
+    public void changeRoll(){
 
     }
 
