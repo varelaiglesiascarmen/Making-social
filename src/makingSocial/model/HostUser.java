@@ -9,8 +9,57 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class HostUser {
+public class HostUser extends User{
 
+    // attributes
+    private String hostUser_ID;
+    private String name;
+    private String lastName;
+
+    // constructor / constructor
+    public HostUser(String userName, String password, String mail, boolean userType, String hostUser_ID, String name, String lastName) {
+        super(userName, password, mail, userType);
+        this.hostUser_ID = hostUser_ID;
+        this.name = name;
+        this.lastName = lastName;
+    }
+
+    //getters & setters
+    public String getHostUser_ID() {
+        return hostUser_ID;
+    }
+
+    public void setHostUser_ID(String newHostUser_ID) {
+        this.hostUser_ID = newHostUser_ID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String newName) {
+        this.name = newName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String newLastName) {
+        this.lastName = newLastName;
+    }
+
+    // toString
+    @Override
+    public String toString() {
+        return "HostUser{" +
+                "hostUser_ID='" + hostUser_ID + '\'' +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
+
+    // metodos / method
     public void addEvent (Event x){
 
     // Crear nuevo evento / create new event
@@ -84,8 +133,8 @@ public class HostUser {
 
     }
 
-    public void changeRoll(){
-
+    public abstract void changeRoll(){
+        return ;
     }
 
 }
