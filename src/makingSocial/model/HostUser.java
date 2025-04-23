@@ -59,6 +59,11 @@ public class HostUser extends User{
                 '}';
     }
 
+    @Override
+    public User changeRoll() throws SQLException {
+        return null;
+    }
+
     // metodos / method
     public void addEvent (Event x){
 
@@ -126,15 +131,8 @@ public class HostUser extends User{
 
     }
 
-    public void insertEvent(String event_ID, int date, int schedule, String location, String dressCode, int allowedAge, String themed, boolean access, String host_ID){
-        String sql = "INSERT INTO EVENTS (EVENT_ID, DATA, SCHEDULE, LOCATION, ALLOWED_AGE, THEMED, ACCESS, HOST_ID) VALUES (?, ?, ?)";
-
-        // Le falta acceso a los datos
-
-    }
-
-    public abstract void changeRoll(){
-        return ;
-    }
+    //public abstract void changeRoll(){
+       // return ;
+  //  }
 
 }
