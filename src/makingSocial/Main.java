@@ -3,11 +3,18 @@ package makingSocial;
 public class Main {
 
     // funciones del sistema / system functions
-        // registrar nuevo usuario / sign in new user
-            // version 2.0 - puedes registrarte mediante google, icloud, facebook / version 2.0 - you can sign in with google, icloud or facebook
-        // iniciar sesion / login
-
         // comprobar si el usuario está registrado o no / check whether the user is registered or not
+        public void signinOrNot (){
+            boolean registeredUser = true;
+
+            if(registeredUser==true){
+                    // puede continuar
+            }
+            else{
+                    // tiene que llevarlo a signin
+                    registeredUser = false;
+            }
+        }
 
         // conexión bbdd / conection ddbb
         public void connectionDataBase(){
@@ -15,6 +22,10 @@ public class Main {
         }
 
     // funciones comunes de usuario / usual functions
+        // iniciar sesion / login
+
+        // registrarse / sign in
+
         // cambiar roll / change roll
 
         // reportar problema / report
