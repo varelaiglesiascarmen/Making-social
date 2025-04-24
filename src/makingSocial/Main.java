@@ -10,11 +10,7 @@ public class Main {
         // comprobar si el usuario está registrado o no / check whether the user is registered or not
 
         // conexión bbdd / conection ddbb
-        public void insertEvent(String event_ID, int date, int schedule, String location, String dressCode, int allowedAge, String themed, boolean access, String host_ID){
-            String sql = "INSERT INTO EVENTS (EVENT_ID, DATA, SCHEDULE, LOCATION, ALLOWED_AGE, THEMED, ACCESS, HOST_ID) VALUES (?, ?, ?)";
-
-            // Le falta acceso a los datos
-
+        public void connectionDataBase(){
 
         }
 
