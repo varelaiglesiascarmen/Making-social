@@ -1,6 +1,41 @@
 package makingSocial;
 
+import makingSocial.controller.DBConnection;
+
+import java.sql.SQLException;
+
 public class Main {
+
+    //explicacion antonio / prueba en codigo
+    public void Main (String [] args){
+        //crear un objeto de la clase DBConnection
+        DBConnection connection = new DBConnection("ADMIN", "MakingS0cial;", "makingsocialdatabase_low", String walletPath, "Making5ser;");
+
+        try{
+            // conectar la bbdd
+            connection.conectar("ADMIN", "MakingS0cial;", "makingsocialdatabase_low", String walletPath, "Making5ser;");
+            // darle a ejecutar el programa para ver si funciona la conexion
+            //hacer aquí todo el programa por defecto
+
+            //insertar en la bbdd
+            // construir String x
+            String x = "INSERT INTO nombredelatabla (campos) VALUES (valores que van dentro de los campos, se hacen por variables como el toString)";
+                                                        // por ej, si el campo es nombre y edad, se hace this.nombre,this.edad
+
+            // en el parentesis hay que meter String x
+            connection.ejecutarInsertDeleteUpdate(x);
+
+            // desconectar la bbdd
+            connection.desconectar();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+
+    }
+
 
     // funciones del sistema / system functions
         // comprobar si el usuario está registrado o no / check whether the user is registered or not
@@ -14,11 +49,6 @@ public class Main {
                     // tiene que llevarlo a signin
                     registeredUser = false;
             }
-        }
-
-        // conexión bbdd / conection ddbb
-        public void connectionDataBase(){
-
         }
 
     // funciones comunes de usuario / usual functions

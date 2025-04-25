@@ -1,10 +1,6 @@
 package makingSocial.controller;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Properties;
 // import java.util.Calendar;
 // import java.util.TimeZone;
@@ -14,7 +10,7 @@ import java.util.Properties;
  *
  * @author Francisco Jesús Delgado Almirón
  */
-public class DBConnection {
+public class DBConnectionCopy {
 
     // AVISO: Credenciales en texto plano para realizar pruebas
 
@@ -61,7 +57,7 @@ public class DBConnection {
      * @param walletPath Ruta a la carpeta del wallet
      * @param walletPassword Contraseña de la Wallet
      */
-    public DBConnection(String usuario, String pass, String tnsAlias, String walletPath, String walletPassword) {
+    public DBConnectionCopy(String usuario, String pass, String tnsAlias, String walletPath, String walletPassword) {
         this.USUARIO = usuario;
         this.PASS = pass;
         this.tnsAlias = tnsAlias; // ej. "adb_high"
