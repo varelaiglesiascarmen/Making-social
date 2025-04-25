@@ -19,7 +19,8 @@ public class Main {
 
             //insertar en la bbdd
             // construir String x
-            String x = "INSERT INTO nombredelatabla (campos) VALUES (valores que van dentro de los campos, se hacen por variables como el toString)";
+                                                                    // asi se guardaria el formulario
+            String x = "INSERT INTO nombredelatabla (campos) VALUES ('"+nombredelboton.getText()+"',"+nombredelboton.getText()+")";
                                                         // por ej, si el campo es nombre y edad, se hace this.nombre,this.edad
 
             // en el parentesis hay que meter String x
