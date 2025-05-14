@@ -27,6 +27,7 @@ public class Login extends JFrame {
     }
 
     public Login() {
+        setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(960, 700);
         setLocationRelativeTo(null); // Centrar ventana en pantalla

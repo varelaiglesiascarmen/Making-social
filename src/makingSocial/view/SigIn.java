@@ -49,6 +49,7 @@ public class SigIn extends JFrame {
      * Create the frame.
      */
     public SigIn() {
+        setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
         contentPane = new JPanel();
