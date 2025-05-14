@@ -2,12 +2,10 @@ package makingSocial;
 
 import makingSocial.controller.ConexionMySQL;
 
-import java.sql.SQLException;
-
 public class Main {
 
     //explicacion antonio / prueba en codigo
-    public void Main (String [] args){
+    public static void main(String [] args){
 
         //crear un objeto de la clase DBConnection
         ConexionMySQL conexion = new ConexionMySQL("root", "MakingS0cial", "MakingSocial");
@@ -43,6 +41,7 @@ public class Main {
 
     // funciones comunes de usuario / usual functions
         // iniciar sesion / login
+
         // registrarse / sign in
 
         // cambiar roll / change roll
