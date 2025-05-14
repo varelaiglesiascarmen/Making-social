@@ -43,7 +43,6 @@ public class Main {
 
     // funciones comunes de usuario / usual functions
         // iniciar sesion / login
-
         // registrarse / sign in
 
         // cambiar roll / change roll
