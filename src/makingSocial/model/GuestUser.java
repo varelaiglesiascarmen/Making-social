@@ -79,7 +79,7 @@ public class GuestUser extends User{
 
     }
 
-    public void changeRoll(){
+    public void changeRoll(int Roll){
 
     }
 }
