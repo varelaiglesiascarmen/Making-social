@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Login_View extends JFrame {
+public class Login extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -17,7 +17,7 @@ public class Login_View extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Login_View frame = new Login_View();
+                    Login frame = new Login();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -26,7 +26,7 @@ public class Login_View extends JFrame {
         });
     }
 
-    public Login_View() {
+    public Login() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(960, 700);
         setLocationRelativeTo(null); // Centrar ventana en pantalla

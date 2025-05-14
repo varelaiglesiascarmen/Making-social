@@ -59,10 +59,6 @@ public class HostUser extends User{
                 '}';
     }
 
-    @Override
-    public User changeRoll() throws SQLException {
-        return null;
-    }
 
     // metodos / method
     public void addEvent (Event x){
