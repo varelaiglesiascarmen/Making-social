@@ -1,6 +1,6 @@
 package makingSocial.model;
 
-import makingSocial.controller.DBConnection;
+import makingSocial.controller.ConexionMySQL;
 
 import java.util.Random;
 import java.util.Scanner;
