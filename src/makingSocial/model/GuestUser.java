@@ -78,8 +78,4 @@ public class GuestUser extends User{
     public void searchEvent(){
 
     }
-
-    public void changeRoll(){
-
-    }
 }

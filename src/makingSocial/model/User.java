@@ -2,7 +2,7 @@ package makingSocial.model;
 
 import java.sql.SQLException;
 
-public abstract class User {
+public class User {
     // attribute
         // nombre usuario
         private String userName;
@@ -63,6 +63,4 @@ public abstract class User {
                 '}';
     }
 
-    // metodo abstracto para cambiar de roll / abstract method for change user roll
-    public abstract User changeRoll() throws SQLException;
 }
