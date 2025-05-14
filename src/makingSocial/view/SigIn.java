@@ -1,5 +1,8 @@
 package makingSocial.view;
 
+import makingSocial.model.User;
+import makingSocial.controller.ConexionMySQL;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,6 +15,9 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SigIn extends JFrame {
 
@@ -112,5 +118,12 @@ public class SigIn extends JFrame {
         JButton btnOK = new JButton("Confirmar");
         btnOK.setBounds(387, 461, 140, 29);
         contentPane.add(btnOK);
+
+        btnOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                User usuario = new User(NickName.getText(), Password.getText(), PassWordConfirm.getText(), e_Mail.getText(), Integer.parseInt(Age.getText()));
+            }
+        });
     }
 }
