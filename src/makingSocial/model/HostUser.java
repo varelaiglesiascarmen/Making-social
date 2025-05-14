@@ -1,6 +1,6 @@
 package makingSocial.model;
 
-import makingSocial.controller.DBConnection;
+import makingSocial.controller.ConexionMySQL;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -59,10 +59,6 @@ public class HostUser extends User{
                 '}';
     }
 
-    @Override
-    public User changeRoll() throws SQLException {
-        return null;
-    }
 
     // metodos / method
     public void addEvent (Event x){

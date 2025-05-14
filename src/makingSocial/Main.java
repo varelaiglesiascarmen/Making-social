@@ -2,12 +2,11 @@ package makingSocial;
 
 import makingSocial.controller.ConexionMySQL;
 
-import java.sql.SQLException;
-
 public class Main {
 
     //explicacion antonio / prueba en codigo
-    public void Main (String [] args){
+    public static void main(String [] args){
+
         //crear un objeto de la clase DBConnection
         ConexionMySQL conexion = new ConexionMySQL("root", "MakingS0cial", "MakingSocial");
 
@@ -28,17 +27,17 @@ public class Main {
 
     // funciones del sistema / system functions
         // comprobar si el usuario está registrado o no / check whether the user is registered or not
-    public void signinOrNot() {
-        boolean registeredUser = true;
+        public void signinOrNot (){
+            boolean registeredUser = true;
 
-        if(registeredUser==true){
-            // puede continuar
+            if(registeredUser==true){
+                    // puede continuar
+            }
+            else{
+                    // tiene que llevarlo a signin
+                    registeredUser = false;
+            }
         }
-        else{
-            // tiene que llevarlo a signin
-            registeredUser = false;
-        }
-    }
 
     // funciones comunes de usuario / usual functions
         // iniciar sesion / login

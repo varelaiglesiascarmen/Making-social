@@ -2,67 +2,77 @@ package makingSocial.model;
 
 import java.sql.SQLException;
 
-public abstract class User {
+public class User {
     // attribute
         // nombre usuario
-        private String userName;
-        private String password;
-        private String mail;
+        private String NickName;
+        private String Password;
+        private String PassWordConfirm;
+        private String e_Mail;
+        private int Age;
         // Host = true , Guest = false
         private boolean userType = true;
 
     // constructor
-    public User(String userName, String password, String mail, boolean userType) {
-        this.userName = userName;
-        this.password = password;
-        this.mail = mail;
-        this.userType = userType;
+    public User(String NickName, String Password, String PassWordConfirm, String e_Mail, int Age) {
+        this.NickName = NickName;
+        this.Password = Password;
+        this.PassWordConfirm = PassWordConfirm;
+        this.e_Mail = e_Mail;
+        this.Age = Age;
     }
 
     //getters & setters
-    public String getUserName() {
-        return userName;
+    public String NickName() {
+        return NickName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setNickName(String NickName) {
+        this.NickName = NickName;
     }
 
     public String getPassword() {
-        return password;
+        return Password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String Password) {
+        this.Password = Password;
     }
 
-    public String getMail() {
-        return mail;
+    public String getPassWordConfirm() {
+        return PassWordConfirm;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setMail(String PassWordConfirm) {
+        this.PassWordConfirm = PassWordConfirm;
     }
 
-    public boolean isUserType() {
-        return userType;
+    public String getE_Mail() {
+        return e_Mail;
     }
 
-    public void setUserType(boolean userType) {
-        this.userType = userType;
+    public void setE_Mail(String e_Mail) {
+        this.e_Mail = e_Mail;
+    }
+
+    public String getAge() {
+        return e_Mail;
+    }
+
+    public void setAge(int Age) {
+        this.Age = Age;
     }
 
     //toString
     @Override
     public String toString() {
         return "User{" +
-                "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", mail='" + mail + '\'' +
-                ", userType=" + userType +
+                "NickName='" + NickName + '\'' +
+                ", Password='" + Password + '\'' +
+                ", PassWordConfirm='" + PassWordConfirm + '\'' +
+                ", e_Mail=" + e_Mail + '\'' +
+                ", Age='" + Age +
                 '}';
     }
 
-    // metodo abstracto para cambiar de roll / abstract method for change user roll
-    public abstract User changeRoll() throws SQLException;
 }
