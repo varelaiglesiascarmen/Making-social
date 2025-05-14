@@ -28,17 +28,17 @@ public class Main {
 
     // funciones del sistema / system functions
         // comprobar si el usuario está registrado o no / check whether the user is registered or not
-        public void signinOrNot (){
-            boolean registeredUser = true;
+    public void signinOrNot() {
+        boolean registeredUser = true;
 
-            if(registeredUser==true){
-                    // puede continuar
-            }
-            else{
-                    // tiene que llevarlo a signin
-                    registeredUser = false;
-            }
+        if(registeredUser==true){
+            // puede continuar
         }
+        else{
+            // tiene que llevarlo a signin
+            registeredUser = false;
+        }
+    }
 
     // funciones comunes de usuario / usual functions
         // iniciar sesion / login
