@@ -1,6 +1,6 @@
 package makingSocial;
 
-import makingSocial.controller.DBConnection;
+import makingSocial.controller.ConexionMySQL;
 
 import java.sql.SQLException;
 
@@ -8,33 +8,22 @@ public class Main {
 
     //explicacion antonio / prueba en codigo
     public void Main (String [] args){
+
         //crear un objeto de la clase DBConnection
-        DBConnection connection = new DBConnection("ADMIN", "MakingS0cial;", "makingsocialdatabase_low", String walletPath, "Making5ser;");
+        ConexionMySQL conexion = new ConexionMySQL("root", "MakingS0cial", "MakingSocial");
 
-        try{
-            // conectar la bbdd
-            connection.conectar("ADMIN", "MakingS0cial;", "makingsocialdatabase_low", String walletPath, "Making5ser;");
-            // darle a ejecutar el programa para ver si funciona la conexion
-            //hacer aquí todo el programa por defecto
+        try {
+            // Conectarse a la base de datos
+            conexion.conectar();
+            System.out.println("Conexión establecida correctamente.");
 
-            //insertar en la bbdd
-            // construir String x
-                                                                    // asi se guardaria el formulario
-            String x = "INSERT INTO nombredelatabla (campos) VALUES ('"+nombredelboton.getText()+"',"+nombredelboton.getText()+")";
-                                                        // por ej, si el campo es nombre y edad, se hace this.nombre,this.edad
+            // Cerrar la conexión
+            conexion.desconectar();
+            System.out.println("Conexión cerrada correctamente.");
 
-            // en el parentesis hay que meter String x
-            connection.ejecutarInsertDeleteUpdate(x);
-
-            // desconectar la bbdd
-            connection.desconectar();
-
-        } catch (SQLException e){
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
         }
-
-
-
     }
 
 
