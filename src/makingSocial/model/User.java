@@ -2,22 +2,27 @@ package makingSocial.model;
 
 public class User {
     // attribute
-        // nombre usuario
+        // nombre usuario, max 15 caracteres
         private String NickName;
+        // max 20 caracteres
         private String Password;
         private String PassWordConfirm;
+        // max 45 caracteres
         private String e_Mail;
         private int Age;
+        // max 10 caracteres
+        private String Name;
         // Host = true , Guest = false
-        private boolean userType = true;
+        // private boolean userType = true;
 
     // constructor
-    public User(String NickName, String Password, String PassWordConfirm, String e_Mail, int Age) {
+    public User(String NickName, String Password, String PassWordConfirm, String e_Mail, int Age, String Name) {
         this.NickName = NickName;
         this.Password = Password;
         this.PassWordConfirm = PassWordConfirm;
         this.e_Mail = e_Mail;
         this.Age = Age;
+        this.Name = Name;
     }
 
     //getters & setters
@@ -54,11 +59,19 @@ public class User {
     }
 
     public int getAge() {
-        return e_Mail;
+        return Age;
     }
 
     public void setAge(int Age) {
         this.Age = Age;
+    }
+
+    public int getName() {
+        return Age;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     //toString
@@ -66,6 +79,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "NickName='" + NickName + '\'' +
+                "Name='" + Name + '\'' +
                 ", Password='" + Password + '\'' +
                 ", PassWordConfirm='" + PassWordConfirm + '\'' +
                 ", e_Mail=" + e_Mail + '\'' +

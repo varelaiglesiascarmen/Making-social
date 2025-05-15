@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class HostUser extends User{
+public class HostUser {
 
     // attributes
     private String hostUser_ID;
@@ -18,7 +18,7 @@ public class HostUser extends User{
 
     // constructor / constructor
     public HostUser(String userName, String password, String mail, boolean userType, String hostUser_ID, String name, String lastName) {
-        super(userName, password, mail, userType);
+        //super(userName, password, mail, userType);
         this.hostUser_ID = hostUser_ID;
         this.name = name;
         this.lastName = lastName;

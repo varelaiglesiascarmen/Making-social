@@ -1,6 +1,6 @@
 package makingSocial.model;
 
-public class GuestUser extends User{
+public class GuestUser {
     // attributes
     private String guestUser_ID;
     private String name;
@@ -9,7 +9,7 @@ public class GuestUser extends User{
     private int edad;
 
     public GuestUser(String userName, String password, String mail, boolean userType, String guestUser_ID, String name, String maritalStatus, String RRSS, int edad) {
-        super(userName, password, mail, userType);
+        //super(userName, password, mail, userType);
         this.guestUser_ID = guestUser_ID;
         this.name = name;
         this.maritalStatus = maritalStatus;
