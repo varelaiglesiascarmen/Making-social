@@ -1,4 +1,4 @@
-package makingSocial.view;
+package makingSocial.view.GuestModel_View;
 
 import java.awt.EventQueue;
 import java.awt.Font;

@@ -1,14 +1,15 @@
-package makingSocial.view;
+package makingSocial.view.GuestModel_View;
+
+import makingSocial.view.UserProfile_View.HomePage;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
 
-public class HomePage extends JFrame {
+public class SearchEvent extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -32,7 +33,7 @@ public class HomePage extends JFrame {
     /**
      * Create the frame.
      */
-    public HomePage() {
+    public SearchEvent() {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -50,12 +51,13 @@ public class HomePage extends JFrame {
         int centerX2 = (960 / 2) + 25; // botón derecho
         int centerY = 220;
 
-        JButton btnCreateEvent = new JButton("Crear evento");
+        // solo pueden salir los públicos
+        JButton btnCreateEvent = new JButton("Buscar evento");
         btnCreateEvent.setFont(new Font("Tahoma", Font.PLAIN, 30));
         btnCreateEvent.setBounds(centerX1, centerY, btnWidth, btnHeight);
         contentPane.add(btnCreateEvent);
 
-        JButton btnAttendEvent = new JButton("Asistir a evento");
+        JButton btnAttendEvent = new JButton("Introducir código");
         btnAttendEvent.setFont(new Font("Tahoma", Font.PLAIN, 30));
         btnAttendEvent.setBounds(centerX2, centerY, btnWidth, btnHeight);
         contentPane.add(btnAttendEvent);

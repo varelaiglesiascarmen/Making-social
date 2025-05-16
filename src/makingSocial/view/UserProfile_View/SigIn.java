@@ -1,4 +1,4 @@
-package makingSocial.view;
+package makingSocial.view.UserProfile_View;
 
 
 import java.awt.EventQueue;

@@ -1,4 +1,4 @@
-package makingSocial.view;
+package makingSocial.view.HostModel_View;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;

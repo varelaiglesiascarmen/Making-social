@@ -1,15 +1,14 @@
-package makingSocial.view;
+package makingSocial.view.GuestModel_View;
 
 import java.awt.EventQueue;
-import java.awt.Font;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.Font;
 
-public class EventFound extends JFrame {
+public class Profile extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -21,7 +20,7 @@ public class EventFound extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    EventFound frame = new EventFound();
+                    Profile frame = new Profile();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -33,29 +32,24 @@ public class EventFound extends JFrame {
     /**
      * Create the frame.
      */
-    public EventFound() {
+    public Profile() {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 692, 220);
+        setBounds(100, 100, 960, 700);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel FoundCodeTitle = new JLabel("Evento encontrado");
-        FoundCodeTitle.setFont(new Font("Tahoma", Font.BOLD, 25));
-        FoundCodeTitle.setBounds(26, 26, 555, 45);
-        contentPane.add(FoundCodeTitle);
+        JButton btnMakingSocial = new JButton("Making Social!");
+        btnMakingSocial.setFont(new Font("Tahoma", Font.PLAIN, 40));
+        btnMakingSocial.setBounds(228, 242, 518, 160);
+        contentPane.add(btnMakingSocial);
 
-        JLabel FoundCodeTxt = new JLabel("Podrás interactuar con el evento media hora antes de éste, ¡sonríe en la foto!");
-        FoundCodeTxt.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        FoundCodeTxt.setBounds(36, 81, 631, 21);
-        contentPane.add(FoundCodeTxt);
-
-        JButton btnOk = new JButton("Ok");
-        btnOk.setBounds(303, 131, 85, 21);
-        contentPane.add(btnOk);
+        JButton btnCfgProfile = new JButton("Cfg");
+        btnCfgProfile.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        btnCfgProfile.setBounds(875, 612, 60, 40);
+        contentPane.add(btnCfgProfile);
     }
-
 }

@@ -1,4 +1,4 @@
-package makingSocial.view;
+package makingSocial.view.HostModel_View;
 
 import java.awt.EventQueue;
 
@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JEditorPane;
 import javax.swing.JButton;
 
 public class PrintCode extends JFrame {
