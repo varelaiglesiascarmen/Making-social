@@ -36,7 +36,7 @@ public class notRegistered extends JFrame {
      * Create the frame.
      */
     public notRegistered() {
-        setTitle("404 not found");
+        setTitle("Making Social! - 404 not found");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 476, 220);
         contentPane = new JPanel();

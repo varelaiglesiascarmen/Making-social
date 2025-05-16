@@ -1,16 +1,10 @@
 package makingSocial.view;
 
-import java.awt.EventQueue;
-import java.awt.Font;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
-public class notAllNodes extends JFrame {
-
+public class EventNotFound extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -22,7 +16,7 @@ public class notAllNodes extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    notAllNodes frame = new notAllNodes();
+                    EventNotFound frame = new EventNotFound();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -34,28 +28,29 @@ public class notAllNodes extends JFrame {
     /**
      * Create the frame.
      */
-    public notAllNodes() {
+    public EventNotFound() {
         setTitle("Making Social! - 404 not found");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 420, 220);
+        setBounds(100, 100, 692, 220);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel errorTitle = new JLabel("Campos sin rellenar.");
-        errorTitle.setFont(new Font("Tahoma", Font.BOLD, 25));
-        errorTitle.setBounds(45, 26, 377, 45);
-        contentPane.add(errorTitle);
+        JLabel notFoundCodeTitle = new JLabel("Evento no encontrado");
+        notFoundCodeTitle.setFont(new Font("Tahoma", Font.BOLD, 25));
+        notFoundCodeTitle.setBounds(26, 26, 555, 45);
+        contentPane.add(notFoundCodeTitle);
+
+        JLabel notFoundCodeTxt = new JLabel("Inserte un código válido, si no lo tienes ¡siempre podrás buscar un evento!");
+        notFoundCodeTxt.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        notFoundCodeTxt.setBounds(36, 81, 631, 21);
+        contentPane.add(notFoundCodeTxt);
 
         JButton btnOk = new JButton("Ok");
-        btnOk.setBounds(197, 128, 85, 21);
+        btnOk.setBounds(303, 131, 85, 21);
         contentPane.add(btnOk);
-
-        JLabel errorTxt = new JLabel("Por favor, rellena todos los campos.");
-        errorTxt.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        errorTxt.setBounds(45, 81, 377, 21);
-        contentPane.add(errorTxt);
     }
+
 }
