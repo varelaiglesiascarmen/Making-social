@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import com.toedter.calendar.JDateChooser;
-import makingSocial.model.User;
+import makingSocial.model.UserModel;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -151,7 +151,7 @@ public class SigIn extends JFrame {
         btnOK.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                User usuario = new User(NickName.getText(), Password.getText(), PassWordConfirm.getText(), E_Mail.getText(), Integer.parseInt(Age.getText()), Name.getText());
+                UserModel usuario = new UserModel(NickName.getText(), Password.getText(), PassWordConfirm.getText(), E_Mail.getText(), Integer.parseInt(Age.getText()), Name.getText());
             }
         });
     }

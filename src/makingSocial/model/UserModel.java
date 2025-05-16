@@ -1,26 +1,22 @@
 package makingSocial.model;
 
-public class User {
+public class UserModel {
     // attribute
         // nombre usuario, max 15 caracteres
         private String NickName;
         // max 20 caracteres
         private String Password;
-        private String PassWordConfirm;
         // max 45 caracteres
-        private String e_Mail;
+        private String E_Mail;
         private int Age;
         // max 10 caracteres
         private String Name;
-        // Host = true , Guest = false
-        // private boolean userType = true;
 
     // constructor
-    public User(String NickName, String Password, String PassWordConfirm, String e_Mail, int Age, String Name) {
+    public UserModel(String NickName, String Password, String e_Mail, int Age, String Name) {
         this.NickName = NickName;
         this.Password = Password;
-        this.PassWordConfirm = PassWordConfirm;
-        this.e_Mail = e_Mail;
+        this.E_Mail = e_Mail;
         this.Age = Age;
         this.Name = Name;
     }
@@ -42,20 +38,12 @@ public class User {
         this.Password = Password;
     }
 
-    public String getPassWordConfirm() {
-        return PassWordConfirm;
-    }
-
-    public void setMail(String PassWordConfirm) {
-        this.PassWordConfirm = PassWordConfirm;
-    }
-
     public String getE_Mail() {
-        return e_Mail;
+        return E_Mail;
     }
 
     public void setE_Mail(String e_Mail) {
-        this.e_Mail = e_Mail;
+        this.E_Mail = e_Mail;
     }
 
     public int getAge() {
@@ -81,10 +69,11 @@ public class User {
                 "NickName='" + NickName + '\'' +
                 "Name='" + Name + '\'' +
                 ", Password='" + Password + '\'' +
-                ", PassWordConfirm='" + PassWordConfirm + '\'' +
-                ", e_Mail=" + e_Mail + '\'' +
+                ", e_Mail=" + E_Mail + '\'' +
                 ", Age='" + Age +
                 '}';
     }
+
+    // methods
 
 }

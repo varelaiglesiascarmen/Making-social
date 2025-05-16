@@ -1,12 +1,12 @@
 package makingSocial.controller;
 
-import makingSocial.model.User;
+import makingSocial.model.UserModel;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class SignIn_Controller {
-    public boolean ejecutarInsertDeleteUpdate(User user) {
+    public boolean ejecutarInsertDeleteUpdate(UserModel user) {
         ConexionMySQL conexion = new ConexionMySQL("root", "MakingS0cial", "MakingSocial");
         if (conexion != null) {
             try {
