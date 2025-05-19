@@ -6,9 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class SignIn_Controller {
-    public boolean ejecutarInsertDeleteUpdate(UserModel user) {
-        ConexionMySQL conexion = new ConexionMySQL("root", "MakingS0cial", "MakingSocial");
-        if (conexion != null) {
+    public boolean ejecutarInsertDeleteUpdate(UserModel user) throws SQLException {
+        if (ConexionSingleton.getConexion() != null) {
             try {
                 String sql = "INSERT INTO UserProfile (nickname, password, email, age) VALUES (?, ?, ?, ?)";
                 PreparedStatement stmt = null;
@@ -17,7 +16,7 @@ public class SignIn_Controller {
                 stmt.setString(3, user.getE_Mail());
                 stmt.setInt(4, user.getAge());
                 stmt.executeUpdate();
-                conexion.desconectar();
+                ConexionSingleton.cerrarConexion();
                 return true;
             } catch (SQLException e) {
                 e.printStackTrace();

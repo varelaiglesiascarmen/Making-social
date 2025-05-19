@@ -6,6 +6,7 @@ public class UserModel {
         private String NickName;
         // max 20 caracteres
         private String Password;
+        private String PassWordConfirm;
         // max 45 caracteres
         private String E_Mail;
         private int Age;
@@ -13,10 +14,11 @@ public class UserModel {
         private String Name;
 
     // constructor
-    public UserModel(String NickName, String Password, String e_Mail, int Age, String Name) {
+    public UserModel(String NickName, String Password, String PassWordConfirm, String E_Mail, int Age, String Name) {
         this.NickName = NickName;
         this.Password = Password;
-        this.E_Mail = e_Mail;
+        this.PassWordConfirm = PassWordConfirm;
+        this.E_Mail = E_Mail;
         this.Age = Age;
         this.Name = Name;
     }
@@ -36,6 +38,14 @@ public class UserModel {
 
     public void setPassword(String Password) {
         this.Password = Password;
+    }
+
+    public String getPassWordConfirm() {
+        return PassWordConfirm;
+    }
+
+    public void setPassWordConfirm(String PassWordConfirm) {
+        this.PassWordConfirm = PassWordConfirm;
     }
 
     public String getE_Mail() {
