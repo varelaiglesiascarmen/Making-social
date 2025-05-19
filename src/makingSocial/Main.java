@@ -7,18 +7,6 @@ public class Main {
     //explicacion antonio / prueba en codigo
     public static void main(String [] args){
 
-        try {
-            // Conectarse a la base de datos
-            conexion.conectar();
-            System.out.println("Conexión establecida correctamente.");
-
-            // Cerrar la conexión
-            conexion.desconectar();
-            System.out.println("Conexión cerrada correctamente.");
-
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-        }
     }
 
 

@@ -7,7 +7,7 @@ class HostUserTest {
 
     @Test
     public void addEvent() {
-        HostUser boda = HostUser();
+        HostModel boda = HostUser();
         assertEquals();
     }
 

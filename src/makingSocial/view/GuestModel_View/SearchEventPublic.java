@@ -1,0 +1,78 @@
+package makingSocial.view.GuestModel_View;
+
+import java.awt.EventQueue;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+
+public class SearchEventPublic extends JFrame {
+
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
+    private JTextField textField;
+
+    /**
+     * Launch the application.
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    SearchEventPublic frame = new SearchEventPublic();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    /**
+     * Create the frame.
+     */
+    public SearchEventPublic() {
+        setTitle("Making Social!");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 960, 700);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        JLabel titlePostalCode = new JLabel("Inserta un código postal");
+        titlePostalCode.setHorizontalAlignment(SwingConstants.CENTER);
+        titlePostalCode.setFont(new Font("Tahoma", Font.BOLD, 40));
+        titlePostalCode.setBounds(171, 56, 658, 73);
+        contentPane.add(titlePostalCode);
+
+        textField = new JTextField();
+        textField.setHorizontalAlignment(SwingConstants.CENTER);
+        textField.setFont(new Font("Tahoma", Font.PLAIN, 45));
+        textField.setBounds(151, 139, 730, 57);
+        contentPane.add(textField);
+        textField.setColumns(10);
+
+        JLabel AttendEvent = new JLabel("Lorem ipsum dolor sit amet");
+        AttendEvent.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        AttendEvent.setBounds(150, 242, 610, 33);
+        contentPane.add(AttendEvent);
+
+        JButton btnNewButtonAttend = new JButton("Asistir");
+        btnNewButtonAttend.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        btnNewButtonAttend.setBounds(770, 240, 111, 36);
+        contentPane.add(btnNewButtonAttend);
+
+        JButton btnGoHomePage = new JButton("Volver a inicio");
+        btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnGoHomePage.setBounds(784, 606, 140, 30);
+        contentPane.add(btnGoHomePage);
+
+    }
+}
