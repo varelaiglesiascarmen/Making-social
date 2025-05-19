@@ -27,7 +27,7 @@ public class ConexionSingleton {
     /**
      * Método para cerrar la conexión desde cualquier parte
      */
-    public static void cerrarConexion() throws SQLException {
+    public static void closeConexion() throws SQLException {
         if (instancia != null) {
             instancia.desconectar();
             instancia = null;

@@ -16,7 +16,7 @@ public class SignIn_Controller {
                 stmt.setString(3, user.getE_Mail());
                 stmt.setInt(4, user.getAge());
                 stmt.executeUpdate();
-                ConexionSingleton.cerrarConexion();
+                ConexionSingleton.closeConexion();
                 return true;
             } catch (SQLException e) {
                 e.printStackTrace();
