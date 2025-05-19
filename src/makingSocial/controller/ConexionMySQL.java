@@ -1,11 +1,7 @@
 package makingSocial.controller;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -111,5 +107,12 @@ public class ConexionMySQL {
         int fila = stmt.executeUpdate(consulta);
 
         return fila;
+    }
+
+    //crear un objeto de la clase DBConnection
+    ConexionMySQL conexion = new ConexionMySQL("root", "MakingS0cial", "MakingSocial");
+
+    public static ConexionMySQL getConexion() {
+        return this.conexion;
     }
 }

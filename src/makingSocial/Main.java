@@ -7,9 +7,6 @@ public class Main {
     //explicacion antonio / prueba en codigo
     public static void main(String [] args){
 
-        //crear un objeto de la clase DBConnection
-        ConexionMySQL conexion = new ConexionMySQL("root", "MakingS0cial", "MakingSocial");
-
         try {
             // Conectarse a la base de datos
             conexion.conectar();

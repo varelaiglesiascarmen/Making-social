@@ -1,7 +1,5 @@
 package makingSocial.model;
 
-import java.sql.SQLException;
-
 public class User {
     // attribute
         // nombre usuario
@@ -23,7 +21,7 @@ public class User {
     }
 
     //getters & setters
-    public String NickName() {
+    public String getNickName() {
         return NickName;
     }
 
@@ -55,8 +53,8 @@ public class User {
         this.e_Mail = e_Mail;
     }
 
-    public String getAge() {
-        return e_Mail;
+    public int getAge() {
+        return Age;
     }
 
     public void setAge(int Age) {
