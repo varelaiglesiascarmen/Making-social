@@ -109,10 +109,7 @@ public class ConexionMySQL {
         return fila;
     }
 
-    //crear un objeto de la clase DBConnection
-    ConexionMySQL conexion = new ConexionMySQL("root", "MakingS0cial", "MakingSocial");
-
-    public static ConexionMySQL getConexion() {
-        return this.conexion;
+    public Connection getConnection() {
+        return this.connection;
     }
 }
