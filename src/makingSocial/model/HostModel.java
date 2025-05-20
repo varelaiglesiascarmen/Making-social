@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.UUID;
 
-public class HostModel extends UserModel {
+public class HostModel{
 
     // attributes
     private int ID_Host;
@@ -12,7 +12,7 @@ public class HostModel extends UserModel {
 
     // constructor / constructor
     public HostModel(String NickName, String Password, String e_Mail, int Age, String Name, int ID_Host, int ID_Event) {
-        super(NickName, Password, e_Mail, Age, Name);
+        //super(NickName, Password, e_Mail, Age, Name);
         this.ID_Host = ID_Host;
         this.ID_Event = ID_Event;
     }

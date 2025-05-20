@@ -1,6 +1,6 @@
 package makingSocial.model;
 
-public class GuestModel extends UserModel {
+public class GuestModel{
     // attributes
     private int ID_User;
     // private ? Photo;
@@ -13,7 +13,7 @@ public class GuestModel extends UserModel {
 
     // constructor
     public GuestModel(String NickName, String Password, String e_Mail, int Age, String Name, int ID_User, String civilStatus, String RRSS, String BIO, String Attendance, int ID_GuestModel) {
-        super(NickName, Password, e_Mail, Age, Name);
+        //super(NickName, Password, e_Mail, Age, Name);
         this.ID_User = ID_User;
         CivilStatus = civilStatus;
         this.RRSS = RRSS;
