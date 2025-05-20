@@ -79,8 +79,8 @@ public class UserModel {
         this.Age = Age;
     }
 
-    public int getName() {
-        return Age;
+    public String getName() {
+        return Name;
     }
 
     public void setName(String Name) {
