@@ -31,15 +31,15 @@ public class EventModel {
     // constructor
     public EventModel(int ID_Event, LocalDate date, LocalTime schedule, String location, int postalCode, boolean dressCode, boolean theme, String description, int allowedAge, boolean access, int ID_Host) {
         this.ID_Event = ID_Event;
-        Date = date;
-        Schedule = schedule;
-        Location = location;
-        PostalCode = postalCode;
-        DressCode = dressCode;
-        Theme = theme;
-        Description = description;
-        AllowedAge = allowedAge;
-        Access = access;
+        this.Date = date;
+        this.Schedule = schedule;
+        this.Location = location;
+        this.PostalCode = postalCode;
+        this.DressCode = dressCode;
+        this.Theme = theme;
+        this.Description = description;
+        this.AllowedAge = allowedAge;
+        this.Access = access;
         this.ID_Host = ID_Host;
     }
 
@@ -51,35 +51,35 @@ public class EventModel {
 
     public LocalDate getDate() { return Date; }
 
-    public void setDate(LocalDate date) { Date = date; }
+    public void setDate(LocalDate date) { this.Date = date; }
 
     public LocalTime getSchedule() { return Schedule; }
 
-    public void setSchedule(LocalTime schedule) { Schedule = schedule; }
+    public void setSchedule(LocalTime schedule) { this.Schedule = schedule; }
 
     public String getLocation() { return Location; }
 
-    public void setLocation(String location) { Location = location; }
+    public void setLocation(String location) { this.Location = location; }
 
     public int getPostalCode() { return PostalCode; }
 
-    public void setPostalCode(int postalCode) { PostalCode = postalCode; }
+    public void setPostalCode(int postalCode) { this.PostalCode = postalCode; }
 
     public boolean isDressCode() { return DressCode; }
 
-    public void setDressCode(boolean dressCode) { DressCode = dressCode; }
+    public void setDressCode(boolean dressCode) { this.DressCode = dressCode; }
 
     public boolean isTheme() { return Theme; }
 
-    public void setTheme(boolean theme) { Theme = theme; }
+    public void setTheme(boolean theme) { this.Theme = theme; }
 
     public String getDescription() { return Description; }
 
-    public void setDescription(String description) { Description = description; }
+    public void setDescription(String description) { this.Description = description; }
 
     public int getAllowedAge() { return AllowedAge; }
 
-    public void setAllowedAge(int allowedAge) { AllowedAge = allowedAge; }
+    public void setAllowedAge(int allowedAge) { this.AllowedAge = allowedAge; }
 
     public int getID_Host() { return ID_Host; }
 
@@ -87,22 +87,22 @@ public class EventModel {
 
     public boolean isAccess() { return Access; }
 
-    public void setAccess(boolean access) { Access = access; }
+    public void setAccess(boolean access) { this.Access = access; }
 
     // toString
     @Override
     public String toString() {
         return "EventModel{" +
-                "ID_Event=" + ID_Event +
-                ", Date=" + Date +
-                ", Schedule=" + Schedule +
+                "ID_Event=" + ID_Event + '\'' +
+                ", Date=" + Date + '\'' +
+                ", Schedule=" + Schedule + '\'' +
                 ", Location='" + Location + '\'' +
-                ", PostalCode=" + PostalCode +
-                ", DressCode=" + DressCode +
-                ", Theme=" + Theme +
+                ", PostalCode=" + PostalCode + '\'' +
+                ", DressCode=" + DressCode + '\'' +
+                ", Theme=" + Theme + '\'' +
                 ", Description='" + Description + '\'' +
-                ", AllowedAge=" + AllowedAge +
-                ", Access=" + Access +
+                ", AllowedAge=" + AllowedAge + '\'' +
+                ", Access=" + Access + '\'' +
                 ", ID_Host=" + ID_Host +
                 '}';
     }
