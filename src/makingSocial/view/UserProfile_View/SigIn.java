@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import com.toedter.calendar.JDateChooser;
+import makingSocial.DAO.SignIn_DAO;
 import makingSocial.model.UserModel;
 
 import javax.swing.JLabel;
@@ -151,7 +152,19 @@ public class SigIn extends JFrame {
         btnOK.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UserModel usuario = new UserModel(NickName.getText(), Password.getText(), PassWordConfirm.getText(), E_Mail.getText(), Integer.parseInt(Age.getText()), Name.getText());
+                // Cuidado: los JPasswordField devuelven char[], hay que convertirlos
+                String nickname = NickName.getText();
+                String password = new String(passwordField.getPassword());
+                String passwordConfirm = new String(passwordFieldConfirm.getPassword());
+                String email = textFieldEMAil.getText();
+                int age = Integer.parseInt(textFieldAge.getText());
+                String name = textFieldName.getText();
+
+                // Crear el objeto del modelo
+                UserModel usuario = new UserModel(nickname, password, passwordConfirm, email, age, name);
+
+                // Pasa el objeto usuario con sus datos
+                new SignIn_DAO().ejecutarInsertDeleteUpdate(usuario);
             }
         });
     }
