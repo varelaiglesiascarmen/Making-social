@@ -52,4 +52,3 @@ public class UserNotSave extends JFrame{
         contentPane.add(errorTxtUserNotSave);
     }
 }
-

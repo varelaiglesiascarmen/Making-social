@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class SignIn_DAO {
     public boolean ejecutarInsertDeleteUpdate(UserModel usuario) {
-        String sql = "INSERT INTO UserProfile (nickname, password, email, age) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO UserProfile (NickName, Password, PasswordConfirm, E_Mail, Age, Name) VALUES (?, ?, ?, ?)";
 
         try {
             ConexionMySQL conexion = ConexionSingleton.getConexion();

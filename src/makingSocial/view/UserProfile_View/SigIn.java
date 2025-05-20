@@ -128,15 +128,15 @@ public class SigIn extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Cuidado: los JPasswordField devuelven char[], hay que convertirlos
-                String nickname = textField.getText(); // Corregido: textField contiene el nombre de usuario
-                String password = new String(passwordField.getPassword());
-                String passwordConfirm = new String(passwordFieldConfirm.getPassword());
-                String email = textFieldEMAil.getText();
-                int age = Integer.parseInt(textFieldAge.getText());
-                String name = textFieldName.getText();
+                String NickName = textField.getText(); // Corregido: textField contiene el nombre de usuario
+                String Password = new String(passwordField.getPassword());
+                String PasswordConfirm = new String(passwordFieldConfirm.getPassword());
+                String E_Mail = textFieldEMAil.getText();
+                int Age = Integer.parseInt(textFieldAge.getText());
+                String Name = textFieldName.getText();
 
                 // Crear el objeto del modelo
-                UserModel usuario = new UserModel(nickname, password, passwordConfirm, email, age, name);
+                UserModel usuario = new UserModel(NickName, Password, PasswordConfirm, E_Mail, Age, Name);
 
                 // Pasa el objeto usuario con sus datos
                 new SignIn_DAO().ejecutarInsertDeleteUpdate(usuario);
