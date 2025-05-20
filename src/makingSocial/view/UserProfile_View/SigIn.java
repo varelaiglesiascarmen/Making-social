@@ -30,6 +30,7 @@ public class SigIn extends JFrame {
     private JPasswordField passwordField;
     private JPasswordField passwordFieldConfirm;
     private JTextField textField;
+    private JTextField textField_Edad;
 
 
     /**
@@ -128,11 +129,6 @@ public class SigIn extends JFrame {
         contentPane.add(passwordFieldConfirm);
 
 
-        JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setBounds(437, 384, 181, 37);
-        contentPane.add(dateChooser);
-
-
         JButton btnOK = new JButton("Confirmar");
         btnOK.setBounds(387, 461, 140, 29);
         contentPane.add(btnOK);
@@ -147,6 +143,11 @@ public class SigIn extends JFrame {
         textField.setColumns(10);
         textField.setBounds(437, 149, 181, 37);
         contentPane.add(textField);
+
+        textField_Edad = new JTextField();
+        textField_Edad.setColumns(10);
+        textField_Edad.setBounds(437, 384, 181, 37);
+        contentPane.add(textField_Edad);
 
         btnOK.addActionListener(new ActionListener() {
             @Override
