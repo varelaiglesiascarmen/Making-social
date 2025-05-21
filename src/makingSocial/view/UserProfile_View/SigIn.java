@@ -144,7 +144,7 @@ public class SigIn extends JFrame {
                 insert = new SignIn_DAO().ejecutarInsertDeleteUpdate(usuario);
 
                 // si el usuario se ha guardado bien, le manda a homepage
-                if( insert == true){
+                if(insert == true){
                     // llamar a la ventana Homepage
                     HomePage homePage = new HomePage();
                     homePage.setVisible(true);

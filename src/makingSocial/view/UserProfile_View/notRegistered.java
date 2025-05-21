@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class notRegistered extends JFrame {
 
@@ -56,5 +58,13 @@ public class notRegistered extends JFrame {
         errorTxt.setFont(new Font("Tahoma", Font.PLAIN, 18));
         errorTxt.setBounds(36, 81, 498, 21);
         contentPane.add(errorTxt);
+
+        // al darle a ok se cierra la ventana
+        btnOk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
     }
 }

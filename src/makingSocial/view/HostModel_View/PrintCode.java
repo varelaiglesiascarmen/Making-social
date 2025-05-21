@@ -1,5 +1,8 @@
 package makingSocial.view.HostModel_View;
 
+import makingSocial.view.UserProfile_View.HomePage;
+import makingSocial.view.UserProfile_View.Login;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -7,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
@@ -71,6 +76,18 @@ public class PrintCode extends JFrame {
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnGoHomePage.setBounds(784, 606, 140, 30);
         contentPane.add(btnGoHomePage);
+
+        btnGoHomePage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana Homepage
+                HomePage homepage = new HomePage();
+                homepage.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
 
     }
 }
