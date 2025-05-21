@@ -59,5 +59,10 @@ public class attendedEvents extends JFrame {
         btnNewButton.setBounds(651, 178, 42, 36);
         contentPane.add(btnNewButton);
 
+        JButton btnGoHomePage = new JButton("Volver a inicio");
+        btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnGoHomePage.setBounds(784, 606, 140, 30);
+        contentPane.add(btnGoHomePage);
+
     }
 }

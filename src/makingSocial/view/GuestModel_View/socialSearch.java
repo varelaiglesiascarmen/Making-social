@@ -101,5 +101,10 @@ public class socialSearch extends JFrame {
         lblLoremIpsumBIO.setBackground(UIManager.getColor("Button.background"));
         lblLoremIpsumBIO.setBounds(492, 127, 355, 202);
         contentPane.add(lblLoremIpsumBIO);
+
+        JButton btn = new JButton("Volver a inicio");
+        btn.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btn.setBounds(784, 606, 140, 30);
+        contentPane.add(btn);
     }
 }

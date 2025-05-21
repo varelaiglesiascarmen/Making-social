@@ -8,6 +8,7 @@ import javax.swing.JButton;
 
 import makingSocial.DAO.UserProfile_DAO.SignIn_DAO;
 import makingSocial.model.UserModel;
+import makingSocial.view.HostModel_View.notAllNodes;
 
 import javax.swing.JLabel;
 import java.awt.event.ActionEvent;
@@ -139,7 +140,23 @@ public class SigIn extends JFrame {
                 UserModel usuario = new UserModel(NickName, Password, PasswordConfirm, E_Mail, Age, Name);
 
                 // Pasa el objeto usuario con sus datos
-                new SignIn_DAO().ejecutarInsertDeleteUpdate(usuario);
+                boolean insert = false;
+                insert = new SignIn_DAO().ejecutarInsertDeleteUpdate(usuario);
+
+                // si el usuario se ha guardado bien, le manda a homepage
+                if( insert == true){
+                    // llamar a la ventana Homepage
+                    HomePage homePage = new HomePage();
+                    homePage.setVisible(true);
+
+                    // disppuse() cierra la venta
+                    dispose();
+                }
+                // Si no, vuelve a decirle que rellene el formulario
+                else {
+                    replicatedUser replicatedUser = new replicatedUser();
+                    replicatedUser.setVisible(true);
+                }
             }
         });
     }

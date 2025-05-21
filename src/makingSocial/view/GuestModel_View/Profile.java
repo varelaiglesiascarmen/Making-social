@@ -47,9 +47,9 @@ public class Profile extends JFrame {
         btnMakingSocial.setBounds(228, 242, 518, 160);
         contentPane.add(btnMakingSocial);
 
-        JButton btnCfgProfile = new JButton("Cfg");
-        btnCfgProfile.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        btnCfgProfile.setBounds(875, 612, 60, 40);
-        contentPane.add(btnCfgProfile);
+        JButton btnGoHomePage = new JButton("Volver a inicio");
+        btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnGoHomePage.setBounds(784, 606, 140, 30);
+        contentPane.add(btnGoHomePage);
     }
 }
