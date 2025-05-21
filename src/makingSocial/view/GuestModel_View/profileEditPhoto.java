@@ -1,22 +1,22 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.view.UserProfile_View.HomePage;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class profileEditPhoto extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    private boolean fotoSeleccionada = false; // nueva variable
 
     /**
      * Launch the application.
@@ -65,11 +65,13 @@ public class profileEditPhoto extends JFrame {
 
         JButton btnSmile = new JButton("¡Sonríe!");
         btnSmile.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnSmile.addActionListener((ActionEvent e) -> {
-            // acción aquí
-        });
         btnSmile.setBounds(179, 581, 127, 40);
         contentPane.add(btnSmile);
+
+        JButton btnNewButtonMakingSocial = new JButton("Making Social!");
+        btnNewButtonMakingSocial.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnNewButtonMakingSocial.setBounds(625, 486, 161, 40);
+        contentPane.add(btnNewButtonMakingSocial);
 
         // Etiqueta "Recuerda:"
         JLabel lblNewLabel_1 = new JLabel("Recuerda:");
@@ -88,17 +90,61 @@ public class profileEditPhoto extends JFrame {
                         "puedas disfrutar del evento con tus amigos y no te quedes pegado al móvil!\n\n\n" +
                         "¡Que disfrutes del evento!"
         );
+
         txtrDebesHacerteUna.setWrapStyleWord(true);
         txtrDebesHacerteUna.setEditable(false);
         txtrDebesHacerteUna.setBackground(UIManager.getColor("Button.background"));
-        // Aumentamos la altura para que quepa todo el texto
         txtrDebesHacerteUna.setBounds(524, 187, 352, 255);
         contentPane.add(txtrDebesHacerteUna);
 
-        // Botón extra
-        JButton btnNewButton_1_2_1 = new JButton("Making Social!");
-        btnNewButton_1_2_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnNewButton_1_2_1.setBounds(625, 486, 161, 40);
-        contentPane.add(btnNewButton_1_2_1);
+        btnGoHomePage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                HomePage homepage = new HomePage();
+                homepage.setVisible(true);
+                dispose();
+            }
+        });
+
+        btnSmile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setDialogTitle("Selecciona una imagen de perfil");
+
+                fileChooser.setAcceptAllFileFilterUsed(false);
+                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Imágenes (.jpg, .png, .jpeg)", "jpg", "jpeg", "png"));
+
+                int result = fileChooser.showOpenDialog(null);
+
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    String imagePath = selectedFile.getAbsolutePath();
+                    System.out.println("Imagen seleccionada: " + imagePath);
+
+                    // marcar que se ha subido la foto
+                    fotoSeleccionada = true;
+
+                    // opcional: podrías mostrar la imagen seleccionada en lblPhoto
+                    lblPhoto.setIcon(new ImageIcon(imagePath));
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debes seleccionar una imagen para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        btnNewButtonMakingSocial.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (fotoSeleccionada) {
+                    profileEditBIO profileBIO = new profileEditBIO();
+                    profileBIO.setVisible(true);
+
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Primero debes subir una foto con el botón '¡Sonríe!'", "Foto requerida", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
     }
 }
