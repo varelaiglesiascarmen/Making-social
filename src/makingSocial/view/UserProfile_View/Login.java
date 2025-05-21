@@ -1,5 +1,7 @@
 package makingSocial.view.UserProfile_View;
 
+import makingSocial.DAO.UserProfile_DAO.Login_DAO;
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -93,26 +95,19 @@ public class Login extends JFrame {
 
         contentPane.add(lblRegister, gbc);
 
-        /* btnLogin.addActionListener(new ActionListener() {
+        btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Cuidado: los JPasswordField devuelven char[], hay que convertirlos
-                String NickName = textField.getText(); // Corregido: textField contiene el nombre de usuario
-                String Password = new String(passwordField.getPassword());
-                String PasswordConfirm = new String(passwordFieldConfirm.getPassword());
-                String E_Mail = textFieldEMAil.getText();
-                int Age = Integer.parseInt(textFieldAge.getText());
-                String Name = textFieldName.getText();
+                // Preguntar si usuario y contraseña existe
+                String NickName ;
+                String Password ;
 
-                // Crear el objeto del modelo
-                UserModel usuario = new UserModel(NickName, Password, PasswordConfirm, E_Mail, Age, Name);
-
-                // Pasa el objeto usuario con sus datos
+                // get.NickName & get.Password == true?
                 boolean insert = false;
-                insert = new Login_DAO().ejecutarInsertDeleteUpdate(usuario);
+                // insert = new Login_DAO().ejecutarInsertDeleteUpdate(usuario);
 
-                // si el usuario se ha guardado bien, le manda a homepage
-                if( insert == true){
+                // si el usuario existe, le manda a homepage
+                if(insert == true){
                     // llamar a la ventana Homepage
                     HomePage homePage = new HomePage();
                     homePage.setVisible(true);
@@ -120,12 +115,12 @@ public class Login extends JFrame {
                     // disppuse() cierra la venta
                     dispose();
                 }
-                // Si no, vuelve a decirle que rellene el formulario
+                // si el usuario no existe, le dice q se registre
                 else {
-                    replicatedUser replicatedUser = new replicatedUser();
-                    replicatedUser.setVisible(true);
+                    notRegistered notRegistered = new notRegistered();
+                    notRegistered.setVisible(true);
                 }
             }
-        });*/
+        });
     }
 }
