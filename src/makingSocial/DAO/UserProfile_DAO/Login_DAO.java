@@ -30,7 +30,6 @@ public class Login_DAO {
                     return false; // no coincide
                 }
 
-
             }
 
         } catch (SQLException e) {

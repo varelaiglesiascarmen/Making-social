@@ -14,7 +14,7 @@ public class UserModel {
         // max 10 caracteres
         private String Name;
 
-    // constructor
+    // constructor nuevo usuario
     public UserModel(String NickName, String Password, String PassWordConfirm, String E_Mail, int Age, String Name) {
         this.NickName = NickName;
         this.Password = Password;
@@ -24,6 +24,7 @@ public class UserModel {
         this.Name = Name;
     }
 
+    // constructor usuario creado
     public UserModel(int ID_User, String NickName, String Password, String PassWordConfirm, String E_Mail, int Age, String Name) {
         this.ID_User = ID_User;
         this.NickName = NickName;
@@ -32,6 +33,12 @@ public class UserModel {
         this.E_Mail = E_Mail;
         this.Age = Age;
         this.Name = Name;
+    }
+
+    // constructor Login
+    public UserModel(String NickName, String Password) {
+        this.NickName = NickName;
+        this.Password = Password;
     }
 
     //getters & setters

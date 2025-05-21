@@ -1,6 +1,7 @@
 package makingSocial.view.UserProfile_View;
 
 import makingSocial.DAO.UserProfile_DAO.Login_DAO;
+import makingSocial.model.UserModel;
 
 import java.awt.*;
 import javax.swing.*;
@@ -99,12 +100,15 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Preguntar si usuario y contraseña existe
-                String NickName ;
-                String Password ;
+                String NickName = usernameField.getText();
+                String Password = new String(passwordField.getPassword());
+
+                // Crear el objeto del modelo
+                UserModel usuario = new UserModel(NickName, Password);
 
                 // get.NickName & get.Password == true?
                 boolean insert = false;
-                // insert = new Login_DAO().ejecutarInsertDeleteUpdate(usuario);
+                insert = new Login_DAO().ejecutarSelect(usuario);
 
                 // si el usuario existe, le manda a homepage
                 if(insert == true){

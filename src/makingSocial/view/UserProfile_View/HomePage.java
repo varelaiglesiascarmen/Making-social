@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class HomePage extends JFrame {
 
@@ -65,16 +67,21 @@ public class HomePage extends JFrame {
         btnProfile.setBounds(10, 10, 100, 40);
         contentPane.add(btnProfile);
 
-        // Botón configuración (parte inferior derecha)
-        JButton btnCfg = new JButton("Cfg");
-        btnCfg.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        btnCfg.setBounds(875, 612, 60, 40);
-        contentPane.add(btnCfg);
+        JButton btnGoHomePage = new JButton("Volver a inicio");
+        btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnGoHomePage.setBounds(784, 606, 140, 30);
+        contentPane.add(btnGoHomePage);
 
-        // Botón reporte (junto a configuración)
-        JButton btnReport = new JButton("!");
-        btnReport.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        btnReport.setBounds(834, 622, 30, 30);
-        contentPane.add(btnReport);
+        btnGoHomePage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana Homepage
+                Login Login = new Login();
+                Login.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
     }
 }
