@@ -1,14 +1,15 @@
 package makingSocial.view.UserProfile_View;
 
-import makingSocial.DAO.UserProfile_DAO.SignIn_DAO;
-import makingSocial.model.UserModel;
-
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.font.TextAttribute;
+import java.util.Map;
 
 public class Login extends JFrame {
 
@@ -69,12 +70,28 @@ public class Login extends JFrame {
         });
         contentPane.add(btnLogin, gbc);
 
-
         gbc.gridy++;
-        JLabel lblRegister = new JLabel("Regístrate aquí", SwingConstants.CENTER);
-        lblRegister.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        contentPane.add(lblRegister, gbc);
 
+        JLabel lblRegister = new JLabel("Regístrate aquí", SwingConstants.CENTER);
+        Font font = lblRegister.getFont();
+        Map<TextAttribute, Object> attributes = (Map<TextAttribute, Object>) font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        lblRegister.setFont(font.deriveFont(attributes));
+
+        // Puntero override
+        lblRegister.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        lblRegister.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                SigIn signInFrame = new SigIn();
+                signInFrame.setVisible(true);
+                signInFrame.setLocationRelativeTo(null);
+                dispose(); // opcional: cierra el login si quieres
+            }
+        });
+
+        contentPane.add(lblRegister, gbc);
 
         /* btnLogin.addActionListener(new ActionListener() {
             @Override
