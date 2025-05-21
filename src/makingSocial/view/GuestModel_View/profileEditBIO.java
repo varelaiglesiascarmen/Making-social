@@ -1,20 +1,14 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.view.UserProfile_View.HomePage;
+
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.UIManager;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
 
 public class profileEditBIO extends JFrame {
 
@@ -52,6 +46,9 @@ public class profileEditBIO extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
+        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        setIconImage(icon.getImage());
+
         JLabel lblNewLabel = new JLabel("Nombre - Lorem Ipsum");
         lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
         lblNewLabel.setBounds(66, 40, 337, 77);
@@ -62,10 +59,10 @@ public class profileEditBIO extends JFrame {
         lblPhoto.setBounds(65, 127, 355, 481);
         contentPane.add(lblPhoto);
 
-        JButton btnNewButton_1 = new JButton("Making Social!");
-        btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnNewButton_1.setBounds(629, 527, 127, 40);
-        contentPane.add(btnNewButton_1);
+        JButton btnNewButtonMakingSocial = new JButton("Making Social!");
+        btnNewButtonMakingSocial.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnNewButtonMakingSocial.setBounds(625, 486, 127, 40);
+        contentPane.add(btnNewButtonMakingSocial);
 
 
         JButton btnGoHomePage = new JButton("Volver a inicio");
@@ -102,10 +99,10 @@ public class profileEditBIO extends JFrame {
         lblculEsTu.setBounds(492, 431, 209, 30);
         contentPane.add(lblculEsTu);
 
-        JRadioButton rdbtnNewRadioButton = new JRadioButton("Amistad");
-        rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        rdbtnNewRadioButton.setBounds(516, 477, 103, 21);
-        contentPane.add(rdbtnNewRadioButton);
+        JRadioButton rdbtnAmistad = new JRadioButton("Amistad");
+        rdbtnAmistad.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        rdbtnAmistad.setBounds(516, 477, 103, 21);
+        contentPane.add(rdbtnAmistad);
 
         JRadioButton rdbtnLige = new JRadioButton("Lige");
         rdbtnLige.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -117,10 +114,64 @@ public class profileEditBIO extends JFrame {
         rdbtnAmor.setBounds(738, 477, 103, 21);
         contentPane.add(rdbtnAmor);
 
+        ButtonGroup group = new ButtonGroup();
+        group.add(rdbtnAmistad);
+        group.add(rdbtnLige);
+        group.add(rdbtnAmor);
+
         JLabel lblSoloLoVern = new JLabel("Solo lo verán en caso de coincidencia  ");
         lblSoloLoVern.setHorizontalAlignment(SwingConstants.RIGHT);
         lblSoloLoVern.setFont(new Font("Tahoma", Font.PLAIN, 13));
         lblSoloLoVern.setBounds(642, 322, 259, 30);
         contentPane.add(lblSoloLoVern);
+
+        btnGoHomePage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana Homepage
+                HomePage homepage = new HomePage();
+                homepage.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
+
+        btnNewButtonMakingSocial.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String insta = textField_1.getText().trim();
+
+                // comprobar que insta esté relleno
+                if (insta.isEmpty() || insta.equals("@")) {
+                    JOptionPane.showMessageDialog(
+                            profileEditBIO.this,
+                            "Rellena todos los campos",
+                            "Error: Instagram",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+
+                // uno de los radio tiene que estar selccionado
+                if (!rdbtnAmistad.isSelected() &&
+                        !rdbtnLige.isSelected() &&
+                        !rdbtnAmor.isSelected()) {
+
+                    JOptionPane.showMessageDialog(
+                            profileEditBIO.this,
+                            "Selecciona una opción",
+                            "Error: Selección",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+
+                WelcomeToEvent welcome = new WelcomeToEvent();
+                welcome.setVisible(true);
+
+                dispose();
+            }
+        });
     }
 }

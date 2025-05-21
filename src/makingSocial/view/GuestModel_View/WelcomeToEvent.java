@@ -1,4 +1,4 @@
-package makingSocial.view.UserProfile_View;
+package makingSocial.view.GuestModel_View;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -6,8 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class replicatedUser extends JFrame {
-
+public class WelcomeToEvent extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -19,7 +18,7 @@ public class replicatedUser extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    replicatedUser frame = new replicatedUser();
+                    WelcomeToEvent frame = new WelcomeToEvent();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -31,10 +30,10 @@ public class replicatedUser extends JFrame {
     /**
      * Create the frame.
      */
-    public replicatedUser() {
+    public WelcomeToEvent() {
         setTitle("Making Social! - 404 not found");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 420, 220);
+        setBounds(100, 100, 692, 220);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -44,19 +43,19 @@ public class replicatedUser extends JFrame {
         ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
         setIconImage(icon.getImage());
 
-        JLabel errorTitle = new JLabel("Usuario ya existe");
-        errorTitle.setFont(new Font("Tahoma", Font.BOLD, 25));
-        errorTitle.setBounds(45, 26, 377, 45);
-        contentPane.add(errorTitle);
+        JLabel notFoundCodeTitle = new JLabel("¡Bienvenido al evento!");
+        notFoundCodeTitle.setFont(new Font("Tahoma", Font.BOLD, 25));
+        notFoundCodeTitle.setBounds(26, 26, 555, 45);
+        contentPane.add(notFoundCodeTitle);
+
+        JLabel notFoundCodeTxt = new JLabel("Desde tu perfil podrás acceder a la búsqueda de \n"+" perfiles 24 horas despues de que éste comience");
+        notFoundCodeTxt.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        notFoundCodeTxt.setBounds(36, 81, 631, 21);
+        contentPane.add(notFoundCodeTxt);
 
         JButton btnOk = new JButton("Ok");
-        btnOk.setBounds(197, 128, 85, 21);
+        btnOk.setBounds(303, 131, 85, 21);
         contentPane.add(btnOk);
-
-        JLabel errorTxt = new JLabel("Por favor, ve a iniciar sesión");
-        errorTxt.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        errorTxt.setBounds(45, 81, 377, 21);
-        contentPane.add(errorTxt);
 
         // al darle a ok se cierra la ventana
         btnOk.addActionListener(new ActionListener() {
@@ -66,4 +65,5 @@ public class replicatedUser extends JFrame {
             }
         });
     }
+
 }

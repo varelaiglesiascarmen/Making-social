@@ -2,12 +2,9 @@ package makingSocial.view.GuestModel_View;
 
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JButton;
 
 public class attendedEvents extends JFrame {
 
@@ -42,6 +39,9 @@ public class attendedEvents extends JFrame {
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        setIconImage(icon.getImage());
 
         JLabel titleAttendEvent = new JLabel("Eventos asistidos:");
         titleAttendEvent.setFont(new Font("Tahoma", Font.BOLD, 40));

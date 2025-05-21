@@ -1,12 +1,14 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.view.UserProfile_View.HomePage;
+
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Profile extends JFrame {
 
@@ -39,6 +41,9 @@ public class Profile extends JFrame {
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
+        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        setIconImage(icon.getImage());
+
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
@@ -51,5 +56,29 @@ public class Profile extends JFrame {
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnGoHomePage.setBounds(784, 606, 140, 30);
         contentPane.add(btnGoHomePage);
+
+        btnGoHomePage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana Homepage
+                HomePage homepage = new HomePage();
+                homepage.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
+
+        btnMakingSocial.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana Profile
+                Profile prfl = new Profile();
+                prfl.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
     }
 }

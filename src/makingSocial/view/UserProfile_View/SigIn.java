@@ -1,21 +1,15 @@
 package makingSocial.view.UserProfile_View;
 
 import java.awt.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
 
 import makingSocial.DAO.UserProfile_DAO.SignIn_DAO;
 import makingSocial.model.UserModel;
 import makingSocial.view.HostModel_View.notAllNodes;
 
-import javax.swing.JLabel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 
 public class SigIn extends JFrame {
 
@@ -50,6 +44,9 @@ public class SigIn extends JFrame {
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        setIconImage(icon.getImage());
 
         JLabel SignInTitle = new JLabel("Registrate");
         SignInTitle.setHorizontalAlignment(SwingConstants.CENTER);

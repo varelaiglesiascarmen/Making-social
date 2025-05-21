@@ -1,4 +1,4 @@
-package makingSocial.DAO.GuestModel_DAO;
+/*package makingSocial.DAO.GuestModel_DAO;
 
 import makingSocial.controller.ConexionMySQL;
 import makingSocial.controller.ConexionSingleton;
@@ -43,3 +43,4 @@ public class SearchEventWCode_DAO {
         }
     }
 }
+*/

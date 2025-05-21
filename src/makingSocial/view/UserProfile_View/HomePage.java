@@ -5,10 +5,8 @@ import makingSocial.view.GuestModel_View.SearchEvent;
 import makingSocial.view.HostModel_View.CreateEvent;
 
 import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,6 +44,9 @@ public class HomePage extends JFrame {
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        setIconImage(icon.getImage());
 
         // Tamaño del botón
         int btnWidth = 383;

@@ -1,12 +1,12 @@
+//ventana para usar en la próxima versión
+
 package makingSocial.view.GuestModel_View;
 
 import java.awt.EventQueue;
 import java.awt.Font;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
 
 // esta ventana no podrá visualizarse hasta 24 hrs después de que empiece el evento
 public class chooseOrientation extends JFrame {
@@ -42,6 +42,9 @@ public class chooseOrientation extends JFrame {
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        setIconImage(icon.getImage());
 
         JButton btnChoose = new JButton("Hombres");
         btnChoose.setFont(new Font("Tahoma", Font.PLAIN, 30));

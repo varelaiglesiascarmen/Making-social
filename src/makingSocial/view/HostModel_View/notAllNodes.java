@@ -5,10 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class notAllNodes extends JFrame {
@@ -45,6 +42,9 @@ public class notAllNodes extends JFrame {
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        setIconImage(icon.getImage());
 
         JLabel errorTitle = new JLabel("Campos sin rellenar.");
         errorTitle.setFont(new Font("Tahoma", Font.BOLD, 25));

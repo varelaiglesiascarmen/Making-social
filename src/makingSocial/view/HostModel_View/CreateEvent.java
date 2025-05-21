@@ -1,16 +1,10 @@
 package makingSocial.view.HostModel_View;
 
 import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
 import com.toedter.calendar.JDateChooser;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
 
 public class CreateEvent extends JFrame {
 
@@ -51,6 +45,9 @@ public class CreateEvent extends JFrame {
         protocoloEvent.setFont(new Font("Tahoma", Font.BOLD, 30));
         protocoloEvent.setBounds(55, 41, 511, 54);
         getContentPane().add(protocoloEvent);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        setIconImage(icon.getImage());
 
         JDateChooser dateChooser = new JDateChooser();
         dateChooser.setToolTipText("");

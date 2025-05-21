@@ -44,20 +44,20 @@ public class profileEditPhoto extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        // Título
+        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        setIconImage(icon.getImage());
+
         JLabel lblNewLabel = new JLabel("¡Bienvenid@ al evento!");
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
         lblNewLabel.setBounds(66, 40, 409, 77);
         contentPane.add(lblNewLabel);
 
-        // Foto de perfil
         JLabel lblPhoto = new JLabel("");
         lblPhoto.setIcon(new ImageIcon(
                 "C:\\Users\\carva\\Documents\\Making-social\\Making-social-Git\\src\\makingSocial\\profile.jpg"));
         lblPhoto.setBounds(65, 127, 410, 432);
         contentPane.add(lblPhoto);
 
-        // Botones
         JButton btnGoHomePage = new JButton("Volver a inicio");
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnGoHomePage.setBounds(784, 606, 140, 30);
@@ -73,13 +73,11 @@ public class profileEditPhoto extends JFrame {
         btnNewButtonMakingSocial.setBounds(625, 486, 161, 40);
         contentPane.add(btnNewButtonMakingSocial);
 
-        // Etiqueta "Recuerda:"
         JLabel lblNewLabel_1 = new JLabel("Recuerda:");
         lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 25));
         lblNewLabel_1.setBounds(513, 127, 190, 40);
         contentPane.add(lblNewLabel_1);
 
-        // JTextArea con wrap, solo lectura, sin scroll
         JTextArea txtrDebesHacerteUna = new JTextArea();
         txtrDebesHacerteUna.setTabSize(0);
         txtrDebesHacerteUna.setFont(new Font("Tahoma", Font.PLAIN, 14));

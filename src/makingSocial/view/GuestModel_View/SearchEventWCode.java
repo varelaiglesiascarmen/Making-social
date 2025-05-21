@@ -1,6 +1,6 @@
 package makingSocial.view.GuestModel_View;
 
-import makingSocial.DAO.GuestModel_DAO.SearchEventWCode_DAO;
+/*import makingSocial.DAO.GuestModel_DAO.SearchEventWCode_DAO;*/
 import makingSocial.DAO.UserProfile_DAO.SignIn_DAO;
 import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
@@ -10,12 +10,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class SearchEventWCode extends JFrame {
@@ -52,6 +47,9 @@ public class SearchEventWCode extends JFrame {
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        setIconImage(icon.getImage());
 
         JLabel titleCodeInsert = new JLabel("Inserta el código del evento");
         titleCodeInsert.setHorizontalAlignment(SwingConstants.CENTER);

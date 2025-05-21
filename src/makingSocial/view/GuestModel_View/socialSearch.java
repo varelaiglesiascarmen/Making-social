@@ -48,6 +48,9 @@ public class socialSearch extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
+        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        setIconImage(icon.getImage());
+
         JLabel lblNewLabel = new JLabel("Nombre - Lorem Ipsum");
         lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
         lblNewLabel.setBounds(66, 40, 337, 77);

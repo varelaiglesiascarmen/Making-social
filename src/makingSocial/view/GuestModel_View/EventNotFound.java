@@ -40,6 +40,9 @@ public class EventNotFound extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
+        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        setIconImage(icon.getImage());
+
         JLabel notFoundCodeTitle = new JLabel("Evento no encontrado");
         notFoundCodeTitle.setFont(new Font("Tahoma", Font.BOLD, 25));
         notFoundCodeTitle.setBounds(26, 26, 555, 45);
