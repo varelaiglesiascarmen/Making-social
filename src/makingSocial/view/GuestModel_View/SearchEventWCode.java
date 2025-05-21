@@ -88,7 +88,7 @@ public class SearchEventWCode extends JFrame {
             }
         });
 
-        btnNewButtonAttend.addActionListener(new ActionListener() {
+        /*btnNewButtonAttend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Crear el objeto del modelo
@@ -119,7 +119,7 @@ public class SearchEventWCode extends JFrame {
                 }
                 // si el codigo no existe
                 else{
-                    // llamar a la ventana ProfileEditPhoto
+                    // llamar a la ventana EventNotFound
                     EventNotFound eventNotFound = new EventNotFound();
                     eventNotFound.setVisible(true);
 
@@ -127,7 +127,8 @@ public class SearchEventWCode extends JFrame {
                     dispose();
                 }
             }
-        });
+        });*/
+
     }
 
 }

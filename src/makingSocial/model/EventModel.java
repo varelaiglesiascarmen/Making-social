@@ -43,13 +43,11 @@ public class EventModel {
         this.ID_Host = ID_Host;
     }
 
-    public EventModel(int PostalCode) {
+    /*public EventModel(int PostalCode) {
         this.PostalCode = PostalCode;
     }
 
-    public EventModel(int ID_Event) {
-        this.ID_Event = ID_Event;
-    }
+    public EventModel(int ID_Event) { this.ID_Event = ID_Event; }*/
 
     // getters & setters
     public int getID_Event() { return ID_Event; }

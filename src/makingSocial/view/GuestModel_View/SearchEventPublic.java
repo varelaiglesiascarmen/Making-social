@@ -90,11 +90,11 @@ public class SearchEventPublic extends JFrame {
                 int PostalCode = Integer.parseInt(textField.getText());
 
                 // Crear el objeto del modelo
-                EventModel event = new EventModel(PostalCode);
+                //EventModel event = new EventModel(PostalCode);
 
                 // Pasa el objeto usuario con sus datos
                 boolean insert = false;
-                insert = new SearchEventPublic_DAO().ejecutarInsertDeleteUpdate(event);
+                //insert = new SearchEventPublic_DAO().ejecutarInsertDeleteUpdate(event);
 
                 if( insert == true){
                     /* Si encuentra algun evento debe mostrar en Lorem Ipsum los datos
