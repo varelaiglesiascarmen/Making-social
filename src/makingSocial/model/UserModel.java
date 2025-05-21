@@ -2,6 +2,7 @@ package makingSocial.model;
 
 public class UserModel {
     // attribute
+        private int ID_User; // PK
         // nombre usuario, max 15 caracteres
         private String NickName;
         // max 20 caracteres
@@ -23,7 +24,25 @@ public class UserModel {
         this.Name = Name;
     }
 
+    public UserModel(int ID_User, String NickName, String Password, String PassWordConfirm, String E_Mail, int Age, String Name) {
+        this.ID_User = ID_User;
+        this.NickName = NickName;
+        this.Password = Password;
+        this.PassWordConfirm = PassWordConfirm;
+        this.E_Mail = E_Mail;
+        this.Age = Age;
+        this.Name = Name;
+    }
+
     //getters & setters
+    public int getID_User() {
+        return ID_User;
+    }
+
+    public void setID_User(int ID_User) {
+        this.ID_User = ID_User;
+    }
+
     public String getNickName() {
         return NickName;
     }
@@ -64,8 +83,8 @@ public class UserModel {
         this.Age = Age;
     }
 
-    public int getName() {
-        return Age;
+    public String getName() {
+        return Name;
     }
 
     public void setName(String Name) {
@@ -75,13 +94,13 @@ public class UserModel {
     //toString
     @Override
     public String toString() {
-        return "User{" +
-                "NickName='" + NickName + '\'' +
-                "Name='" + Name + '\'' +
-                ", Password='" + Password + '\'' +
+        return "UserModel{" +
+                "NickName=" + NickName + '\'' +
+                ", Name=" + Name + '\'' +
+                ", Password=" + Password + '\'' +
                 ", e_Mail=" + E_Mail + '\'' +
-                ", Age='" + Age +
-                '}';
+                ", Age=" + Age +
+                "}";
     }
 
     // methods

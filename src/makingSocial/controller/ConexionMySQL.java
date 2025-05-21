@@ -108,4 +108,8 @@ public class ConexionMySQL {
 
         return fila;
     }
+
+    public Connection getConnection() {
+        return this.connection;
+    }
 }

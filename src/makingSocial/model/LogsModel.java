@@ -32,9 +32,9 @@ public class LogsModel {
     @Override
     public String toString() {
         return "LogsModel{" +
-                "ID_GuestModel=" + ID_GuestModel +
+                "ID_GuestModel=" + ID_GuestModel + '\'' +
                 ", ID_Event=" + ID_Event +
-                '}';
+                "}";
     }
 
     // methods
