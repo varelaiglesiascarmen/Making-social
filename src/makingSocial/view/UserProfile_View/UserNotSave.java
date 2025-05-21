@@ -42,6 +42,7 @@ public class UserNotSave extends JFrame{
         errorTitleUserNotSave.setBounds(60, 26, 555, 45);
         contentPane.add(errorTitleUserNotSave);
 
+        // debe de cerrar la ventan al clickar en el btn
         JButton btnOk = new JButton("Ok");
         btnOk.setBounds(207, 129, 85, 21);
         contentPane.add(btnOk);
