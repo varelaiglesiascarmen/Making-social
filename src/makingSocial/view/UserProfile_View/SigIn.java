@@ -159,5 +159,22 @@ public class SigIn extends JFrame {
                 }
             }
         });
+
+        JButton btnGoHomePage = new JButton("Iniciar sesión");
+        btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnGoHomePage.setBounds(784, 606, 140, 30);
+        contentPane.add(btnGoHomePage);
+
+        btnGoHomePage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana Homepage
+                Login Login = new Login();
+                Login.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
     }
 }
