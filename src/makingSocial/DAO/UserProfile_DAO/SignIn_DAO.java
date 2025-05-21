@@ -1,4 +1,4 @@
-package makingSocial.DAO;
+package makingSocial.DAO.UserProfile_DAO;
 
 import makingSocial.controller.ConexionMySQL;
 import makingSocial.controller.ConexionSingleton;

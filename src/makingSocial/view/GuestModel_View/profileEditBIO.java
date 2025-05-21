@@ -62,7 +62,7 @@ public class profileEditBIO extends JFrame {
         lblPhoto.setBounds(65, 127, 355, 481);
         contentPane.add(lblPhoto);
 
-        JButton btnNewButton_1 = new JButton("No conocer");
+        JButton btnNewButton_1 = new JButton("Making Social!");
         btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnNewButton_1.setBounds(629, 527, 127, 40);
         contentPane.add(btnNewButton_1);
@@ -72,24 +72,6 @@ public class profileEditBIO extends JFrame {
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnGoHomePage.setBounds(784, 606, 140, 30);
         contentPane.add(btnGoHomePage);
-
-        JButton btnNewButton_1_2 = new JButton("Conocer");
-        btnNewButton_1_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnNewButton_1_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
-        btnNewButton_1_2.setBounds(492, 527, 127, 40);
-        contentPane.add(btnNewButton_1_2);
-
-        JButton btnNewButton_1_2_1 = new JButton("Pasar");
-        btnNewButton_1_2_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnNewButton_1_2_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
-        btnNewButton_1_2_1.setBounds(766, 527, 117, 40);
-        contentPane.add(btnNewButton_1_2_1);
 
         JLabel lblNewLabelEdad = new JLabel("¡Di tu Instagram para que puedan localizarte!");
         lblNewLabelEdad.setFont(new Font("Tahoma", Font.PLAIN, 20));

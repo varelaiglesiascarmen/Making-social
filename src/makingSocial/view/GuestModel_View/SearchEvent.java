@@ -21,7 +21,7 @@ public class SearchEvent extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    HomePage frame = new HomePage();
+                    SearchEvent frame = new SearchEvent();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
