@@ -170,5 +170,7 @@ public class CreateEvent extends JFrame {
         JButton btnOK = new JButton("Confirmar");
         btnOK.setBounds(387, 461, 140, 29);
         contentPane.add(btnOK);
+
+
     }
 }

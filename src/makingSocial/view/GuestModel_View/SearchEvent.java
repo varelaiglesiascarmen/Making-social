@@ -1,5 +1,6 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.view.HostModel_View.CreateEvent;
 import makingSocial.view.UserProfile_View.HomePage;
 
 import java.awt.EventQueue;
@@ -8,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SearchEvent extends JFrame {
 
@@ -68,16 +71,57 @@ public class SearchEvent extends JFrame {
         btnProfile.setBounds(10, 10, 100, 40);
         contentPane.add(btnProfile);
 
-        // Botón configuración (parte inferior derecha)
-        JButton btnCfg = new JButton("Cfg");
-        btnCfg.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        btnCfg.setBounds(875, 612, 60, 40);
-        contentPane.add(btnCfg);
+        JButton btnGoHomePage = new JButton("Volver a inicio");
+        btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnGoHomePage.setBounds(784, 606, 140, 30);
+        contentPane.add(btnGoHomePage);
 
-        // Botón reporte (junto a configuración)
-        JButton btnReport = new JButton("!");
-        btnReport.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        btnReport.setBounds(834, 622, 30, 30);
-        contentPane.add(btnReport);
+        btnGoHomePage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana Homepage
+                HomePage homepage = new HomePage();
+                homepage.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
+
+        btnCreateEvent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana SearchEventPublic
+                SearchEventPublic publicEvent = new SearchEventPublic();
+                publicEvent.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
+
+        btnAttendEvent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana SearchEventWCode
+                SearchEventWCode wCodeEvent = new SearchEventWCode();
+                wCodeEvent.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
+
+        btnProfile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana Profile
+                Profile img = new Profile();
+                img.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
     }
 }

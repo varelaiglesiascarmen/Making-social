@@ -1,5 +1,12 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.DAO.GuestModel_DAO.SearchEventPublic_DAO;
+import makingSocial.DAO.UserProfile_DAO.SignIn_DAO;
+import makingSocial.model.EventModel;
+import makingSocial.model.UserModel;
+import makingSocial.view.UserProfile_View.HomePage;
+import makingSocial.view.UserProfile_View.replicatedUser;
+
 import java.awt.EventQueue;
 
 import javax.swing.JButton;
@@ -8,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 
@@ -73,6 +82,46 @@ public class SearchEventPublic extends JFrame {
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnGoHomePage.setBounds(784, 606, 140, 30);
         contentPane.add(btnGoHomePage);
+
+        btnNewButtonAttend.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Cuidado: los JPasswordField devuelven char[], hay que convertirlos
+                int PostalCode = Integer.parseInt(textField.getText());
+
+                // Crear el objeto del modelo
+                EventModel event = new EventModel(PostalCode);
+
+                // Pasa el objeto usuario con sus datos
+                boolean insert = false;
+                insert = new SearchEventPublic_DAO().ejecutarInsertDeleteUpdate(event);
+
+                if( insert == true){
+                    /* Si encuentra algun evento debe mostrar en Lorem Ipsum los datos
+                    *
+                    * Por cada evento debe poder seleccionar "Asistir" que lo llevará a ProfileEditPhoto
+                    *
+                    * */
+                }
+                // Si no, vuelve a decirle que rellene el formulario
+                else {
+                    /* Si no encuentra eventos debe mostrar en Lorem Ipsum "No hay eventos en tu ciudad" */
+
+                }
+            }
+        });
+
+        btnGoHomePage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana Homepage
+                HomePage homepage = new HomePage();
+                homepage.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
 
     }
 }

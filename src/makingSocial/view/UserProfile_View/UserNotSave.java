@@ -3,6 +3,8 @@ package makingSocial.view.UserProfile_View;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class UserNotSave extends JFrame{
     private static final long serialVersionUID = 1L;
@@ -42,10 +44,17 @@ public class UserNotSave extends JFrame{
         errorTitleUserNotSave.setBounds(60, 26, 555, 45);
         contentPane.add(errorTitleUserNotSave);
 
-        // debe de cerrar la ventan al clickar en el btn
         JButton btnOk = new JButton("Ok");
         btnOk.setBounds(207, 129, 85, 21);
         contentPane.add(btnOk);
+
+        // al darle a ok se cierra la ventana
+        btnOk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         JLabel errorTxtUserNotSave = new JLabel("Inténtelo de nuevo.");
         errorTxtUserNotSave.setFont(new Font("Tahoma", Font.PLAIN, 18));

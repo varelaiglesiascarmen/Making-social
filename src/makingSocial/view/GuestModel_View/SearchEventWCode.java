@@ -1,7 +1,14 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.DAO.GuestModel_DAO.SearchEventWCode_DAO;
+import makingSocial.DAO.UserProfile_DAO.SignIn_DAO;
+import makingSocial.model.UserModel;
+import makingSocial.view.UserProfile_View.HomePage;
+
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -69,6 +76,58 @@ public class SearchEventWCode extends JFrame {
         btnGoHomePage.setBounds(784, 606, 140, 30);
         contentPane.add(btnGoHomePage);
 
+        btnGoHomePage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana Homepage
+                HomePage homepage = new HomePage();
+                homepage.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
+
+        btnNewButtonAttend.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Crear el objeto del modelo
+                UserModel exits = new UserModel(ID_Event);
+
+                // Pasa el objeto usuario con sus datos
+                boolean insert = false;
+                insert = new SearchEventWCode_DAO().ejecutarInsertDeleteUpdate(exits);
+
+                // si el codigo es correcto
+                if(exits == true){
+                    // si queda menos de media hora
+                    if(){
+                        // llamar a la ventana ProfileEditPhoto
+                        profileEditPhoto photo = new profileEditPhoto();
+                        photo.setVisible(true);
+
+                        // disppuse() cierra la venta
+                        dispose();
+                    }else{
+                        // llamar a la ventana EventFound
+                        EventFound eventFound = new EventFound();
+                        eventFound.setVisible(true);
+
+                        // disppuse() cierra la venta
+                        dispose();
+                    }
+                }
+                // si el codigo no existe
+                else{
+                    // llamar a la ventana ProfileEditPhoto
+                    EventNotFound eventNotFound = new EventNotFound();
+                    eventNotFound.setVisible(true);
+
+                    // disppuse() cierra la venta
+                    dispose();
+                }
+            }
+        });
     }
 
 }

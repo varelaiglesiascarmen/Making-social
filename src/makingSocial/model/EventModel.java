@@ -29,12 +29,12 @@ public class EventModel {
         private int ID_Host;
 
     // constructor
-    public EventModel(int ID_Event, LocalDate date, LocalTime schedule, String location, int postalCode, boolean dressCode, boolean theme, String description, int allowedAge, boolean access, int ID_Host) {
+    public EventModel(int ID_Event, LocalDate date, LocalTime schedule, String location, int PostalCode, boolean dressCode, boolean theme, String description, int allowedAge, boolean access, int ID_Host) {
         this.ID_Event = ID_Event;
         this.Date = date;
         this.Schedule = schedule;
         this.Location = location;
-        this.PostalCode = postalCode;
+        this.PostalCode = PostalCode;
         this.DressCode = dressCode;
         this.Theme = theme;
         this.Description = description;
@@ -43,8 +43,13 @@ public class EventModel {
         this.ID_Host = ID_Host;
     }
 
-    // getters & setters
+    public EventModel(int PostalCode) {
+        this.PostalCode = PostalCode;
+    }
 
+    public EventModel(int ID_Event) { this.ID_Event = ID_Event; }
+
+    // getters & setters
     public int getID_Event() { return ID_Event; }
 
     public void setID_Event(int ID_Event) { this.ID_Event = ID_Event; }

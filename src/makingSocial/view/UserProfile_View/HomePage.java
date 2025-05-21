@@ -1,5 +1,9 @@
 package makingSocial.view.UserProfile_View;
 
+import makingSocial.view.GuestModel_View.Profile;
+import makingSocial.view.GuestModel_View.SearchEvent;
+import makingSocial.view.HostModel_View.CreateEvent;
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -67,17 +71,36 @@ public class HomePage extends JFrame {
         btnProfile.setBounds(10, 10, 100, 40);
         contentPane.add(btnProfile);
 
-        JButton btnGoHomePage = new JButton("Volver a inicio");
-        btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnGoHomePage.setBounds(784, 606, 140, 30);
-        contentPane.add(btnGoHomePage);
-
-        btnGoHomePage.addActionListener(new ActionListener() {
+        btnCreateEvent.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // llamar a la ventana Homepage
-                Login Login = new Login();
-                Login.setVisible(true);
+                // llamar a la ventana CreateEvent
+                CreateEvent createevent = new CreateEvent();
+                createevent.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
+
+        btnAttendEvent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana CreateEvent
+                SearchEvent searchevent = new SearchEvent();
+                searchevent.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
+
+        btnProfile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // llamar a la ventana Profile
+                Profile img = new Profile();
+                img.setVisible(true);
 
                 // disppuse() cierra la venta
                 dispose();

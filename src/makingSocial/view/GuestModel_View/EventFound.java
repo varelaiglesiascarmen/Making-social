@@ -2,6 +2,8 @@ package makingSocial.view.GuestModel_View;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -56,6 +58,14 @@ public class EventFound extends JFrame {
         JButton btnOk = new JButton("Ok");
         btnOk.setBounds(303, 131, 85, 21);
         contentPane.add(btnOk);
+
+        // al darle a ok se cierra la ventana
+        btnOk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
     }
 
 }
