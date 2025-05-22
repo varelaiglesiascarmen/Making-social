@@ -52,11 +52,8 @@ public class profileEditPhoto extends JFrame {
         lblNewLabel.setBounds(66, 40, 409, 77);
         contentPane.add(lblNewLabel);
 
-        JLabel lblPhoto = new JLabel("");
-        lblPhoto.setIcon(new ImageIcon(
-                "C:\\Users\\carva\\Documents\\Making-social\\Making-social-Git\\src\\makingSocial\\profile.jpg"));
-        lblPhoto.setBounds(65, 127, 410, 432);
-        contentPane.add(lblPhoto);
+        ImageIcon lblPhoto = new ImageIcon("/img/profile.png.png");
+        setIconImage(lblPhoto.getImage());
 
         JButton btnGoHomePage = new JButton("Volver a inicio");
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -124,7 +121,7 @@ public class profileEditPhoto extends JFrame {
                     fotoSeleccionada = true;
 
                     // opcional: podrías mostrar la imagen seleccionada en lblPhoto
-                    lblPhoto.setIcon(new ImageIcon(imagePath));
+                    //lblPhoto.setIcon(new ImageIcon(imagePath));
                 } else {
                     JOptionPane.showMessageDialog(null, "Debes seleccionar una imagen para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
