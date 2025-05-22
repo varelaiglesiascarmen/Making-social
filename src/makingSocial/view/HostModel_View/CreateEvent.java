@@ -15,8 +15,10 @@ import java.util.Date;
 
 import com.toedter.calendar.JDateChooser;
 import makingSocial.DAO.HostModel_DAO.CreateEvent_DAO;
+import makingSocial.DAO.HostModel_DAO.HostData_Extract_DAO;
 import makingSocial.DAO.UserProfile_DAO.Login_DAO;
 import makingSocial.model.EventModel;
+import makingSocial.model.HostModel;
 import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
 import makingSocial.view.UserProfile_View.notRegistered;
