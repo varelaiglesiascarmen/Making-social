@@ -73,18 +73,6 @@ public class CreateEvent extends JFrame {
         getContentPane().add(textFieldDirection);
         textFieldDirection.setColumns(10);
 
-        JRadioButton rdbtnNewRadioButton = new JRadioButton("Si");
-        rdbtnNewRadioButton.setHorizontalAlignment(SwingConstants.CENTER);
-        rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rdbtnNewRadioButton.setBounds(454, 390, 103, 21);
-        getContentPane().add(rdbtnNewRadioButton);
-
-        JRadioButton rdbtnNo = new JRadioButton("No");
-        rdbtnNo.setHorizontalAlignment(SwingConstants.CENTER);
-        rdbtnNo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rdbtnNo.setBounds(559, 390, 103, 21);
-        getContentPane().add(rdbtnNo);
-
         textFieldCodePost = new JTextField();
         textFieldCodePost.setColumns(10);
         textFieldCodePost.setBounds(465, 335, 362, 35);
@@ -113,12 +101,6 @@ public class CreateEvent extends JFrame {
         textThemeDescription1.setBounds(671, 387, 156, 35);
         getContentPane().add(textThemeDescription1);
 
-        JLabel lblDressCode = new JLabel("¿Tu fiesta tiene dress code?");
-        lblDressCode.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblDressCode.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblDressCode.setBounds(163, 383, 285, 35);
-        getContentPane().add(lblDressCode);
-
         textFieldAge = new JTextField();
         textFieldAge.setColumns(10);
         textFieldAge.setBounds(465, 432, 362, 35);
@@ -136,18 +118,37 @@ public class CreateEvent extends JFrame {
         lblTheme.setBounds(63, 477, 400, 35);
         getContentPane().add(lblTheme);
 
+        JRadioButton rdbtnYesTheme = new JRadioButton("Si");
+        rdbtnYesTheme.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        rdbtnYesTheme.setBounds(457, 545, 103, 21);
+        getContentPane().add(rdbtnYesTheme);
+
+        JRadioButton rdbtnNoTheme = new JRadioButton("No");
+        rdbtnNoTheme.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        rdbtnNoTheme.setBounds(562, 545, 103, 21);
+        getContentPane().add(rdbtnNoTheme);
+
+        ButtonGroup bgTheme = new ButtonGroup();
+        bgTheme.add(rdbtnYesTheme);
+        bgTheme.add(rdbtnNoTheme);
+
+        textThemeDescription2 = new JTextField();
+        textThemeDescription2.setBounds(465, 584, 362, 35);
+        getContentPane().add(textThemeDescription2);
+        textThemeDescription2.setColumns(10);
+
         JLabel lblDressCode = new JLabel("¿Tu fiesta tiene dress code?");
         lblDressCode.setFont(new Font("Tahoma", Font.PLAIN, 20));
         lblDressCode.setHorizontalAlignment(SwingConstants.RIGHT);
         lblDressCode.setBounds(163, 383, 285, 35);
         getContentPane().add(lblDressCode);
 
-        rdbtnYesDress = new JRadioButton("Si");
+        JRadioButton rdbtnYesDress = new JRadioButton("Si");
         rdbtnYesDress.setFont(new Font("Tahoma", Font.PLAIN, 20));
         rdbtnYesDress.setBounds(454, 390, 103, 21);
         getContentPane().add(rdbtnYesDress);
 
-        rdbtnNoDress = new JRadioButton("No");
+        JRadioButton rdbtnNoDress = new JRadioButton("No");
         rdbtnNoDress.setFont(new Font("Tahoma", Font.PLAIN, 20));
         rdbtnNoDress.setBounds(559, 390, 103, 21);
         getContentPane().add(rdbtnNoDress);
@@ -161,12 +162,6 @@ public class CreateEvent extends JFrame {
         getContentPane().add(textThemeDescription1);
         textThemeDescription1.setColumns(10);
 
-        JRadioButton rdbtnNoTheme = new JRadioButton("No");
-        rdbtnNoTheme.setHorizontalAlignment(SwingConstants.CENTER);
-        rdbtnNoTheme.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rdbtnNoTheme.setBounds(562, 484, 103, 21);
-        getContentPane().add(rdbtnNoTheme);
-
         textThemeDescription2 = new JTextField();
         textThemeDescription2.setColumns(10);
         textThemeDescription2.setBounds(671, 481, 156, 35);
@@ -179,16 +174,39 @@ public class CreateEvent extends JFrame {
         getContentPane().add(lblAccess);
 
         JRadioButton rdbtnYesPublic = new JRadioButton("Público");
-        rdbtnYesPublic.setHorizontalAlignment(SwingConstants.CENTER);
         rdbtnYesPublic.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rdbtnYesPublic.setBounds(500, 569, 103, 21);
+        rdbtnYesPublic.setBounds(500, 638, 103, 21);
         getContentPane().add(rdbtnYesPublic);
 
         JRadioButton rdbtnNoPrivate = new JRadioButton("Privado");
-        rdbtnNoPrivate.setHorizontalAlignment(SwingConstants.CENTER);
         rdbtnNoPrivate.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rdbtnNoPrivate.setBounds(613, 569, 103, 21);
+        rdbtnNoPrivate.setBounds(613, 638, 103, 21);
         getContentPane().add(rdbtnNoPrivate);
+
+        ButtonGroup bgAccess = new ButtonGroup();
+        bgAccess.add(rdbtnYesPublic);
+        bgAccess.add(rdbtnNoPrivate);
+
+        // Ocultar las descripciones al inicio de dressCode y Theme
+        textThemeDescription1.setVisible(false);
+        textThemeDescription1.setVisible(false);
+        textThemeDescription2.setVisible(false);
+        textThemeDescription2.setVisible(false);
+
+        // Listener para mostrar/ocultar descripciones de dressCode y Theme
+        ActionListener toggleDesc = e -> {
+            boolean hasDress = rdbtnYesDress.isSelected();
+            textThemeDescription1.setVisible(hasDress);
+            textThemeDescription1.setVisible(hasDress);
+
+            boolean hasTheme = rdbtnYesTheme.isSelected();
+            textThemeDescription2.setVisible(hasTheme);
+            textThemeDescription2.setVisible(hasTheme);
+        };
+        rdbtnYesDress.addActionListener(toggleDesc);
+        rdbtnNoDress.addActionListener(toggleDesc);
+        rdbtnYesTheme.addActionListener(toggleDesc);
+        rdbtnNoTheme.addActionListener(toggleDesc);
 
         JButton btnSave = new JButton("Guardar evento");
         btnSave.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -246,7 +264,7 @@ public class CreateEvent extends JFrame {
                 // obligatorio
                 int PostalCode = Integer.parseInt(textFieldCodePost.getText());
                 // obligatorio - “Sí” = true, “No” = false
-                boolean dressCode = rdbtnNewRadioButton.isSelected();
+                boolean dressCode = rdbtnYesDress.isSelected();
                 // obligatorio - “Sí” = true, “No” = false
                 boolean theme = rdbtnYesTheme.isSelected();
                 // solo se visualiza si es true debe decir cuál es el dressDode, si es false guarda null
