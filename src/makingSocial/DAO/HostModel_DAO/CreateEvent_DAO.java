@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class CreateEvent_DAO {
     public boolean ejecutarInsertDeleteUpdate(EventModel newEvent) {
-        String sql = "INSERT INTO Event (date, schedule, location, PostalCode, dressCode, theme, description1, description2, allowedAge, access) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Event (date, schedule, location, PostalCode, dressCode, theme, description1_dresscode, description2_theme, allowedAge, access) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
         try {
@@ -22,7 +22,12 @@ public class CreateEvent_DAO {
                 stmt.setObject(2, newEvent.getSchedule());
                 stmt.setString(3, newEvent.getLocation());
                 stmt.setInt(4, newEvent.getPostalCode());
-                stmt.setBoolean(5, newEvent.getDressCode());
+                stmt.setBoolean(5, newEvent.isDressCode());
+                stmt.setBoolean(6, newEvent.isTheme());
+                stmt.setString(7, newEvent.getDescription1());
+                stmt.setString(8, newEvent.getDescription2());
+                stmt.setInt(9, newEvent.getAllowedAge());
+                stmt.setBoolean(10, newEvent.isAccess());
 
                 stmt.executeUpdate();
 
