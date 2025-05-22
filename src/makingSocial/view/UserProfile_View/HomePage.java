@@ -1,8 +1,11 @@
 package makingSocial.view.UserProfile_View;
 
+import makingSocial.DAO.UserProfile_DAO.HomePage_DAO;
 import makingSocial.view.GuestModel_View.Profile;
 import makingSocial.view.GuestModel_View.SearchEvent;
 import makingSocial.view.HostModel_View.CreateEvent;
+import makingSocial.model.UserModel;
+
 
 import java.awt.EventQueue;
 import javax.swing.*;
@@ -15,6 +18,11 @@ public class HomePage extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    private UserModel currentUser;
+
+    public HomePage(UserModel currentUser) {
+        this.currentUser = currentUser;
+    }
 
     /**
      * Launch the application.
@@ -75,14 +83,24 @@ public class HomePage extends JFrame {
         btnCreateEvent.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // llamar a la ventana CreateEvent
-                CreateEvent createevent = new CreateEvent();
-                createevent.setVisible(true);
+                HomePage_DAO dao = new HomePage_DAO();
 
-                // disppuse() cierra la venta
-                dispose();
+                if (dao.searchID_UserInHost(currentUser)) {
+                    // Si ya es host, pasa directo
+                    CreateEvent createEvent = new CreateEvent();
+                    createEvent.setVisible(true);
+                    dispose();
+                } else {
+                    // Si no es host, lo registramos como host y pasamos igualmente
+                    dao.insertHostForUser(currentUser);
+
+                    CreateEvent createEvent = new CreateEvent();
+                    createEvent.setVisible(true);
+                    dispose();
+                }
             }
         });
+
 
         btnAttendEvent.addActionListener(new ActionListener() {
             @Override

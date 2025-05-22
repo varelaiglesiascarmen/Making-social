@@ -110,22 +110,22 @@ public class Login extends JFrame {
                 UserModel usuario = new UserModel(NickName, Password);
 
                 // get.NickName & get.Password == true?
-                boolean insert = false;
-                insert = new Login_DAO().ejecutarSelect(usuario);
+                UserModel currentUser = new UserModel(NickName, Password);
+                UserModel dataUser = Login_DAO.getCurrentUser(currentUser);
 
+                // si el usuario no existe, le manda a singin
+                if(dataUser == null){
+                    notRegistered notRegistered = new notRegistered();
+                    notRegistered.setVisible(true);
+                }
                 // si el usuario existe, le manda a homepage
-                if(insert == true){
+                else {
                     // llamar a la ventana Homepage
                     HomePage homePage = new HomePage();
                     homePage.setVisible(true);
 
                     // disppuse() cierra la venta
                     dispose();
-                }
-                // si el usuario no existe, le dice q se registre
-                else {
-                    notRegistered notRegistered = new notRegistered();
-                    notRegistered.setVisible(true);
                 }
             }
         });
