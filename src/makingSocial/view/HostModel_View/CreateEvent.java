@@ -273,7 +273,7 @@ public class CreateEvent extends JFrame {
 
                 // Los datos obligatorios están rellenos ?
                 boolean insert = false;
-                //insert = new CreateEvent_DAO().ejecutarInsertDeleteUpdate(newEvent);
+                insert = new CreateEvent_DAO().ejecutarInsertDeleteUpdate(newEvent);
 
                 // si están todos los campos
                 if(insert == true){
