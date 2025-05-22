@@ -16,11 +16,13 @@ public class EventModel {
         // codigo postal
         private int PostalCode;
         // etiqueta
-        private boolean DressCode= true;
+        private boolean DressCode = true;
         // temática
-        private boolean Theme= true;
-        // opcion si (dresscode y tematica)
-        private String Description;
+        private boolean Theme = true;
+        // dressCode = true (escrito por teclado), dessCode = false (null)
+        private String Description1;
+        // Theme = true (escrito por teclado), Theme = false (null)
+        private String Description2;
         // edad permitida
         private int AllowedAge;
         // true = private event
@@ -29,7 +31,7 @@ public class EventModel {
         private int ID_Host;
 
     // constructor
-    public EventModel(int ID_Event, LocalDate date, LocalTime schedule, String location, int PostalCode, boolean dressCode, boolean theme, String description, int allowedAge, boolean access, int ID_Host) {
+    public EventModel(int ID_Event, LocalDate date, LocalTime schedule, String location, int PostalCode, boolean dressCode, boolean theme, String description1, String description2, int allowedAge, boolean access, int ID_Host) {
         this.ID_Event = ID_Event;
         this.Date = date;
         this.Schedule = schedule;
@@ -37,17 +39,31 @@ public class EventModel {
         this.PostalCode = PostalCode;
         this.DressCode = dressCode;
         this.Theme = theme;
-        this.Description = description;
+        this.Description1 = description1;
+        this.Description2 = description2;
         this.AllowedAge = allowedAge;
         this.Access = access;
         this.ID_Host = ID_Host;
     }
 
-    /*public EventModel(int PostalCode) {
+    public EventModel(LocalDate date, LocalTime schedule, String location, int PostalCode, boolean dressCode, boolean theme, String description1, String description2, int allowedAge, boolean access) {
+        this.Date = date;
+        this.Schedule = schedule;
+        this.Location = location;
         this.PostalCode = PostalCode;
+        this.DressCode = dressCode;
+        this.Theme = theme;
+        this.Description1 = description1;
+        this.Description2 = description2;
+        this.AllowedAge = allowedAge;
+        this.Access = access;
     }
 
-    public EventModel(int ID_Event) { this.ID_Event = ID_Event; }*/
+    /*public EventModel(int postalCode) {
+        this.PostalCode = postalCode;
+    }*/
+
+    public EventModel(int ID_Event) { this.ID_Event = ID_Event; }
 
     // getters & setters
     public int getID_Event() { return ID_Event; }
@@ -78,9 +94,13 @@ public class EventModel {
 
     public void setTheme(boolean theme) { this.Theme = theme; }
 
-    public String getDescription() { return Description; }
+    public String getDescription1() { return Description1; }
 
-    public void setDescription(String description) { this.Description = description; }
+    public void setDescription1(String description1) { Description1 = description1; }
+
+    public String getDescription2() { return Description2; }
+
+    public void setDescription2(String description2) { Description2 = description2; }
 
     public int getAllowedAge() { return AllowedAge; }
 
@@ -98,16 +118,17 @@ public class EventModel {
     @Override
     public String toString() {
         return "EventModel{" +
-                "ID_Event=" + ID_Event + '\'' +
-                ", Date=" + Date + '\'' +
-                ", Schedule=" + Schedule + '\'' +
+                "ID_Event=" + ID_Event +
+                ", Date=" + Date +
+                ", Schedule=" + Schedule +
                 ", Location='" + Location + '\'' +
-                ", PostalCode=" + PostalCode + '\'' +
-                ", DressCode=" + DressCode + '\'' +
-                ", Theme=" + Theme + '\'' +
-                ", Description='" + Description + '\'' +
-                ", AllowedAge=" + AllowedAge + '\'' +
-                ", Access=" + Access + '\'' +
+                ", PostalCode=" + PostalCode +
+                ", DressCode=" + DressCode +
+                ", Theme=" + Theme +
+                ", Description1='" + Description1 + '\'' +
+                ", Description2='" + Description2 + '\'' +
+                ", AllowedAge=" + AllowedAge +
+                ", Access=" + Access +
                 ", ID_Host=" + ID_Host +
                 '}';
     }
