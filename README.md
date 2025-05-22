@@ -1,3 +1,4 @@
+![LOGO](src/img/logoGrande.png)
 # 📱 Making Social!
 
 > **¡Sin barreras, sin despistes, sin vergüenza!**
@@ -119,13 +120,6 @@ Este proyecto ha sido desarrollado por estudiantes del ciclo de **Desarrollo de 
 ¿Tienes ideas para mejorar Making Social?  
 ¡Nos encantaría contar contigo! Puedes:
 
-- Abrir un Issue con sugerencias
+- Abrir un [Issue](https://github.com/varelaiglesiascarmen/Making-social/issues/new) con sugerencias
 - Crear un Pull Request
 - Compartir feedback directamente
-
----
-
-## 📌 Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT.  
-Consulta el archivo [`LICENSE`](./LICENSE) para más información.
