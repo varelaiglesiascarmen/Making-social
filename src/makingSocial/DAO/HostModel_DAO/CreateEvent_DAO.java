@@ -12,7 +12,6 @@ public class CreateEvent_DAO {
     public boolean ejecutarInsertDeleteUpdate(EventModel newEvent) {
         String sql = "INSERT INTO Event (date, schedule, location, PostalCode, dressCode, theme, description1_dresscode, description2_theme, allowedAge, access) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-
         try {
             ConexionMySQL conexion = ConexionSingleton.getConexion();
             Connection con = conexion.getConnection();
