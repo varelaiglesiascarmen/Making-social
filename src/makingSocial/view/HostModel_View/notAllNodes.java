@@ -43,7 +43,7 @@ public class notAllNodes extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/logoPequeno.png"));
         setIconImage(icon.getImage());
 
         JLabel errorTitle = new JLabel("Campos sin rellenar.");

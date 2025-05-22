@@ -46,7 +46,7 @@ public class CreateEvent extends JFrame {
         protocoloEvent.setBounds(55, 41, 511, 54);
         getContentPane().add(protocoloEvent);
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/logoPequeno.png"));
         setIconImage(icon.getImage());
 
         JDateChooser dateChooser = new JDateChooser();

@@ -45,7 +45,7 @@ public class PrintCode extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/makingSocial/src/img/logoPequeno.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/logoPequeno.png"));
         setIconImage(icon.getImage());
 
         JLabel newCode = new JLabel("El código de tu evento es");
