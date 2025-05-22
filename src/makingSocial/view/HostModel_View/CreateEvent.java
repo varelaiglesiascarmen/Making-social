@@ -113,12 +113,6 @@ public class CreateEvent extends JFrame {
         textThemeDescription1.setBounds(671, 387, 156, 35);
         getContentPane().add(textThemeDescription1);
 
-        JLabel lblDressCode = new JLabel("¿Tu fiesta tiene dress code?");
-        lblDressCode.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblDressCode.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblDressCode.setBounds(163, 383, 285, 35);
-        getContentPane().add(lblDressCode);
-
         textFieldAge = new JTextField();
         textFieldAge.setColumns(10);
         textFieldAge.setBounds(465, 432, 362, 35);
@@ -142,12 +136,12 @@ public class CreateEvent extends JFrame {
         lblDressCode.setBounds(163, 383, 285, 35);
         getContentPane().add(lblDressCode);
 
-        rdbtnYesDress = new JRadioButton("Si");
+        JRadioButton rdbtnYesDress = new JRadioButton("Si");
         rdbtnYesDress.setFont(new Font("Tahoma", Font.PLAIN, 20));
         rdbtnYesDress.setBounds(454, 390, 103, 21);
         getContentPane().add(rdbtnYesDress);
 
-        rdbtnNoDress = new JRadioButton("No");
+        JRadioButton rdbtnNoDress = new JRadioButton("No");
         rdbtnNoDress.setFont(new Font("Tahoma", Font.PLAIN, 20));
         rdbtnNoDress.setBounds(559, 390, 103, 21);
         getContentPane().add(rdbtnNoDress);
