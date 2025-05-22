@@ -107,10 +107,9 @@ Puedes consultar todo el proyecto aquí:
 
 ## 👥 Equipo
 
-Este proyecto ha sido desarrollado por estudiantes del ciclo de **Desarrollo de Aplicaciones Web** (@zhou950-1 y yo), con enfoque en:
+Este proyecto ha sido desarrollado por estudiantes del ciclo de **Desarrollo de Aplicaciones Web** (@zhou950-1 y @varelaiglesiascarmen), con enfoque en:
 
-- Pruebas de tecnologías
-- Prototipado experimental de conceptos de nuevas redes sociales
+- Prototipo de conceptos de nuevas RRSS
 
 ---
 
@@ -120,5 +119,4 @@ Este proyecto ha sido desarrollado por estudiantes del ciclo de **Desarrollo de 
 ¡Nos encantaría contar contigo! Puedes:
 
 - Abrir un [Issue](https://github.com/varelaiglesiascarmen/Making-social/issues/new) con sugerencias
-- Crear un Pull Request
 - Compartir feedback directamente
