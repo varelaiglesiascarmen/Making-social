@@ -55,7 +55,7 @@ public class attendedEvents extends JFrame {
         contentPane.add(titleAttendEvent);
 
         // DAO: obtener eventos asistidos por el usuario
-        List <EventModel> eventosAsistidos = new AttendedEvents_DAO().obtenerEventosAsistidosPorUsuario(EventModel.getID_Event());
+        /*List <EventModel> eventosAsistidos = new AttendedEvents_DAO().obtenerEventosAsistidosPorUsuario(EventModel.getID_Event());
 
         if (eventosAsistidos.isEmpty()) {
             JLabel sinEventos = new JLabel("¡Aún no has asistido a ningún evento! Busca tu próximo evento en la página de inicio.");
@@ -103,7 +103,7 @@ public class attendedEvents extends JFrame {
                 // disppuse() cierra la venta
                 dispose();
             }
-        });
+        });*/
 
     }
 }

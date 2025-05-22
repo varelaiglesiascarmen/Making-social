@@ -2,7 +2,7 @@ package makingSocial.DAO.UserProfile_DAO;
 
 public class HomePage_DAO {
 
-    public void oli{
+    //public void oli{
 
         /*
         * if(){
@@ -28,7 +28,7 @@ public class HomePage_DAO {
         *
         *}
         * */
-     }
+     //}
 
      /* este método deben estar en todos los DAO
      *
