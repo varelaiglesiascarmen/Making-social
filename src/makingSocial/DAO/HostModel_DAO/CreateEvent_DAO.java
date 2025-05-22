@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class CreateEvent_DAO {
-    public boolean ejecutarInsertDeleteUpdate(EventModel newEvent) {
+    /*public boolean ejecutarInsertDeleteUpdate(EventModel newEvent) {
         String sql = "INSERT INTO Event (date, schedule, location, PostalCode, dressCode, theme, description1, description2, allowedAge, access) VALUES (?, ?, ?, ?, ?,?,?,?,?)";
 
 
@@ -40,5 +40,5 @@ public class CreateEvent_DAO {
                 ex.printStackTrace();
             }
         }
-    }
+    }*/
 }
