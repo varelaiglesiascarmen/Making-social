@@ -91,7 +91,7 @@ Pasadas **24 horas desde la hora de inicio del evento**, se activa la función d
 ## 🔗 Repositorio
 
 Puedes consultar todo el proyecto aquí:  
-[📁 GitHub - Making Social]([https://github.com/varelaiglesiascarmen/Making-social](https://github.com/varelaiglesiascarmen/Making-social)  
+[📁 GitHub - Making Social](https://github.com/varelaiglesiascarmen/Making-social)  
 
 ---
 
