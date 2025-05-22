@@ -109,9 +109,8 @@ Puedes consultar todo el proyecto aquí:
 
 Este proyecto ha sido desarrollado por estudiantes del ciclo de **Desarrollo de Aplicaciones Web** (@zhou950-1 y yo), con enfoque en:
 
-- Tecnología inclusiva
-- Sostenibilidad digital
-- Diseño accesible
+- Pruebas de tecnologías
+- Prototipado experimental de conceptos de nuevas redes sociales
 
 ---
 
