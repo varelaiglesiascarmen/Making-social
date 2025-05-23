@@ -1,5 +1,7 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.model.Session;
+import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
 
 import java.awt.EventQueue;
@@ -116,6 +118,8 @@ public class profileEditBIO extends JFrame {
         btnGoHomePage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UserModel currentUser = Session.getCurrentUser();
+
                 // llamar a la ventana Homepage
                 HomePage homepage = new HomePage();
                 homepage.setVisible(true);

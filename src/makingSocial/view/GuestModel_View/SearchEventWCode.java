@@ -2,6 +2,7 @@ package makingSocial.view.GuestModel_View;
 
 /*import makingSocial.DAO.GuestModel_DAO.SearchEventWCode_DAO;*/
 import makingSocial.DAO.UserProfile_DAO.SignIn_DAO;
+import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
 
@@ -65,6 +66,8 @@ public class SearchEventWCode extends JFrame {
         btnGoHomePage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UserModel currentUser = Session.getCurrentUser();
+
                 // llamar a la ventana Homepage
                 HomePage homepage = new HomePage();
                 homepage.setVisible(true);
