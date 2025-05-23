@@ -86,7 +86,7 @@ public class attendedEvents extends JFrame {
 
                 y += 50;
             }
-        }
+        }*/
 
         JButton btnGoHomePage = new JButton("Volver a inicio");
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -103,7 +103,7 @@ public class attendedEvents extends JFrame {
                 // disppuse() cierra la venta
                 dispose();
             }
-        });*/
+        });
 
     }
 }

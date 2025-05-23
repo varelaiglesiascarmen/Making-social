@@ -33,7 +33,7 @@ public class EventModel {
     private int ID_Host;
 
 
-    // constructor
+    // constructor completo
     public EventModel(int ID_Event, LocalDate date, LocalTime schedule, String location, int PostalCode, boolean dressCode, boolean theme, String description1, String description2, int allowedAge, boolean access, int ID_Host) {
         this.ID_Event = ID_Event;
         this.Date = date;
@@ -49,7 +49,7 @@ public class EventModel {
         this.ID_Host = ID_Host;
     }
 
-
+    // constructor para crear eventos
     public EventModel(LocalDate date, LocalTime schedule, String location, int PostalCode, boolean dressCode, boolean theme, String description1, String description2, int allowedAge, boolean access) {
         this.Date = date;
         this.Schedule = schedule;
@@ -63,14 +63,9 @@ public class EventModel {
         this.Access = access;
     }
 
+   public EventModel(int postalCode, int ID_Event) { this.PostalCode = postalCode; this.ID_Event = ID_Event; }
 
-   /*public EventModel(int postalCode) {
-       this.PostalCode = postalCode;
-   }*/
-
-
-    public EventModel(int ID_Event) { this.ID_Event = ID_Event; }
-
+    public EventModel(int postalCode) { this.PostalCode = postalCode; }
 
     // getters & setters
     public int getID_Event() { return ID_Event; }

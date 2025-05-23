@@ -41,6 +41,8 @@ public class UserModel {
         this.Password = Password;
     }
 
+    public UserModel(int ID_User) { this.ID_User = ID_User; }
+
     //getters & setters
     public int getID_User() {
         return ID_User;

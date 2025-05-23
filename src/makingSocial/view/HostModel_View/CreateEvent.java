@@ -1,6 +1,12 @@
 package makingSocial.view.HostModel_View;
 
-
+import makingSocial.DAO.HostModel_DAO.CreateEvent_DAO;
+import makingSocial.model.EventModel;
+import makingSocial.model.UserModel;
+import makingSocial.view.HostModel_View.PrintCode;
+import makingSocial.view.HostModel_View.notAllNodes;
+import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.awt.EventQueue;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,8 +17,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
-
-
 import com.toedter.calendar.JDateChooser;
 import makingSocial.DAO.HostModel_DAO.CreateEvent_DAO;
 import makingSocial.model.EventModel;
@@ -20,7 +24,7 @@ import makingSocial.view.UserProfile_View.HomePage;
 
 
 public class CreateEvent extends JFrame {
-
+    private UserModel currentUser;
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -35,24 +39,10 @@ public class CreateEvent extends JFrame {
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    CreateEvent frame = new CreateEvent();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
+     public CreateEvent(UserModel currentUser) {
+        this.currentUser = currentUser;
 
-    /**
-     * Create the frame.
-     */
-    public CreateEvent() {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1021, 796);
@@ -248,16 +238,10 @@ public class CreateEvent extends JFrame {
         rdbtnYesTheme.addActionListener(toggleDesc);
         rdbtnNoTheme.addActionListener(toggleDesc);
 
-
         JButton btnSave = new JButton("Guardar evento");
         btnSave.setFont(new Font("Tahoma", Font.PLAIN, 20));
         btnSave.setBounds(559, 624, 218, 33);
         getContentPane().add(btnSave);
-
-
-
-
-
 
         JButton btnVolverAInicio = new JButton("Volver a inicio");
         btnVolverAInicio.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -280,62 +264,37 @@ public class CreateEvent extends JFrame {
             }
         });
 
+         btnSave.addActionListener(new ActionListener() {
 
-        btnSave.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Formulario
-                // antes de convertirla a LocalDate, recupera la fecha del JDateChooser
-                Date chosen = dateChooser.getDate();
-                // obligatorio
-                LocalDate date = chosen.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                // obligatorio
-                LocalTime schedule = LocalTime.parse(textFieldSchedule.getText());
-                // obligatorio
-                String location = textFieldDirection.getText();
-                // obligatorio
-                int PostalCode = Integer.parseInt(textFieldCodePost.getText());
-                // obligatorio - “Sí” = true, “No” = false
-                boolean dressCode = rdbtnYesDress.isSelected();
-                // obligatorio - “Sí” = true, “No” = false
-                boolean theme = rdbtnYesTheme.isSelected();
-                // solo se visualiza si es true debe decir cuál es el dressDode, si es false guarda null
-                String description1 = textThemeDescription1.getText();
-                // solo se visualiza si es true debe decir cuál es la tematica, si es false guarda null
-                String description2 = textThemeDescription2.getText();
-                // obligatorio
-                int allowedAge = Integer.parseInt(textFieldAge.getText());
-                // obligatorio - “Público” = true, “Privado” = false
-                boolean access = rdbtnYesPublic.isSelected();
+             @Override
+             public void actionPerformed(ActionEvent e) {
+                 Date chosen = dateChooser.getDate();
+                 LocalDate date = chosen.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                 LocalTime schedule = LocalTime.parse(textFieldSchedule.getText());
+                 String location = textFieldDirection.getText();
+                 int PostalCode = Integer.parseInt(textFieldCodePost.getText());
+                 boolean dressCode = rdbtnYesDress.isSelected();
+                 boolean theme = rdbtnYesTheme.isSelected();
+                 String description1 = textThemeDescription1.getText();
+                 String description2 = textThemeDescription2.getText();
+                 int allowedAge = Integer.parseInt(textFieldAge.getText());
+                 boolean access = rdbtnYesPublic.isSelected();
 
+                 EventModel newEvent = new EventModel(date, schedule, location, PostalCode, dressCode, theme, description1, description2, allowedAge, access);
 
-                // Crear el objeto del modelo
-                EventModel newEvent = new EventModel(date, schedule, location, PostalCode, dressCode, theme, description1, description2, allowedAge, access);
+                 // Aquí pasamos también currentUser, que debes tener definido en esta clase
+                 int returnID = new CreateEvent_DAO().saveEvent(newEvent, currentUser);
 
+                 if(returnID >= 0){
+                     PrintCode newCode = new PrintCode();
+                     newCode.setVisible(true);
+                     dispose();
+                 } else {
+                     notAllNodes error = new notAllNodes();
+                     error.setVisible(true);
+                 }
+             }
+         });
 
-                // Los datos obligatorios están rellenos ?
-                boolean insert = false;
-                insert = new CreateEvent_DAO().ejecutarInsertDeleteUpdate(newEvent);
-
-
-                // si están todos los campos
-                if(insert == true){
-                    // llamar a la ventana PrintCode
-                    PrintCode newCode = new PrintCode();
-                    newCode.setVisible(true);
-
-
-                    // disppuse() cierra la venta
-                    dispose();
-                }
-                // si no están todos los campos
-                else {
-                    notAllNodes lostNode = new notAllNodes();
-                    lostNode.setVisible(true);
-                }
-            }
-        });
-    }
+     }
 }
-
-

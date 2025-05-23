@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class SearchEventPublic_DAO {
 
     //imprime el string sobreescribiendo los lorem - btnSearch.addActionListener
-    public boolean ejecutarInsertDeleteUpdate(EventModel newEvent) {
+    public static void overWriteLorem(EventModel newEvent) {
         String sql = "INSERT INTO Event (PostalCode) VALUES (?)";
 
 
@@ -26,14 +26,12 @@ public class SearchEventPublic_DAO {
                 stmt.executeUpdate();
 
                 //tiene que devolver el string modificando los lorem
-                return true;
 
             }
 
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         } finally {
             try {
                 ConexionSingleton.closeConexion();

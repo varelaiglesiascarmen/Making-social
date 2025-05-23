@@ -1,6 +1,7 @@
 package makingSocial.view.UserProfile_View;
 
 import makingSocial.DAO.UserProfile_DAO.Login_DAO;
+import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 
 import java.awt.*;
@@ -19,19 +20,6 @@ public class Login extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JPasswordField passwordField;
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Login frame = new Login();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
     public Login() {
         setTitle("Making Social!");
@@ -107,25 +95,35 @@ public class Login extends JFrame {
                 String Password = new String(passwordField.getPassword());
 
                 // Crear el objeto del modelo
-                UserModel usuario = new UserModel(NickName, Password);
+                UserModel currentUser = new UserModel(NickName, Password);
 
                 // get.NickName & get.Password == true?
-                boolean insert = false;
-                insert = new Login_DAO().ejecutarSelect(usuario);
+                UserModel dataUser = Login_DAO.getCurrentUser(currentUser);
 
+                // si el usuario no existe, le manda a singin
+                if(dataUser == null){
+                    notRegistered notRegistered = new notRegistered();
+                    notRegistered.setVisible(true);
+                }
                 // si el usuario existe, le manda a homepage
-                if(insert == true){
+                else {
+                    // Guardar usuario en sesión global
+                    Session.setCurrentUser(dataUser);
+
                     // llamar a la ventana Homepage
                     HomePage homePage = new HomePage();
                     homePage.setVisible(true);
 
                     // disppuse() cierra la venta
                     dispose();
-                }
-                // si el usuario no existe, le dice q se registre
-                else {
-                    notRegistered notRegistered = new notRegistered();
-                    notRegistered.setVisible(true);
+
+                    /*
+                    *
+                    * para llamar el usuario logeado en todas las ventanas se pone:
+                    *
+                    *       UserModel loggedUser = Session.getCurrentUser();
+                    *
+                    * */
                 }
             }
         });

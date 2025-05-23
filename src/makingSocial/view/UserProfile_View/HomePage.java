@@ -1,8 +1,12 @@
 package makingSocial.view.UserProfile_View;
 
+import makingSocial.DAO.UserProfile_DAO.HomePage_DAO;
+import makingSocial.model.Session;
 import makingSocial.view.GuestModel_View.Profile;
 import makingSocial.view.GuestModel_View.SearchEvent;
 import makingSocial.view.HostModel_View.CreateEvent;
+import makingSocial.model.UserModel;
+
 
 import java.awt.EventQueue;
 import javax.swing.*;
@@ -15,22 +19,15 @@ public class HomePage extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    private UserModel currentUser;
+
+    public HomePage(UserModel currentUser) {
+        this.currentUser = currentUser;
+    }
 
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    HomePage frame = new HomePage();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
     /**
      * Create the frame.
@@ -75,12 +72,23 @@ public class HomePage extends JFrame {
         btnCreateEvent.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // llamar a la ventana CreateEvent
-                CreateEvent createevent = new CreateEvent();
-                createevent.setVisible(true);
 
-                // disppuse() cierra la venta
-                dispose();
+                HomePage_DAO dao = new HomePage_DAO();
+                UserModel currentUser = Session.getCurrentUser();
+
+                if (dao.searchID_UserInHost(currentUser)) {
+                    // Si ya es host, pasa directo
+                    CreateEvent createEvent = new CreateEvent(currentUser);
+                    createEvent.setVisible(true);
+                    dispose();
+                } else {
+                    // Si no es host, lo registramos como host y pasamos igualmente
+                    dao.insertHostForUser(currentUser);
+
+                    CreateEvent createEvent = new CreateEvent(currentUser);
+                    createEvent.setVisible(true);
+                    dispose();
+                }
             }
         });
 
