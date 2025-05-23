@@ -15,11 +15,8 @@ import java.util.Date;
 
 import com.toedter.calendar.JDateChooser;
 import makingSocial.DAO.HostModel_DAO.CreateEvent_DAO;
-import makingSocial.DAO.UserProfile_DAO.Login_DAO;
 import makingSocial.model.EventModel;
-import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
-import makingSocial.view.UserProfile_View.notRegistered;
 
 
 public class CreateEvent extends JFrame {
@@ -251,16 +248,10 @@ public class CreateEvent extends JFrame {
         rdbtnYesTheme.addActionListener(toggleDesc);
         rdbtnNoTheme.addActionListener(toggleDesc);
 
-
         JButton btnSave = new JButton("Guardar evento");
         btnSave.setFont(new Font("Tahoma", Font.PLAIN, 20));
         btnSave.setBounds(559, 624, 218, 33);
         getContentPane().add(btnSave);
-
-
-
-
-
 
         JButton btnVolverAInicio = new JButton("Volver a inicio");
         btnVolverAInicio.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -282,6 +273,7 @@ public class CreateEvent extends JFrame {
                 dispose();
             }
         });
+
 
 
         btnSave.addActionListener(new ActionListener() {

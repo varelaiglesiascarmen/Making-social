@@ -94,7 +94,7 @@ public class SearchEventPublic extends JFrame {
         btnGoHomePage.setBounds(784, 606, 140, 30);
         contentPane.add(btnGoHomePage);
 
-        btnSearch.addActionListener(new ActionListener() {
+        /*btnSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int PostalCode = Integer.parseInt(textFieldPostalCode.getText());
@@ -181,6 +181,6 @@ public class SearchEventPublic extends JFrame {
                 // disppuse() cierra la venta
                 dispose();
             }
-        });
+        });*/
     }
 }
