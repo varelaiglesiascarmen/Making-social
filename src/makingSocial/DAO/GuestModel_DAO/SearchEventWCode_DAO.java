@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SearchEventWCode_DAO {
+
     public boolean ejecutarSelect(UserModel usuario) {
         String sql = "SELECT id_event FROM Event WHERE id_event = ?";
 
