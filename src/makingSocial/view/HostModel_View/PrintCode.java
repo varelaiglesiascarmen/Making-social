@@ -2,6 +2,8 @@ package makingSocial.view.HostModel_View;
 
 import makingSocial.DAO.HostModel_DAO.PrintCode_DAO;
 import makingSocial.model.EventModel;
+import makingSocial.model.Session;
+import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
 
 import javax.swing.*;
@@ -17,7 +19,8 @@ public class PrintCode extends JFrame {
     private JLabel codeLabel;
     private JTextArea summaryArea;
 
-    public PrintCode() {
+    public PrintCode(EventModel event) {
+
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -35,7 +38,7 @@ public class PrintCode extends JFrame {
         titleLabel.setBounds(238, 56, 461, 73);
         contentPane.add(titleLabel);
 
-        codeLabel = new JLabel("XXXXXXX");
+        codeLabel = new JLabel(String.valueOf(event.getID_Event()));
         codeLabel.setHorizontalAlignment(SwingConstants.CENTER);
         codeLabel.setFont(new Font("Tahoma", Font.BOLD, 60));
         codeLabel.setBounds(238, 133, 461, 73);
@@ -46,7 +49,7 @@ public class PrintCode extends JFrame {
         summaryTitle.setBounds(113, 264, 259, 50);
         contentPane.add(summaryTitle);
 
-        summaryArea = new JTextArea();
+        summaryArea = new JTextArea(generarResumen(event));
         summaryArea.setFont(new Font("Tahoma", Font.PLAIN, 20));
         summaryArea.setEditable(false);
         summaryArea.setLineWrap(true);
@@ -63,35 +66,31 @@ public class PrintCode extends JFrame {
 
         btnGoHomePage.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                UserModel currentUser = Session.getCurrentUser();
                 new HomePage().setVisible(true);
                 dispose();
             }
         });
 
-        // Cargar y mostrar datos del evento
-        //loadEvent(idEvent);
     }
 
-    private void loadEvent(int idEvent) {
-        EventModel event = PrintCode_DAO.getEventById(idEvent);
-
-        if (event != null) {
-            codeLabel.setText(String.valueOf(event.getID_Event()));
-
-            // Construir resumen con saltos de línea
-            StringBuilder resumen = new StringBuilder();
-            resumen.append("Fecha: ").append(event.getDate()).append("\n");
-            resumen.append("Hora: ").append(event.getSchedule()).append("\n");
-            resumen.append("Lugar: ").append(event.getLocation()).append("\n");
-            resumen.append("Código Postal: ").append(event.getPostalCode()).append("\n");
-            resumen.append("Edad permitida: ").append(event.getAllowedAge()).append("\n");
-            resumen.append("Evento privado: ").append(event.isAccess() ? "Sí" : "No").append("\n");
-            resumen.append("Etiqueta (DressCode): ").append(event.isDressCode() ? event.getDescription1() : "Ninguna").append("\n");
-            resumen.append("Temática (Theme): ").append(event.isTheme() ? event.getDescription2() : "Ninguna");
-
-            summaryArea.setText(resumen.toString());
-        } else {
-            summaryArea.setText("No se encontró el evento con ID " + idEvent);
+    private String generarResumen(EventModel event) {
+        StringBuilder resumen = new StringBuilder();
+        resumen.append("Fecha: ").append(event.getDate()).append("\n");
+        resumen.append("Hora: ").append(event.getSchedule()).append("\n");
+        resumen.append("Dirección: ").append(event.getLocation()).append("\n");
+        resumen.append("Código Postal: ").append(event.getPostalCode()).append("\n");
+        resumen.append("Dress Code: ").append(event.isDressCode() ? "Sí" : "No").append("\n");
+        if (event.isDressCode() && event.getDescription1() != null) {
+            resumen.append("Descripción Dress Code: ").append(event.getDescription1()).append("\n");
         }
+        resumen.append("Temática: ").append(event.isTheme() ? "Sí" : "No").append("\n");
+        if (event.isTheme() && event.getDescription2() != null) {
+            resumen.append("Descripción Temática: ").append(event.getDescription2()).append("\n");
+        }
+        resumen.append("Edad Permitida: ").append(event.getAllowedAge()).append("\n");
+        resumen.append("Acceso: ").append(event.isAccess() ? "Privado" : "Público").append("\n");
+        return resumen.toString();
     }
+
 }
