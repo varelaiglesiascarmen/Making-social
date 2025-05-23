@@ -95,12 +95,26 @@ public class HomePage extends JFrame {
         btnAttendEvent.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // llamar a la ventana CreateEvent
-                SearchEvent searchevent = new SearchEvent();
-                searchevent.setVisible(true);
+                HomePage_DAO dao = new HomePage_DAO();
+                UserModel currentUser2 = Session.getCurrentUser();
 
-                // disppuse() cierra la venta
-                dispose();
+                if(dao.searchID_UserInHost(currentUser2)){
+
+                    // llamar a la ventana SearchEvent
+                    SearchEvent searchevent = new SearchEvent();
+                    searchevent.setVisible(true);
+
+                    // disppuse() cierra la venta
+                    dispose();
+
+                }else {
+                    // Si no es host, lo registramos como host y pasamos igualmente
+                    dao.insertHostForUser(currentUser2);
+
+                    CreateEvent createEvent = new CreateEvent(currentUser2);
+                    createEvent.setVisible(true);
+                    dispose();
+                }
             }
         });
 

@@ -1,25 +1,20 @@
 package makingSocial.view.HostModel_View;
 
 import makingSocial.DAO.HostModel_DAO.CreateEvent_DAO;
+import makingSocial.DAO.HostModel_DAO.PrintCode_DAO;
 import makingSocial.model.EventModel;
 import makingSocial.model.UserModel;
-import makingSocial.view.HostModel_View.PrintCode;
-import makingSocial.view.HostModel_View.notAllNodes;
+
 import javax.swing.*;
 import java.awt.event.ActionListener;
-import java.awt.EventQueue;
-import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
 import com.toedter.calendar.JDateChooser;
-import makingSocial.DAO.HostModel_DAO.CreateEvent_DAO;
-import makingSocial.model.EventModel;
 import makingSocial.view.UserProfile_View.HomePage;
 
 
@@ -282,17 +277,25 @@ public class CreateEvent extends JFrame {
 
                  EventModel newEvent = new EventModel(date, schedule, location, PostalCode, dressCode, theme, description1, description2, allowedAge, access);
 
-                 // Aquí pasamos también currentUser, que debes tener definido en esta clase
                  int returnID = new CreateEvent_DAO().saveEvent(newEvent, currentUser);
 
-                 if(returnID >= 0){
-                     PrintCode newCode = new PrintCode();
-                     newCode.setVisible(true);
-                     dispose();
+                 if (returnID > 0) {
+                     // Recuperamos el evento completo desde la BBDD usando el DAO PrintCode_DAO
+                     EventModel saveEvent = PrintCode_DAO.getEventById(returnID);
+
+                     if (saveEvent != null) {
+                         PrintCode newCode = new PrintCode(saveEvent);
+                         newCode.setVisible(true);
+                         dispose();
+                     } else {
+                         notAllNodes error = new notAllNodes();
+                         error.setVisible(true);
+                     }
                  } else {
                      notAllNodes error = new notAllNodes();
                      error.setVisible(true);
                  }
+
              }
          });
 
