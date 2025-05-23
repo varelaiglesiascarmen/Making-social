@@ -1,4 +1,4 @@
-![LOGO](src/img/logoGrande.png)
+![LOGIN](src/img/prototype/Login.png)
 # 📱 Making Social!
 
 > **¡Sin barreras, sin despistes, sin vergüenza!**
