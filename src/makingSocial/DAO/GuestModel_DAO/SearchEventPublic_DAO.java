@@ -62,7 +62,6 @@ public class SearchEventPublic_DAO {
         return eventos;
     }
 
-
     /*public int saveData(GuestModel newRegistrer, UserModel currentUser2) {
         int idGuest = searchID_Guest(currentUser2);
 
