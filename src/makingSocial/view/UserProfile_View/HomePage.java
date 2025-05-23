@@ -98,7 +98,7 @@ public class HomePage extends JFrame {
                 HomePage_DAO dao = new HomePage_DAO();
                 UserModel currentUser2 = Session.getCurrentUser();
 
-                if(dao.searchID_UserInHost(currentUser2)){
+                if(dao.searchID_UserInGuest(currentUser2)){
 
                     // llamar a la ventana SearchEvent
                     SearchEvent searchevent = new SearchEvent();
@@ -109,10 +109,13 @@ public class HomePage extends JFrame {
 
                 }else {
                     // Si no es host, lo registramos como host y pasamos igualmente
-                    dao.insertHostForUser(currentUser2);
+                    dao.insertGuestForUser(currentUser2);
 
-                    CreateEvent createEvent = new CreateEvent(currentUser2);
-                    createEvent.setVisible(true);
+                    // llamar a la ventana SearchEvent
+                    SearchEvent searchevent = new SearchEvent();
+                    searchevent.setVisible(true);
+
+                    // disppuse() cierra la venta
                     dispose();
                 }
             }

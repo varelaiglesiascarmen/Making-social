@@ -3,6 +3,7 @@ package makingSocial.view.HostModel_View;
 import makingSocial.DAO.HostModel_DAO.CreateEvent_DAO;
 import makingSocial.DAO.HostModel_DAO.PrintCode_DAO;
 import makingSocial.model.EventModel;
+import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 
 import javax.swing.*;
@@ -249,6 +250,8 @@ public class CreateEvent extends JFrame {
         btnVolverAInicio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UserModel currentUser = Session.getCurrentUser();
+
                 // llamar a la ventana Homepage
                 HomePage homepage = new HomePage();
                 homepage.setVisible(true);

@@ -103,7 +103,7 @@ public class HomePage_DAO {
     }
 
     public boolean insertGuestForUser(UserModel user) {
-        String sql = "INSERT INTO MakingSocial.GuestModel (ID_Guest) VALUES (?)";
+        String sql = "INSERT INTO MakingSocial.GuestModel (ID_User) VALUES (?)";
 
         try {
             ConexionMySQL conexion = ConexionSingleton.getConexion();
