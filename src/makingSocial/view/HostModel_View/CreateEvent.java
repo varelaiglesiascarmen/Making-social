@@ -302,8 +302,8 @@ public class CreateEvent extends JFrame {
                 // si están todos los campos
                 if(insert == true){
                     // llamar a la ventana PrintCode
-                    PrintCode newCode = new PrintCode();
-                    newCode.setVisible(true);
+                    //PrintCode newCode = new PrintCode();
+                    //newCode.setVisible(true);
 
 
                     // disppuse() cierra la venta
