@@ -94,10 +94,9 @@ public class Login extends JFrame {
                 String Password = new String(passwordField.getPassword());
 
                 // Crear el objeto del modelo
-                UserModel usuario = new UserModel(NickName, Password);
+                UserModel currentUser = new UserModel(NickName, Password);
 
                 // get.NickName & get.Password == true?
-                UserModel currentUser = new UserModel(NickName, Password);
                 UserModel dataUser = Login_DAO.getCurrentUser(currentUser);
 
                 // si el usuario no existe, le manda a singin
@@ -107,12 +106,23 @@ public class Login extends JFrame {
                 }
                 // si el usuario existe, le manda a homepage
                 else {
+                    // Guardar usuario en sesión global
+                    Session.setCurrentUser(dataUser);
+
                     // llamar a la ventana Homepage
                     HomePage homePage = new HomePage();
                     homePage.setVisible(true);
 
                     // disppuse() cierra la venta
                     dispose();
+
+                    /*
+                    *
+                    * para llamar el usuario logeado en todas las ventanas se pone:
+                    *
+                    *       UserModel loggedUser = Session.getCurrentUser();
+                    *
+                    * */
                 }
             }
         });
