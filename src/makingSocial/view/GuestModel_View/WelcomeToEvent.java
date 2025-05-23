@@ -1,5 +1,9 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.model.Session;
+import makingSocial.model.UserModel;
+import makingSocial.view.UserProfile_View.HomePage;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -45,10 +49,22 @@ public class WelcomeToEvent extends JFrame {
         btnOk.setBounds(303, 131, 85, 21);
         contentPane.add(btnOk);
 
+        JButton btnGoHomePage = new JButton("Volver a inicio");
+        btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnGoHomePage.setBounds(784, 606, 140, 30);
+        contentPane.add(btnGoHomePage);
+
         // al darle a ok se cierra la ventana
-        btnOk.addActionListener(new ActionListener() {
+        btnGoHomePage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UserModel currentUser = Session.getCurrentUser();
+
+                // llamar a la ventana Homepage
+                HomePage homepage = new HomePage();
+                homepage.setVisible(true);
+
+                // disppuse() cierra la venta
                 dispose();
             }
         });

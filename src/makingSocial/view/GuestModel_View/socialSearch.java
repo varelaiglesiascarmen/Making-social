@@ -1,5 +1,9 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.model.Session;
+import makingSocial.model.UserModel;
+import makingSocial.view.UserProfile_View.HomePage;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -97,5 +101,19 @@ public class socialSearch extends JFrame {
         btn.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btn.setBounds(784, 606, 140, 30);
         contentPane.add(btn);
+
+        btnGoHomePage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                UserModel currentUser = Session.getCurrentUser();
+
+                // llamar a la ventana Homepage
+                HomePage homepage = new HomePage();
+                homepage.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
     }
 }

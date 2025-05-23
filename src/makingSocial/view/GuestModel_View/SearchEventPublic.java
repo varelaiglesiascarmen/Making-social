@@ -162,6 +162,8 @@ public class SearchEventPublic extends JFrame {
         btnGoHomePage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UserModel currentUser = Session.getCurrentUser();
+
                 // llamar a la ventana Homepage
                 HomePage homepage = new HomePage();
                 homepage.setVisible(true);
