@@ -1,7 +1,8 @@
-/*package makingSocial.DAO.GuestModel_DAO;
+package makingSocial.DAO.GuestModel_DAO;
 
 import makingSocial.controller.ConexionMySQL;
 import makingSocial.controller.ConexionSingleton;
+import makingSocial.model.EventModel;
 import makingSocial.model.UserModel;
 
 import java.sql.Connection;
@@ -11,30 +12,38 @@ import java.sql.SQLException;
 
 public class SearchEventWCode_DAO {
 
-    public boolean ejecutarSelect(UserModel usuario) {
-        String sql = "SELECT id_event FROM Event WHERE id_event = ?";
+    public static EventModel buscarEventoPorId(int eventId) {
+        String sql = "SELECT date, schedule, location, postalcode, dresscode, theme, description1, description2, allowedage, access FROM event WHERE id_event = ?";
+
+        EventModel event = null;
 
         try {
             ConexionMySQL conexion = ConexionSingleton.getConexion();
             Connection con = conexion.getConnection();
 
-            // Falta crear una variable en Login
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
-                stmt.setString(1, event.getID_Event());
+                stmt.setInt(1, eventId);
 
                 ResultSet rs = stmt.executeQuery();
 
                 if (rs.next()) {
-                    return true;
-                } else {
-                    return false;
+                    event = new EventModel(
+                            rs.getDate("date").toLocalDate(),
+                            rs.getTime("schedule").toLocalTime(),
+                            rs.getString("location"),
+                            rs.getInt("postalcode"),
+                            rs.getBoolean("dresscode"),
+                            rs.getBoolean("theme"),
+                            rs.getString("description1"),
+                            rs.getString("description2"),
+                            rs.getInt("allowedage"),
+                            rs.getBoolean("access")
+                    );
                 }
-
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         } finally {
             try {
                 ConexionSingleton.closeConexion();
@@ -42,6 +51,7 @@ public class SearchEventWCode_DAO {
                 ex.printStackTrace();
             }
         }
+
+        return event;
     }
 }
-*/
