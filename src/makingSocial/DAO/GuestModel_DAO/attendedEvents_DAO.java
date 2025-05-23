@@ -60,5 +60,4 @@ public class attendedEvents_DAO {
             }
         }
     }*/
-
 }
