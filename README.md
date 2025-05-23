@@ -105,6 +105,15 @@ Puedes consultar todo el proyecto aquí:
 
 ---
 
+## 📊 Diagramas del proyecto
+
+- **Base de datos**
+![Modelo E/R](src/img/modeloE-R.png)
+- **Casos de uso** 
+![Caso Uso](src/img/casoUso.png)
+
+---
+
 ## 👥 Equipo
 
 Este proyecto ha sido desarrollado por estudiantes del ciclo de **Desarrollo de Aplicaciones Web** (@zhou950-1 y @varelaiglesiascarmen), con enfoque en:
