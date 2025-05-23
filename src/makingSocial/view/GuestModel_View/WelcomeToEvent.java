@@ -49,12 +49,18 @@ public class WelcomeToEvent extends JFrame {
         btnOk.setBounds(303, 131, 85, 21);
         contentPane.add(btnOk);
 
+        btnOk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+
         JButton btnGoHomePage = new JButton("Volver a inicio");
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnGoHomePage.setBounds(784, 606, 140, 30);
         contentPane.add(btnGoHomePage);
 
-        // al darle a ok se cierra la ventana
         btnGoHomePage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

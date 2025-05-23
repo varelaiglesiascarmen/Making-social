@@ -15,7 +15,7 @@ public class SearchEventPublic_DAO {
     public static List<EventModel> searchPublicEvent(int postalCode) {
         List<EventModel> eventList = new ArrayList<>();
 
-        String sql = "SELECT date, schedule, location, postalcode, dresscode, theme, description1, description2, allowedage, access FROM event WHERE postalcode = ? AND access = true";
+        String sql = "SELECT date, schedule, location, postalcode, dresscode, theme, description1, description2, allowedage, access FROM Event WHERE postalcode = ? AND access = true";
 
         try {
             ConexionMySQL conexion = ConexionSingleton.getConexion();
@@ -56,4 +56,6 @@ public class SearchEventPublic_DAO {
 
         return eventList;
     }
+
+
 }

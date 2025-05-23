@@ -58,27 +58,6 @@ public class SearchEventPublic extends JFrame {
         btnSearch.setBounds(431, 206, 111, 36);
         contentPane.add(btnSearch);
 
-        JLabel AttendEventLocation = new JLabel("Lorem ipsum dolor sit amet");
-        AttendEventLocation.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        AttendEventLocation.setBounds(173, 270, 275, 33);
-        contentPane.add(AttendEventLocation);
-
-        JLabel AttendEventSchedule = new JLabel("Lorem ipsum");
-        AttendEventSchedule.setHorizontalAlignment(SwingConstants.CENTER);
-        AttendEventSchedule.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        AttendEventSchedule.setBounds(438, 272, 104, 33);
-        contentPane.add(AttendEventSchedule);
-
-        JLabel AttendEventToString = new JLabel("Lorem ipsum dolor sit amet");
-        AttendEventToString.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        AttendEventToString.setBounds(173, 306, 562, 33);
-        contentPane.add(AttendEventToString);
-
-        JButton btnAttend = new JButton("Asistir");
-        btnAttend.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnAttend.setBounds(719, 275, 83, 27);
-        contentPane.add(btnAttend);
-
         JButton btnGoHomePage = new JButton("Volver a inicio");
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnGoHomePage.setBounds(784, 606, 140, 30);
@@ -94,7 +73,7 @@ public class SearchEventPublic extends JFrame {
 
                 // si no hay eventos muestra "No hay eventos en tu ciudad"
                 if (eventos.isEmpty()) {
-                    JLabel noEvent = new JLabel("No hay eventos en tu ciudad");
+                    JLabel noEvent = new JLabel("No hay eventos en tu ciudad aún");
                     noEvent.setFont(new Font("Tahoma", Font.PLAIN, 20));
                     noEvent.setBounds(173, 270, 400, 33);
                     noEvent.setName("evento");
@@ -135,7 +114,7 @@ public class SearchEventPublic extends JFrame {
                         btnAsistir.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                EventFound eventFound = new EventFound();
+                                WelcomeToEvent eventFound = new WelcomeToEvent();
                                 eventFound.setVisible(true);
                                 dispose();
                             }
