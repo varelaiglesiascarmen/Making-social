@@ -20,6 +20,11 @@ public class GuestModel extends UserModel {
         this.ID_GuestModel = ID_GuestModel;
     }
 
+    public GuestModel(int ID_User, int ID_GuestModel) {
+        super(ID_User);
+        this.ID_GuestModel = ID_GuestModel;
+    }
+
     // getters & setters
     public String getCivilStatus() { return CivilStatus; }
 
