@@ -17,7 +17,7 @@ public class PrintCode extends JFrame {
     private JLabel codeLabel;
     private JTextArea summaryArea;
 
-    public PrintCode(int idEvent) {
+    public PrintCode() {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -69,7 +69,7 @@ public class PrintCode extends JFrame {
         });
 
         // Cargar y mostrar datos del evento
-        loadEvent(idEvent);
+        //loadEvent(idEvent);
     }
 
     private void loadEvent(int idEvent) {

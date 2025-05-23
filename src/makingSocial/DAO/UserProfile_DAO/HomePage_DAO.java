@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class HomePage_DAO {
 
-    public boolean searchID_UserInHost(UserModel x) {
+    public boolean searchID_UserInHost(UserModel currentUser) {
         String sql = "SELECT 1 FROM MakingSocial.HostModel WHERE ID_User = ?";
 
         try {
@@ -19,7 +19,7 @@ public class HomePage_DAO {
             Connection con = conexion.getConnection();
 
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
-                stmt.setInt(1, x.getID_User()); // Usamos el ID del usuario pasado como parámetro
+                stmt.setInt(1, currentUser.getID_User()); // Usamos el ID del usuario pasado como parámetro
 
                 try (ResultSet rs = stmt.executeQuery()) {
                     if (rs.next()) {

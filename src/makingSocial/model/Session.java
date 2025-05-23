@@ -1,6 +1,4 @@
-package makingSocial.view.UserProfile_View;
-
-import makingSocial.model.UserModel;
+package makingSocial.model;
 
 public class Session {
     private static UserModel currentUser;

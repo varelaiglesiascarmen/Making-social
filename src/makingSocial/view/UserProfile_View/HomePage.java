@@ -1,6 +1,7 @@
 package makingSocial.view.UserProfile_View;
 
 import makingSocial.DAO.UserProfile_DAO.HomePage_DAO;
+import makingSocial.model.Session;
 import makingSocial.view.GuestModel_View.Profile;
 import makingSocial.view.GuestModel_View.SearchEvent;
 import makingSocial.view.HostModel_View.CreateEvent;
@@ -27,18 +28,6 @@ public class HomePage extends JFrame {
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    HomePage frame = new HomePage();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
     /**
      * Create the frame.
@@ -83,24 +72,25 @@ public class HomePage extends JFrame {
         btnCreateEvent.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 HomePage_DAO dao = new HomePage_DAO();
+                UserModel currentUser = Session.getCurrentUser();
 
                 if (dao.searchID_UserInHost(currentUser)) {
                     // Si ya es host, pasa directo
-                    CreateEvent createEvent = new CreateEvent();
+                    CreateEvent createEvent = new CreateEvent(currentUser);
                     createEvent.setVisible(true);
                     dispose();
                 } else {
                     // Si no es host, lo registramos como host y pasamos igualmente
                     dao.insertHostForUser(currentUser);
 
-                    CreateEvent createEvent = new CreateEvent();
+                    CreateEvent createEvent = new CreateEvent(currentUser);
                     createEvent.setVisible(true);
                     dispose();
                 }
             }
         });
-
 
         btnAttendEvent.addActionListener(new ActionListener() {
             @Override

@@ -65,6 +65,8 @@ public class EventModel {
 
    public EventModel(int postalCode, int ID_Event) { this.PostalCode = postalCode; this.ID_Event = ID_Event; }
 
+    public EventModel(int postalCode) { this.PostalCode = postalCode; }
+
     // getters & setters
     public int getID_Event() { return ID_Event; }
 
