@@ -2,6 +2,8 @@ package makingSocial.view.GuestModel_View;
 
 import makingSocial.DAO.GuestModel_DAO.SearchEventPublic_DAO;
 import makingSocial.model.EventModel;
+import makingSocial.model.Session;
+import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
 
 import java.awt.*;
@@ -82,20 +84,13 @@ public class SearchEventPublic extends JFrame {
         btnGoHomePage.setBounds(784, 606, 140, 30);
         contentPane.add(btnGoHomePage);
 
-        /*btnSearch.addActionListener(new ActionListener() {
+        btnSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int PostalCode = Integer.parseInt(textFieldPostalCode.getText());
 
                 // Le pregunta a DAO por los objetos y los guarda en un arraylist
-                List <EventModel> eventos = new SearchEventPublic_DAO().buscarEventosPorCodigoPostal(PostalCode);
-
-                // Elimina los lorem ipsum
-                for (Component comp : contentPane.getComponents()) {
-                    if (comp.getName() != null && comp.getName().equals("evento")) {
-                        contentPane.remove(comp);
-                    }
-                }
+                List <EventModel> eventos = new SearchEventPublic_DAO().searchPublicEvent(PostalCode);
 
                 // si no hay eventos muestra "No hay eventos en tu ciudad"
                 if (eventos.isEmpty()) {
@@ -171,6 +166,6 @@ public class SearchEventPublic extends JFrame {
                 // disppuse() cierra la venta
                 dispose();
             }
-        });*/
+        });
     }
 }
