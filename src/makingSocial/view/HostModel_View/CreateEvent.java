@@ -1,6 +1,11 @@
 package makingSocial.view.HostModel_View;
 
-
+import makingSocial.DAO.HostModel_DAO.CreateEvent_DAO;
+import makingSocial.model.EventModel;
+import makingSocial.view.HostModel_View.PrintCode;
+import makingSocial.view.HostModel_View.notAllNodes;
+import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.awt.EventQueue;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,8 +16,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
-
-
 import com.toedter.calendar.JDateChooser;
 import makingSocial.DAO.HostModel_DAO.CreateEvent_DAO;
 import makingSocial.model.EventModel;
@@ -35,24 +38,8 @@ public class CreateEvent extends JFrame {
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    CreateEvent frame = new CreateEvent();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
-
-    /**
-     * Create the frame.
-     */
-    public CreateEvent() {
+     public CreateEvent() {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1021, 796);
@@ -274,9 +261,8 @@ public class CreateEvent extends JFrame {
             }
         });
 
-
-
         btnSave.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Formulario
@@ -332,5 +318,3 @@ public class CreateEvent extends JFrame {
         });
     }
 }
-
-

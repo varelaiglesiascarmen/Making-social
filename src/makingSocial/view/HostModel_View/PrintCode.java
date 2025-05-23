@@ -1,13 +1,12 @@
 package makingSocial.view.HostModel_View;
 
+import makingSocial.DAO.HostModel_DAO.PrintCode_DAO;
+import makingSocial.model.EventModel;
 import makingSocial.view.UserProfile_View.HomePage;
-import makingSocial.view.UserProfile_View.Login;
-
-import java.awt.EventQueue;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,61 +14,47 @@ public class PrintCode extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    private JLabel codeLabel;
+    private JTextArea summaryArea;
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    PrintCode frame = new PrintCode();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    /**
-     * Create the frame.
-     */
-    public PrintCode() {
+    public PrintCode(int idEvent) {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/logoPequeno.png"));
         setIconImage(icon.getImage());
 
-        JLabel newCode = new JLabel("El código de tu evento es");
-        newCode.setHorizontalAlignment(SwingConstants.CENTER);
-        newCode.setFont(new Font("Tahoma", Font.BOLD, 30));
-        newCode.setBounds(238, 56, 461, 73);
-        contentPane.add(newCode);
+        JLabel titleLabel = new JLabel("El código de tu evento es");
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
+        titleLabel.setBounds(238, 56, 461, 73);
+        contentPane.add(titleLabel);
 
-        JLabel code = new JLabel("XXXXXXX");
-        code.setHorizontalAlignment(SwingConstants.CENTER);
-        code.setFont(new Font("Tahoma", Font.BOLD, 60));
-        code.setBounds(238, 133, 461, 73);
-        contentPane.add(code);
+        codeLabel = new JLabel("XXXXXXX");
+        codeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        codeLabel.setFont(new Font("Tahoma", Font.BOLD, 60));
+        codeLabel.setBounds(238, 133, 461, 73);
+        contentPane.add(codeLabel);
 
-        JLabel lblNewLabel = new JLabel("Resumen de tu evento:");
-        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
-        lblNewLabel.setBounds(113, 264, 259, 50);
-        contentPane.add(lblNewLabel);
+        JLabel summaryTitle = new JLabel("Resumen de tu evento:");
+        summaryTitle.setFont(new Font("Tahoma", Font.PLAIN, 25));
+        summaryTitle.setBounds(113, 264, 259, 50);
+        contentPane.add(summaryTitle);
 
-        JLabel toStringSummary = new JLabel("Lorem Ipsum");
-        toStringSummary.setVerticalAlignment(SwingConstants.TOP);
-        toStringSummary.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        toStringSummary.setBounds(113, 312, 728, 282);
-        contentPane.add(toStringSummary);
+        summaryArea = new JTextArea();
+        summaryArea.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        summaryArea.setEditable(false);
+        summaryArea.setLineWrap(true);
+        summaryArea.setWrapStyleWord(true);
+        summaryArea.setBounds(113, 312, 728, 282);
+        summaryArea.setBackground(contentPane.getBackground());
+        summaryArea.setBorder(null);
+        contentPane.add(summaryArea);
 
         JButton btnGoHomePage = new JButton("Volver a inicio");
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -77,16 +62,36 @@ public class PrintCode extends JFrame {
         contentPane.add(btnGoHomePage);
 
         btnGoHomePage.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
-                // llamar a la ventana Homepage
-                HomePage homepage = new HomePage();
-                homepage.setVisible(true);
-
-                // disppuse() cierra la venta
+                new HomePage().setVisible(true);
                 dispose();
             }
         });
 
+        // Cargar y mostrar datos del evento
+        loadEvent(idEvent);
+    }
+
+    private void loadEvent(int idEvent) {
+        EventModel event = PrintCode_DAO.getEventById(idEvent);
+
+        if (event != null) {
+            codeLabel.setText(String.valueOf(event.getID_Event()));
+
+            // Construir resumen con saltos de línea
+            StringBuilder resumen = new StringBuilder();
+            resumen.append("Fecha: ").append(event.getDate()).append("\n");
+            resumen.append("Hora: ").append(event.getSchedule()).append("\n");
+            resumen.append("Lugar: ").append(event.getLocation()).append("\n");
+            resumen.append("Código Postal: ").append(event.getPostalCode()).append("\n");
+            resumen.append("Edad permitida: ").append(event.getAllowedAge()).append("\n");
+            resumen.append("Evento privado: ").append(event.isAccess() ? "Sí" : "No").append("\n");
+            resumen.append("Etiqueta (DressCode): ").append(event.isDressCode() ? event.getDescription1() : "Ninguna").append("\n");
+            resumen.append("Temática (Theme): ").append(event.isTheme() ? event.getDescription2() : "Ninguna");
+
+            summaryArea.setText(resumen.toString());
+        } else {
+            summaryArea.setText("No se encontró el evento con ID " + idEvent);
+        }
     }
 }
