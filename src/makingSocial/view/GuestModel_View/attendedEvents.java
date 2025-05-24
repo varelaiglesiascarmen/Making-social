@@ -17,15 +17,17 @@ public class attendedEvents extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    private EventModel currentEvent;
+    private UserModel currentUser;
 
-    /**
-     * Launch the application.
-     */
-
-    /**
-     * Create the frame.
-     */
     public attendedEvents(UserModel currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public attendedEvents(EventModel currentEvent) {
+        this.currentEvent = currentEvent;
+    }
+    public attendedEvents() {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -42,6 +44,25 @@ public class attendedEvents extends JFrame {
         titleAttendEvent.setFont(new Font("Tahoma", Font.BOLD, 40));
         titleAttendEvent.setBounds(58, 51, 640, 90);
         contentPane.add(titleAttendEvent);
+
+        JButton btnGoHomePage = new JButton("Volver a inicio");
+        btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnGoHomePage.setBounds(784, 606, 140, 30);
+        contentPane.add(btnGoHomePage);
+
+        btnGoHomePage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                UserModel currentUser = Session.getCurrentUser();
+
+                // llamar a la ventana Homepage
+                HomePage homepage = new HomePage();
+                homepage.setVisible(true);
+
+                // disppuse() cierra la venta
+                dispose();
+            }
+        });
 
         UserModel currentUser = Session.getCurrentUser();
         List<EventModel> eventosAsistidos = attendedEvents_DAO.obtenerEventosAsistidosPorUsuario(currentUser.getID_User());
@@ -75,26 +96,5 @@ public class attendedEvents extends JFrame {
                 y += 50;
             }
         }
-
-
-        JButton btnGoHomePage = new JButton("Volver a inicio");
-        btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnGoHomePage.setBounds(784, 606, 140, 30);
-        contentPane.add(btnGoHomePage);
-
-        btnGoHomePage.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UserModel currentUser = Session.getCurrentUser();
-
-                // llamar a la ventana Homepage
-                HomePage homepage = new HomePage();
-                homepage.setVisible(true);
-
-                // disppuse() cierra la venta
-                dispose();
-            }
-        });
-
     }
 }

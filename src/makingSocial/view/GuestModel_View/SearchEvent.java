@@ -1,5 +1,6 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.model.EventModel;
 import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
@@ -14,15 +15,10 @@ public class SearchEvent extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    private EventModel currentEvent;
 
-    /**
-     * Launch the application.
-     */
-
-    /**
-     * Create the frame.
-     */
-    public SearchEvent() {
+    public SearchEvent(EventModel currentEvent) {
+        this.currentEvent = currentEvent;
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -77,7 +73,7 @@ public class SearchEvent extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // llamar a la ventana SearchEventPublic
-                SearchEventPublic publicEvent = new SearchEventPublic();
+                SearchEventPublic publicEvent = new SearchEventPublic(currentEvent);
                 publicEvent.setVisible(true);
 
                 // disppuse() cierra la venta
@@ -89,7 +85,7 @@ public class SearchEvent extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // llamar a la ventana SearchEventWCode
-                SearchEventWCode wCodeEvent = new SearchEventWCode();
+                SearchEventWCode wCodeEvent = new SearchEventWCode(currentEvent);
                 wCodeEvent.setVisible(true);
 
                 // disppuse() cierra la venta

@@ -1,5 +1,6 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.model.EventModel;
 import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
@@ -18,15 +19,10 @@ public class profileEditBIO extends JFrame {
     private JPanel contentPane;
     private JTextField textField;
     private JTextField textField_1;
+    private EventModel event;
 
-    /**
-     * Launch the application.
-     */
-
-    /**
-     * Create the frame.
-     */
-    public profileEditBIO() {
+    public profileEditBIO(EventModel event) {
+        this.event = event;
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -132,6 +128,7 @@ public class profileEditBIO extends JFrame {
         btnNewButtonMakingSocial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 String insta = textField_1.getText().trim();
 
                 // comprobar que insta esté relleno
@@ -159,8 +156,8 @@ public class profileEditBIO extends JFrame {
                     return;
                 }
 
-                WelcomeToEvent welcome = new WelcomeToEvent();
-                welcome.setVisible(true);
+                WelcomeToEvent eventFound = new WelcomeToEvent(event);
+                eventFound.setVisible(true);
 
                 dispose();
             }

@@ -1,5 +1,6 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.model.EventModel;
 import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
@@ -16,15 +17,19 @@ public class Profile extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    private EventModel currentEvent;
+    private UserModel currentUser;
 
-    /**
-     * Launch the application.
-     */
+    public Profile(UserModel currentUser) {
+        this.currentUser = Session.getCurrentUser();
+    }
 
-    /**
-     * Create the frame.
-     */
+    public Profile(EventModel currentEvent) {
+        this.currentEvent = currentEvent;
+    }
+
     public Profile() {
+        this.currentEvent = currentEvent;
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -61,22 +66,9 @@ public class Profile extends JFrame {
             }
         });
 
-        /*btnMakingSocial.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // llamar a la ventana Profile
-                attendedEvents prfl = new attendedEvents();
-                prfl.setVisible(true);
-
-                // disppuse() cierra la venta
-                dispose();
-            }
-        });*/
-
         btnMakingSocial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UserModel currentUser = Session.getCurrentUser();
                 attendedEvents eventosAsistidosVentana = new attendedEvents(currentUser);
                 eventosAsistidosVentana.setVisible(true);
                 dispose();

@@ -18,8 +18,10 @@ public class PrintCode extends JFrame {
     private JPanel contentPane;
     private JLabel codeLabel;
     private JTextArea summaryArea;
+    private EventModel eventModel;
 
     public PrintCode(EventModel event) {
+        this.eventModel = event;
 
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

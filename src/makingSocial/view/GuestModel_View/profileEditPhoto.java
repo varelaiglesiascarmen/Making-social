@@ -1,5 +1,6 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.model.EventModel;
 import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
@@ -19,15 +20,10 @@ public class profileEditPhoto extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private boolean fotoSeleccionada = false; // nueva variable
+    private EventModel currentEvent;
 
-    /**
-     * Launch the application.
-     */
-
-    /**
-     * Create the frame.
-     */
-    public profileEditPhoto() {
+    public profileEditPhoto(EventModel currentEvent) {
+        this.currentEvent = currentEvent;
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -129,7 +125,7 @@ public class profileEditPhoto extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (fotoSeleccionada) {
-                    profileEditBIO profileBIO = new profileEditBIO();
+                    profileEditBIO profileBIO = new profileEditBIO(currentEvent);
                     profileBIO.setVisible(true);
 
                     dispose();

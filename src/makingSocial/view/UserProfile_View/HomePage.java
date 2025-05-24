@@ -1,6 +1,7 @@
 package makingSocial.view.UserProfile_View;
 
 import makingSocial.DAO.UserProfile_DAO.HomePage_DAO;
+import makingSocial.model.EventModel;
 import makingSocial.model.Session;
 import makingSocial.view.GuestModel_View.Profile;
 import makingSocial.view.GuestModel_View.SearchEvent;
@@ -20,18 +21,16 @@ public class HomePage extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private UserModel currentUser;
+    private EventModel currentEvent;
 
     public HomePage(UserModel currentUser) {
         this.currentUser = currentUser;
     }
 
-    /**
-     * Launch the application.
-     */
+    public HomePage(EventModel currentEvent) {
+        this.currentEvent = currentEvent;
+    }
 
-    /**
-     * Create the frame.
-     */
     public HomePage() {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -101,18 +100,18 @@ public class HomePage extends JFrame {
                 if(dao.searchID_UserInGuest(currentUser2)){
 
                     // llamar a la ventana SearchEvent
-                    SearchEvent searchevent = new SearchEvent();
+                    SearchEvent searchevent = new SearchEvent(currentEvent);
                     searchevent.setVisible(true);
 
                     // disppuse() cierra la venta
                     dispose();
 
                 }else {
-                    // Si no es host, lo registramos como host y pasamos igualmente
+                    // Si no es guest, lo registramos como guest y pasamos igualmente
                     dao.insertGuestForUser(currentUser2);
 
                     // llamar a la ventana SearchEvent
-                    SearchEvent searchevent = new SearchEvent();
+                    SearchEvent searchevent = new SearchEvent(currentEvent);
                     searchevent.setVisible(true);
 
                     // disppuse() cierra la venta
@@ -125,7 +124,7 @@ public class HomePage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // llamar a la ventana Profile
-                Profile img = new Profile();
+                Profile img = new Profile(currentUser);
                 img.setVisible(true);
 
                 // disppuse() cierra la venta

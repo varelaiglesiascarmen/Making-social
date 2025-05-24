@@ -1,5 +1,6 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.model.EventModel;
 import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
@@ -9,21 +10,18 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 public class WelcomeToEvent extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    private EventModel currentEvent;
 
-    /**
-     * Launch the application.
-     */
-
-    /**
-     * Create the frame.
-     */
-    public WelcomeToEvent() {
-        setTitle("Making Social! - 404 not found");
+    public WelcomeToEvent(EventModel currentEvent) {
+        this.currentEvent = currentEvent;
+        setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 692, 220);
         contentPane = new JPanel();
@@ -40,11 +38,6 @@ public class WelcomeToEvent extends JFrame {
         notFoundCodeTitle.setBounds(26, 26, 555, 45);
         contentPane.add(notFoundCodeTitle);
 
-        JLabel notFoundCodeTxt = new JLabel("Desde tu perfil podrás acceder a la búsqueda de \n"+" perfiles 24 horas despues de que éste comience");
-        notFoundCodeTxt.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        notFoundCodeTxt.setBounds(36, 81, 631, 21);
-        contentPane.add(notFoundCodeTxt);
-
         JButton btnOk = new JButton("Ok");
         btnOk.setBounds(303, 131, 85, 21);
         contentPane.add(btnOk);
@@ -52,26 +45,37 @@ public class WelcomeToEvent extends JFrame {
         btnOk.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+                // si queda mas de media hora para que el evento comience lo manda a homepage
+                LocalDateTime eventDateTime = LocalDateTime.of(currentEvent.getDate(), currentEvent.getSchedule());
+                LocalDateTime now = LocalDateTime.now();
+                Duration duration = Duration.between(now, eventDateTime);
 
-        JButton btnGoHomePage = new JButton("Volver a inicio");
-        btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnGoHomePage.setBounds(784, 606, 140, 30);
-        contentPane.add(btnGoHomePage);
+                if (duration.toMinutes() > 30){
+                    JLabel notFoundCodeTxt = new JLabel("Desde tu perfil podrás acceder al evento\n"+" media hora antes de que comience!");
+                    notFoundCodeTxt.setFont(new Font("Tahoma", Font.PLAIN, 18));
+                    notFoundCodeTxt.setBounds(36, 81, 631, 21);
+                    contentPane.add(notFoundCodeTxt);
 
-        btnGoHomePage.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UserModel currentUser = Session.getCurrentUser();
+                    UserModel currentUser = Session.getCurrentUser();
 
-                // llamar a la ventana Homepage
-                HomePage homepage = new HomePage();
-                homepage.setVisible(true);
+                    HomePage newlog = new HomePage();
+                    newlog.setVisible(true);
 
-                // disppuse() cierra la venta
-                dispose();
+                    dispose();
+                }
+                // si queda 30 min le deja entrar
+                else{
+                    JLabel notFoundCodeTxt = new JLabel("Recuerda ser respetuos@ en\n+ el evento y pasartelo bien!");
+                    notFoundCodeTxt.setFont(new Font("Tahoma", Font.PLAIN, 18));
+                    notFoundCodeTxt.setBounds(36, 81, 631, 21);
+                    contentPane.add(notFoundCodeTxt);
+
+                    profileEditPhoto newlog = new profileEditPhoto(currentEvent);
+                    newlog.setVisible(true);
+
+                    dispose();
+
+                }
             }
         });
     }

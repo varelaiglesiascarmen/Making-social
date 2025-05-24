@@ -19,15 +19,10 @@ public class SearchEventPublic extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JTextField textFieldPostalCode;
+    private EventModel event;
 
-    /**
-     * Launch the application.
-     */
-
-    /**
-     * Create the frame.
-     */
-    public SearchEventPublic() {
+    public SearchEventPublic(EventModel event) {
+        this.event = event;
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -114,7 +109,7 @@ public class SearchEventPublic extends JFrame {
                         btnAsistir.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                WelcomeToEvent eventFound = new WelcomeToEvent();
+                                WelcomeToEvent eventFound = new WelcomeToEvent(event);
                                 eventFound.setVisible(true);
                                 dispose();
                             }

@@ -10,5 +10,15 @@ public class Session {
     public static void setCurrentUser(UserModel user) {
         currentUser = user;
     }
+
+    private static EventModel currentEvent;
+
+    public static EventModel getcurrentEvent() {
+        return currentEvent;
+    }
+
+    public static void setCurrentUser(EventModel event) {
+        currentEvent = event;
+    }
 }
 

@@ -21,15 +21,10 @@ public class SearchEventWCode extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JTextField txtCodeInsert;
+    private EventModel event;
 
-    /**
-     * Launch the application.
-     */
-
-    /**
-     * Create the frame.
-     */
-    public SearchEventWCode() {
+    public SearchEventWCode(EventModel event) {
+        this.event = event;
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -88,14 +83,16 @@ public class SearchEventWCode extends JFrame {
                     EventModel event = SearchEventWCode_DAO.buscarEventoPorId(eventId);
 
                     if (event != null) {
-                        // Si el evento existe, abrir ventana EventFound
-                        EventFound eventFound = new EventFound();
+                        // Si el evento existe, abrir ventana WelcomeToEvent
+                        WelcomeToEvent eventFound = new WelcomeToEvent(event);
                         eventFound.setVisible(true);
+
                         dispose();
                     } else {
                         // Si el evento no existe, abrir ventana EventNotFound
                         EventNotFound eventNotFound = new EventNotFound();
                         eventNotFound.setVisible(true);
+
                         dispose();
                     }
 
