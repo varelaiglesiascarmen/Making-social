@@ -61,14 +61,24 @@ public class Profile extends JFrame {
             }
         });
 
-        btnMakingSocial.addActionListener(new ActionListener() {
+        /*btnMakingSocial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // llamar a la ventana Profile
-                Profile prfl = new Profile();
+                attendedEvents prfl = new attendedEvents();
                 prfl.setVisible(true);
 
                 // disppuse() cierra la venta
+                dispose();
+            }
+        });*/
+
+        btnMakingSocial.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                UserModel currentUser = Session.getCurrentUser();
+                attendedEvents eventosAsistidosVentana = new attendedEvents(currentUser);
+                eventosAsistidosVentana.setVisible(true);
                 dispose();
             }
         });

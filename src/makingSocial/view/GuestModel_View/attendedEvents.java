@@ -1,11 +1,10 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.DAO.GuestModel_DAO.attendedEvents_DAO;
 import makingSocial.model.EventModel;
 import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
-
-import java.awt.EventQueue;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -26,7 +25,7 @@ public class attendedEvents extends JFrame {
     /**
      * Create the frame.
      */
-    public attendedEvents() {
+    public attendedEvents(UserModel currentUser) {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -44,8 +43,8 @@ public class attendedEvents extends JFrame {
         titleAttendEvent.setBounds(58, 51, 640, 90);
         contentPane.add(titleAttendEvent);
 
-        // DAO: obtener eventos asistidos por el usuario
-        /*List <EventModel> eventosAsistidos = new AttendedEvents_DAO().obtenerEventosAsistidosPorUsuario(EventModel.getID_Event());
+        UserModel currentUser = Session.getCurrentUser();
+        List<EventModel> eventosAsistidos = attendedEvents_DAO.obtenerEventosAsistidosPorUsuario(currentUser.getID_User());
 
         if (eventosAsistidos.isEmpty()) {
             JLabel sinEventos = new JLabel("¡Aún no has asistido a ningún evento! Busca tu próximo evento en la página de inicio.");
@@ -55,14 +54,13 @@ public class attendedEvents extends JFrame {
         } else {
             int y = 176;
             for (EventModel evento : eventosAsistidos) {
-                // imprime el codigo identificativo
-                JLabel lblCode = new JLabel(String.valueOf(evento.getID_Event()));
-                lblCode.setFont(new Font("Tahoma", Font.PLAIN, 20));
-                lblCode.setBounds(58, y, 583, 33);
+                JLabel lblCode = new JLabel("Evento ID: " + evento.getID_Event() + " - " + evento.getDescription1());
+                lblCode.setFont(new Font("Tahoma", Font.PLAIN, 18));
+                lblCode.setBounds(58, y, 600, 33);
                 contentPane.add(lblCode);
 
                 JButton btnExplorar = new JButton("Explorar");
-                btnExplorar.setBounds(660, y, 100, 33);
+                btnExplorar.setBounds(680, y, 120, 30);
                 contentPane.add(btnExplorar);
 
                 btnExplorar.addActionListener(new ActionListener() {
@@ -76,7 +74,8 @@ public class attendedEvents extends JFrame {
 
                 y += 50;
             }
-        }*/
+        }
+
 
         JButton btnGoHomePage = new JButton("Volver a inicio");
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
