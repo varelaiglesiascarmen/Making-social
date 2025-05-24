@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class SearchEventWCode_DAO {
 
     public static EventModel buscarEventoPorId(int eventId) {
-        String sql = "SELECT date, schedule, location, postalcode, dresscode, theme, description1, description2, allowedage, access FROM event WHERE id_event = ?";
+        String sql = "SELECT date, schedule, location, postalcode, dresscode, theme, description1, description2, allowedage, access FROM Event WHERE id_event = ?";
 
         EventModel event = null;
 

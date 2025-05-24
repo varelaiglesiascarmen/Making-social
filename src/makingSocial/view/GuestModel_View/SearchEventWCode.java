@@ -1,7 +1,9 @@
 package makingSocial.view.GuestModel_View;
 
 /*import makingSocial.DAO.GuestModel_DAO.SearchEventWCode_DAO;*/
+import makingSocial.DAO.GuestModel_DAO.SearchEventWCode_DAO;
 import makingSocial.DAO.UserProfile_DAO.SignIn_DAO;
+import makingSocial.model.EventModel;
 import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
@@ -77,46 +79,35 @@ public class SearchEventWCode extends JFrame {
             }
         });
 
-        /*btnNewButtonAttend.addActionListener(new ActionListener() {
+        btnNewButtonAttend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Crear el objeto del modelo
-                UserModel exits = new UserModel(ID_Event);
+                try {
+                    int eventId = Integer.parseInt(txtCodeInsert.getText().trim());
 
-                // Pasa el objeto usuario con sus datos
-                boolean insert = false;
-                insert = new SearchEventWCode_DAO().ejecutarInsertDeleteUpdate(exits);
+                    EventModel event = SearchEventWCode_DAO.buscarEventoPorId(eventId);
 
-                // si el codigo es correcto
-                if(exits == true){
-                    // si queda menos de media hora
-                    if(){
-                        // llamar a la ventana ProfileEditPhoto
-                        profileEditPhoto photo = new profileEditPhoto();
-                        photo.setVisible(true);
-
-                        // disppuse() cierra la venta
-                        dispose();
-                    }else{
-                        // llamar a la ventana EventFound
+                    if (event != null) {
+                        // Si el evento existe, abrir ventana EventFound
                         EventFound eventFound = new EventFound();
                         eventFound.setVisible(true);
-
-                        // disppuse() cierra la venta
+                        dispose();
+                    } else {
+                        // Si el evento no existe, abrir ventana EventNotFound
+                        EventNotFound eventNotFound = new EventNotFound();
+                        eventNotFound.setVisible(true);
                         dispose();
                     }
-                }
-                // si el codigo no existe
-                else{
-                    // llamar a la ventana EventNotFound
-                    EventNotFound eventNotFound = new EventNotFound();
-                    eventNotFound.setVisible(true);
 
-                    // disppuse() cierra la venta
-                    dispose();
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Introduce un número de ID válido.");
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Error al buscar el evento.");
                 }
             }
-        });*/
+        });
+
 
     }
 
