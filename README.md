@@ -26,11 +26,21 @@ Con **Making Social** esto dejará de pasarte.
 
 Los **usuarios deben registrarse** con sus datos básicos para poder usar la plataforma.
 
+![SINGIN](src/img/prototype/SingIn.png)
+
+Una vez registrados **deben iniciar sesión** para poder utilizar la plataforma.
+
+![LOGIN](src/img/prototype/Login.png)
+
 ---
 
 ## 🎉 Crear o buscar eventos
 
+![HOMEPAGE](src/img/prototype/HomePage.png)
+
 ### 🏗️ Crear evento
+
+![CREATEEVNT](src/img/prototype/CreateEvent.png)
 
 - Cualquier usuario puede crear un evento (público o privado).
 - Se genera un **código único** de acceso al evento.
@@ -43,6 +53,8 @@ Los **usuarios deben registrarse** con sus datos básicos para poder usar la pla
   - Tipo (público o privado)
 
 ### 🔎 Buscar evento
+
+![SEARCHEVENT](src/img/prototype/AttendedEvents.png)
 
 - Los usuarios pueden buscar eventos disponibles:
   - **Públicos:** accesibles desde la app por código postal.
@@ -63,14 +75,19 @@ Para participar en un evento, el invitado debe proporcionar:
 
 ### ✅ Datos de identificación:
 
-- Nombre visible.
-- Edad (sólo mayores de 18 años).
 - Foto de perfil tipo "ángulo americano", del día del evento.
+
+![PHOTO](src/img/prototype/profileEditPhoto.png)
+
+- Un saludo para presentarte al resto de usuarios.
+- El nick name de tu perfil de Instagram.
+
+![BIO](src/img/prototype/profileEditBIO.png)
 
 ### 🔒 Datos personales (privados hasta que haya coincidencia):
 
-- Estado civil e intención en el evento (hacer amigos, aventura, relación).
 - Tu nick name de Instagram para ser contactado.
+- Tu edad.
 
 ---
 
@@ -82,9 +99,17 @@ Pasadas **24 horas desde la hora de inicio del evento**, se activa la función d
 
 - ✅ **Conocer**: Mostrar interés en alguien.
 - ❌ **Pasar**: No estás interesado.
-- 🔁 **Volver**: Volver a perfiles anteriores.
+- 🔁 **Lo pensaré**: Volver a perfiles anteriores.
+
+![SOCIAL](src/img/prototype/socialSearch.png)
 
 > Si **dos personas se eligen mutuamente como “Conocer”**, se desbloquean sus datos personales y formas de contacto.
+
+---
+
+🖌️ Paleta de trabajo
+
+![PALETA](src/img/prototype/Paleta-de-trabajos.png)
 
 ---
 
@@ -108,9 +133,9 @@ Puedes consultar todo el proyecto aquí:
 ## 📊 Diagramas del proyecto
 
 - **Base de datos**
-![Modelo E/R](src/img/modeloE-R.png)
+![ModeloE/R](src/img/prototype/modeloE-R.png)
 - **Casos de uso** 
-![Caso Uso](src/img/casoUso.png)
+![CasoUso](src/img/prototype/casoUso.png)
 
 ---
 
