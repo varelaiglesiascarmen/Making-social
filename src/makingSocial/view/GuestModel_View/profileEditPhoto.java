@@ -22,7 +22,7 @@ public class profileEditPhoto extends JFrame {
         this.currentEvent = currentEvent;
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 960, 700);
+        setBounds(100, 100, 1012, 703);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -60,15 +60,15 @@ public class profileEditPhoto extends JFrame {
         txtrDebesHacerteUna.setTabSize(0);
         txtrDebesHacerteUna.setFont(new Font("Tahoma", Font.PLAIN, 14));
         txtrDebesHacerteUna.setText(
-                "Debes hacerte una foto del día del evento. ¡Así podrán reconocerte rápidamente!\n\n" +
+                "Debes hacerte una foto del día del evento.\n"+" ¡Así podrán reconocerte rápidamente!\n" +
                         "Debes ser respetuos@ con el resto de asistentes del evento.\n\n" +
-                        "No podrás ver el resto de invitados hasta que no pasen 24 hrs. \n¡Lo hacemos para que puedas disfrutar del evento con tus amigos y no te quedes pegado al móvil!\n\n" +
+                        "No podrás ver el resto de invitados hasta que no pasen 24 hrs. \n¡Lo hacemos para que puedas disfrutar del evento con tus amigos \n"+" y no te quedes pegado al móvil!\n\n" +
                         "¡Que disfrutes del evento!"
         );
         txtrDebesHacerteUna.setWrapStyleWord(true);
         txtrDebesHacerteUna.setEditable(false);
         txtrDebesHacerteUna.setBackground(UIManager.getColor("Button.background"));
-        txtrDebesHacerteUna.setBounds(524, 187, 352, 255);
+        txtrDebesHacerteUna.setBounds(524, 187, 448, 255);
         contentPane.add(txtrDebesHacerteUna);
 
         btnGoHomePage.addActionListener(e -> {

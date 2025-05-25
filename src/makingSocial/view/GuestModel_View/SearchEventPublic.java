@@ -127,7 +127,6 @@ public class SearchEventPublic extends JFrame {
             }
         });
 
-
         btnGoHomePage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

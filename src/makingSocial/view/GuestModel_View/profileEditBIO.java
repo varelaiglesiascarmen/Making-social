@@ -44,7 +44,7 @@ public class profileEditBIO extends JFrame {
 
         JButton btnNewButtonMakingSocial = new JButton("Making Social!");
         btnNewButtonMakingSocial.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnNewButtonMakingSocial.setBounds(625, 486, 127, 40);
+        btnNewButtonMakingSocial.setBounds(625, 529, 155, 40);
         contentPane.add(btnNewButtonMakingSocial);
 
         JButton btnGoHomePage = new JButton("Volver a inicio");

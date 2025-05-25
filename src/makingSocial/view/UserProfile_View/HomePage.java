@@ -63,7 +63,7 @@ public class HomePage extends JFrame {
         contentPane.add(btnAttendEvent);
 
         // Botón de perfil (esquina superior izquierda)
-        JButton btnProfile = new JButton("ImgPerfil");
+        JButton btnProfile = new JButton("Perfil");
         btnProfile.setFont(new Font("Tahoma", Font.PLAIN, 14));
         btnProfile.setBounds(10, 10, 100, 40);
         contentPane.add(btnProfile);

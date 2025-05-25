@@ -17,18 +17,18 @@ public class WelcomeToEvent extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-    private EventModel currentEvent;
+    private EventModel event;
     private String window;
     private JLabel messageLabel;
 
-    public WelcomeToEvent(String window, EventModel currentEvent) {
-        this.currentEvent = currentEvent;
+    public WelcomeToEvent(String window, EventModel event) {
+        this.event = event;
         this.window = window;
         setupUI();
     }
 
     public WelcomeToEvent(EventModel currentEvent) {
-        this.currentEvent = currentEvent;
+        this.event = currentEvent;
         this.window = ""; // o null, según prefieras
         setupUI();
     }
@@ -68,7 +68,7 @@ public class WelcomeToEvent extends JFrame {
                         dispose();
                         break;
                     default:
-                        LocalDateTime eventDateTime = LocalDateTime.of(currentEvent.getDate(), currentEvent.getSchedule());
+                        LocalDateTime eventDateTime = LocalDateTime.of(event.getDate(), event.getSchedule());
                         LocalDateTime now = LocalDateTime.now();
                         Duration duration = Duration.between(now, eventDateTime);
 
@@ -77,7 +77,7 @@ public class WelcomeToEvent extends JFrame {
                             newlog2.setVisible(true);
                             dispose();
                         } else {
-                            profileEditPhoto newlog3 = new profileEditPhoto(currentEvent);
+                            profileEditPhoto newlog3 = new profileEditPhoto(event);
                             newlog3.setVisible(true);
                             dispose();
                         }
@@ -94,7 +94,7 @@ public class WelcomeToEvent extends JFrame {
                 messageLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
                 break;
             default:
-                LocalDateTime eventDateTime = LocalDateTime.of(currentEvent.getDate(), currentEvent.getSchedule());
+                LocalDateTime eventDateTime = LocalDateTime.of(event.getDate(), event.getSchedule());
                 LocalDateTime now = LocalDateTime.now();
                 Duration duration = Duration.between(now, eventDateTime);
 

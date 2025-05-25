@@ -93,7 +93,6 @@ public class SearchEventWCode extends JFrame {
                         EventNotFound eventNotFound = new EventNotFound();
                         eventNotFound.setVisible(true);
 
-                        dispose();
                     }
 
                 } catch (NumberFormatException ex) {
