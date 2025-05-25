@@ -36,6 +36,12 @@ public class UserModel {
     }
 
     // constructor Login
+    public UserModel(int ID_User,int Age, String Name) {
+        this.ID_User = ID_User;
+        this.Age = Age;
+        this.Name = Name;
+    }
+
     public UserModel(String NickName, String Password) {
         this.NickName = NickName;
         this.Password = Password;
