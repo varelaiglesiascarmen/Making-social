@@ -109,7 +109,7 @@ public class SearchEventPublic extends JFrame {
                         btnAsistir.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                WelcomeToEvent eventFound = new WelcomeToEvent("default",event);
+                                WelcomeToEvent eventFound = new WelcomeToEvent("default",evento);
                                 eventFound.setVisible(true);
                                 dispose();
                             }
