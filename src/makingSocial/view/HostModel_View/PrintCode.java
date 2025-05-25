@@ -51,6 +51,11 @@ public class PrintCode extends JFrame {
         summaryTitle.setBounds(113, 264, 259, 50);
         contentPane.add(summaryTitle);
 
+        String resumenTexto = generarResumen(event);
+        System.out.println("Resumen generado:\n" + resumenTexto);
+
+        summaryArea = new JTextArea(resumenTexto);
+
         summaryArea = new JTextArea(generarResumen(event));
         summaryArea.setFont(new Font("Tahoma", Font.PLAIN, 20));
         summaryArea.setEditable(false);
