@@ -109,7 +109,7 @@ Pasadas **24 horas desde la hora de inicio del evento**, se activa la función d
 
 🖌️ Paleta de trabajo
 
-![PALETA](src/img/prototype/Paleta-de-trabajos.png)
+![PALETA](src/img/prototype/Paleta-de-trabajo.png)
 
 ---
 
