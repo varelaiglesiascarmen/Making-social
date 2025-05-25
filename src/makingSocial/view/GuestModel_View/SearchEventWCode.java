@@ -83,13 +83,13 @@ public class SearchEventWCode extends JFrame {
                     EventModel event = SearchEventWCode_DAO.buscarEventoPorId(eventId);
 
                     if (event != null) {
-                        // Si el evento existe, abrir ventana WelcomeToEvent
-                        WelcomeToEvent eventFound = new WelcomeToEvent("default",event);
+                        // CORRECTO: Se usa el constructor que sí inicializa la GUI
+                        WelcomeToEvent eventFound = new WelcomeToEvent(event);
+                        eventFound.setWindow("default"); // Opcional, si usas esta variable
                         eventFound.setVisible(true);
 
                         dispose();
                     } else {
-                        // Si el evento no existe, abrir ventana EventNotFound
                         EventNotFound eventNotFound = new EventNotFound();
                         eventNotFound.setVisible(true);
 
