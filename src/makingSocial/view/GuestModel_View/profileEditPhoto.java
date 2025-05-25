@@ -18,6 +18,7 @@ public class profileEditPhoto extends JFrame {
     private EventModel currentEvent;
     private String imagePath = ""; // Almacena la ruta de la imagen
     private UserModel currentUser;
+    private JLabel lblPhoto;
 
     public profileEditPhoto(EventModel currentEvent) {
         this.currentEvent = currentEvent;
@@ -45,9 +46,14 @@ public class profileEditPhoto extends JFrame {
         btnGoHomePage.setBounds(784, 606, 140, 30);
         contentPane.add(btnGoHomePage);
 
+        lblPhoto = new JLabel();
+        lblPhoto.setBounds(76, 127, 387, 427);
+        lblPhoto.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        contentPane.add(lblPhoto);
+
         JButton btnSmile = new JButton("¡Sonríe!");
         btnSmile.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnSmile.setBounds(179, 581, 127, 40);
+        btnSmile.setBounds(207, 578, 127, 40);
         contentPane.add(btnSmile);
 
         JButton btnNewButtonMakingSocial = new JButton("Making Social!");
@@ -86,17 +92,27 @@ public class profileEditPhoto extends JFrame {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setDialogTitle("Selecciona una imagen de perfil");
             fileChooser.setAcceptAllFileFilterUsed(false);
-            fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Imágenes (.jpg, .png, .jpeg)", "jpg", "jpeg", "png"));
-            int result = fileChooser.showOpenDialog(null);
+            fileChooser.addChoosableFileFilter(
+                    new FileNameExtensionFilter("Imágenes (.jpg, .png, .jpeg)", "jpg","jpeg","png")
+            );
+            int result = fileChooser.showOpenDialog(this);
             if (result == JFileChooser.APPROVE_OPTION) {
                 File selectedFile = fileChooser.getSelectedFile();
-                imagePath = selectedFile.getAbsolutePath(); // Guardamos la ruta
-                System.out.println("Imagen seleccionada: " + imagePath);
+                imagePath = selectedFile.getAbsolutePath();
                 fotoSeleccionada = true;
-            } else {
-                JOptionPane.showMessageDialog(null, "Debes seleccionar una imagen para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+
+                // Escala imagen
+                ImageIcon icon2 = new ImageIcon(imagePath);
+                Image img = icon2.getImage()
+                        .getScaledInstance(
+                                lblPhoto.getWidth(),
+                                lblPhoto.getHeight(),
+                                Image.SCALE_SMOOTH
+                        );
+                lblPhoto.setIcon(new ImageIcon(img));
             }
         });
+
 
         btnNewButtonMakingSocial.addActionListener(e -> {
             if (fotoSeleccionada) {

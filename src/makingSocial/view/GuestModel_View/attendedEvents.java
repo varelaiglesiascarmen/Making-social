@@ -78,7 +78,7 @@ public class attendedEvents extends JFrame {
         } else {
             int y = 176;
             for (EventModel evento : eventosAsistidos) {
-                JLabel lblCode = new JLabel("Evento ID: " + evento.getID_Event() + " - " + evento.getDescription1());
+                JLabel lblCode = new JLabel("Evento ID: " + evento.getID_Event());
                 lblCode.setFont(new Font("Tahoma", Font.PLAIN, 18));
                 lblCode.setBounds(58, y, 600, 33);
                 contentPane.add(lblCode);
