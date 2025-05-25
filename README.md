@@ -133,9 +133,9 @@ Puedes consultar todo el proyecto aquí:
 ## 📊 Diagramas del proyecto
 
 - **Base de datos**
-![ModeloE/R](src/img/prototype/modeloE-R.png)
+![Modelo E/R](src/img/modeloE-R.png)
 - **Casos de uso** 
-![CasoUso](src/img/prototype/casoUso.png)
+![Caso Uso](src/img/casoUso.png)
 
 ---
 
