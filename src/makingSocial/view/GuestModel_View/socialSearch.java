@@ -4,8 +4,6 @@ import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -43,13 +41,15 @@ public class socialSearch extends JFrame {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/logoPequeno.png"));
         setIconImage(icon.getImage());
 
-        JLabel lblNewLabel = new JLabel("Nombre - Lorem Ipsum");
-        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
-        lblNewLabel.setBounds(66, 40, 337, 77);
-        contentPane.add(lblNewLabel);
+        // aqui debe salir el nombre del otro user
+        JLabel lblUserName = new JLabel("nombre de la persona");
+        lblUserName.setFont(new Font("Tahoma", Font.PLAIN, 30));
+        lblUserName.setBounds(66, 40, 337, 77);
+        contentPane.add(lblUserName);
 
+        // aqui debe salir la foto del otro user
         JLabel lblPhoto = new JLabel("New label");
-        lblPhoto.setIcon(new ImageIcon("C:\\Users\\carva\\Documents\\Making-social\\Making-social-Git\\src\\makingSocial\\profile.jpg"));
+        lblPhoto.setIcon(new ImageIcon("x"));
         lblPhoto.setBounds(65, 127, 355, 481);
         contentPane.add(lblPhoto);
 
@@ -79,18 +79,20 @@ public class socialSearch extends JFrame {
         btnNewButton_1_2_1.setBounds(711, 527, 98, 40);
         contentPane.add(btnNewButton_1_2_1);
 
-        JLabel lblNewLabelEdad = new JLabel("Edad");
-        lblNewLabelEdad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblNewLabelEdad.setBounds(492, 361, 53, 30);
-        contentPane.add(lblNewLabelEdad);
+        // solo debe salir en caso de coincidencia (que el otro user le halla dado a conocer)
+        JLabel lblNewLabelRRSS = new JLabel("RRSS");
+        lblNewLabelRRSS.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblNewLabelRRSS.setBounds(492, 420, 53, 30);
+        contentPane.add(lblNewLabelRRSS);
 
-        JLabel lblLoremEdad = new JLabel("Lorem");
-        lblLoremEdad.setBackground(UIManager.getColor("Button.background"));
-        lblLoremEdad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblLoremEdad.setBounds(555, 361, 74, 30);
-        contentPane.add(lblLoremEdad);
+        JLabel lblLoremRRSS = new JLabel("Lorem");
+        lblLoremRRSS.setBackground(UIManager.getColor("Button.background"));
+        lblLoremRRSS.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblLoremRRSS.setBounds(555, 420, 74, 30);
+        contentPane.add(lblLoremRRSS);
 
-        JLabel lblLoremIpsumBIO = new JLabel("Lorem Ipsum");
+        // aqui debe salir la BIO del otro user
+        JLabel lblLoremIpsumBIO = new JLabel("Saludo (BIO)");
         lblLoremIpsumBIO.setVerticalAlignment(SwingConstants.TOP);
         lblLoremIpsumBIO.setFont(new Font("Tahoma", Font.PLAIN, 40));
         lblLoremIpsumBIO.setBackground(UIManager.getColor("Button.background"));
@@ -101,6 +103,18 @@ public class socialSearch extends JFrame {
         btn.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btn.setBounds(784, 606, 140, 30);
         contentPane.add(btn);
+
+        // aqui debe salir la edad del otro user
+        JLabel lblLabelEdad = new JLabel("Edad");
+        lblLabelEdad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblLabelEdad.setBounds(492, 460, 53, 30);
+        contentPane.add(lblLabelEdad);
+
+        JLabel lblLoremEdad = new JLabel("Lorem");
+        lblLoremEdad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblLoremEdad.setBackground(UIManager.getColor("Button.background"));
+        lblLoremEdad.setBounds(555, 460, 74, 30);
+        contentPane.add(lblLoremEdad);
 
         btnGoHomePage.addActionListener(new ActionListener() {
             @Override
@@ -115,5 +129,15 @@ public class socialSearch extends JFrame {
                 dispose();
             }
         });
+
+        /* hay que contemplar que
+
+        case 1: que muestre los usuarios
+
+        case 2: cuando ya ha decidido si o no en todos los usuarios mensaje de "Ya no hay mas usuarios para interactuar. ¡Espero que disfrutases del evento!"
+
+        default: si no ha habido otros registros salga un mensaje "¡Vaya parece que no ha habido usuarios en este evento!"
+
+        */
     }
 }
