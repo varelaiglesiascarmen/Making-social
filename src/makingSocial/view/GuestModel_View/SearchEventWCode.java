@@ -84,7 +84,7 @@ public class SearchEventWCode extends JFrame {
 
                     if (event != null) {
                         // Si el evento existe, abrir ventana WelcomeToEvent
-                        WelcomeToEvent eventFound = new WelcomeToEvent(event);
+                        WelcomeToEvent eventFound = new WelcomeToEvent("default",event);
                         eventFound.setVisible(true);
 
                         dispose();

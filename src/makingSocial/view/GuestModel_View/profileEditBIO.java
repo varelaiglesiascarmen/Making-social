@@ -156,7 +156,7 @@ public class profileEditBIO extends JFrame {
                     return;
                 }
 
-                WelcomeToEvent eventFound = new WelcomeToEvent(event);
+                WelcomeToEvent eventFound = new WelcomeToEvent("profileEditBIO",event);
                 eventFound.setVisible(true);
 
                 dispose();
