@@ -4,33 +4,68 @@ import makingSocial.controller.ConexionMySQL;
 import makingSocial.controller.ConexionSingleton;
 import makingSocial.model.EventModel;
 import makingSocial.model.UserModel;
+
+import java.io.*;
 import java.sql.*;
 
 public class profileEditBIO_DAO {
 
     public int saveGuestModel(UserModel currentUser, String photoPath, String civilStatus, String rrss, String bio) {
         String sql = "INSERT INTO GuestModel (ID_User, Photo, CivilStatus, RRSS, BIO, Attendance) VALUES (?, ?, ?, ?, ?, ?)";
+        FileInputStream inputStream = null;
+
         try {
             ConexionMySQL conexion = ConexionSingleton.getConexion();
             Connection con = conexion.getConnection();
+
             try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 stmt.setInt(1, currentUser.getID_User());
-                stmt.setString(2, photoPath); // Guardamos la ruta de la imagen
+
+                if (photoPath != null && !photoPath.isEmpty()) {
+                    File file = new File(photoPath);
+
+                    if (file.exists() && file.isFile()) {
+                        inputStream = new FileInputStream(file); // Abrimos sin try-with-resources
+
+                        // Pasamos el InputStream y su longitud
+                        stmt.setBinaryStream(2, inputStream, (int) file.length());
+                    } else {
+                        stmt.setNull(2, Types.BLOB);
+                    }
+                } else {
+                    stmt.setNull(2, Types.BLOB);
+                }
+
                 stmt.setString(3, civilStatus);
                 stmt.setString(4, rrss);
                 stmt.setString(5, bio);
                 stmt.setString(6, "");
+
+                // Ejecutamos después de asegurar que el InputStream sigue abierto
                 int affectedRows = stmt.executeUpdate();
+
                 if (affectedRows == 0) return -1;
+
                 try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
-                        return generatedKeys.getInt(1); // ID_GuestModel generado
+                        return generatedKeys.getInt(1);
                     } else {
                         return -1;
                     }
                 }
+
+            } finally {
+                // Cerramos el InputStream manualmente después de usarlo
+                if (inputStream != null) {
+                    try {
+                        inputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-        } catch (SQLException e) {
+
+        } catch (SQLException | FileNotFoundException e) {
             e.printStackTrace();
             return -1;
         } finally {
