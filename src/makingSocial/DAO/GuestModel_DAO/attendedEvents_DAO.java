@@ -10,19 +10,20 @@ import java.util.List;
 
 public class attendedEvents_DAO {
 
-    public static List<EventModel> obtenerEventosAsistidosPorUsuario(int userId) {
+    public static List<EventModel> obtenerEventosAsistidosPorUsuario(int userID_User) {
         List<EventModel> eventos = new ArrayList<>();
 
         String sql = "SELECT e.ID_Event, e.date, e.schedule, e.location, e.PostalCode, " +
                 "e.dressCode, e.theme, e.description1, e.description2, e.allowedAge, e.access, e.ID_Host " +
                 "FROM Logs l " +
+                "JOIN GuestModel g ON l.ID_GuestModel = g.ID_GuestModel " +
                 "JOIN Event e ON l.ID_Event = e.ID_Event " +
-                "WHERE l.ID_GuestModel = ?";
+                "WHERE g.ID_User = ?";
 
         try {
             Connection con = ConexionSingleton.getConexion().getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, userId);
+            stmt.setInt(1, userID_User); // Ahora filtramos por ID_User
 
             ResultSet rs = stmt.executeQuery();
 

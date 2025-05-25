@@ -5,11 +5,9 @@ import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
 
-import java.awt.EventQueue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,27 +18,23 @@ public class Profile extends JFrame {
     private EventModel currentEvent;
     private UserModel currentUser;
 
+    // ✅ Constructor que recibe UserModel (lo usas desde HomePage)
     public Profile(UserModel currentUser) {
-        this.currentUser = Session.getCurrentUser();
-    }
+        this.currentUser = currentUser;
 
-    public Profile(EventModel currentEvent) {
-        this.currentEvent = currentEvent;
-    }
-
-    public Profile() {
-        this.currentEvent = currentEvent;
+        // ✅ Añadimos aquí toda la GUI
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-        ImageIcon icon = new ImageIcon(getClass().getResource("/img/logoPequeno.png"));
-        setIconImage(icon.getImage());
-
         setContentPane(contentPane);
         contentPane.setLayout(null);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/logoPequeno.png"));
+        if (icon.getImageLoadStatus() == MediaTracker.COMPLETE) {
+            setIconImage(icon.getImage());
+        }
 
         JButton btnMakingSocial = new JButton("Making Social!");
         btnMakingSocial.setFont(new Font("Tahoma", Font.PLAIN, 40));
@@ -55,13 +49,8 @@ public class Profile extends JFrame {
         btnGoHomePage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UserModel currentUser = Session.getCurrentUser();
-
-                // llamar a la ventana Homepage
                 HomePage homepage = new HomePage();
                 homepage.setVisible(true);
-
-                // disppuse() cierra la venta
                 dispose();
             }
         });
@@ -74,5 +63,18 @@ public class Profile extends JFrame {
                 dispose();
             }
         });
+
+        // ✅ Mostrar la ventana
+        setVisible(true); // <--- Ahora sí aparece
+    }
+
+    // Otros constructores que ya tienes (no los modificamos)
+
+    public Profile(EventModel currentEvent) {
+        this.currentEvent = currentEvent;
+    }
+
+    public Profile() {
+        this.currentEvent = currentEvent;
     }
 }
