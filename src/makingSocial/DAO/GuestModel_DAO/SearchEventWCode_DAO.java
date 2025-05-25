@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class SearchEventWCode_DAO {
 
     public static EventModel buscarEventoPorId(int eventId) {
-        String sql = "SELECT date, schedule, location, postalcode, dresscode, theme, description1, description2, allowedage, access FROM Event WHERE id_event = ?";
+        String sql = "SELECT id_event, id_host, date, schedule, location, postalcode, dresscode, theme, description1, description2, allowedage, access FROM Event WHERE id_event = ?";
 
         EventModel event = null;
 
@@ -28,6 +28,7 @@ public class SearchEventWCode_DAO {
 
                 if (rs.next()) {
                     event = new EventModel(
+                            rs.getInt("id_event"),
                             rs.getDate("date").toLocalDate(),
                             rs.getTime("schedule").toLocalTime(),
                             rs.getString("location"),
@@ -37,7 +38,8 @@ public class SearchEventWCode_DAO {
                             rs.getString("description1"),
                             rs.getString("description2"),
                             rs.getInt("allowedage"),
-                            rs.getBoolean("access")
+                            rs.getBoolean("access"),
+                            rs.getInt("id_host")
                     );
                 }
             }
