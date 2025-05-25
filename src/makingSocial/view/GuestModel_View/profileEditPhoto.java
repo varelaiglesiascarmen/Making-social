@@ -17,9 +17,13 @@ public class profileEditPhoto extends JFrame {
     private boolean fotoSeleccionada = false;
     private EventModel currentEvent;
     private String imagePath = ""; // Almacena la ruta de la imagen
+    private UserModel currentUser;
 
     public profileEditPhoto(EventModel currentEvent) {
         this.currentEvent = currentEvent;
+        this.currentUser = Session.getCurrentUser();
+        this.imagePath   = imagePath;
+
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1012, 703);
@@ -96,8 +100,9 @@ public class profileEditPhoto extends JFrame {
 
         btnNewButtonMakingSocial.addActionListener(e -> {
             if (fotoSeleccionada) {
-                profileEditBIO profileBIO = new profileEditBIO(currentEvent, imagePath); // Pasamos la ruta
-                profileBIO.setVisible(true);
+                profileEditBIO ventana = new profileEditBIO(currentUser, currentEvent, imagePath);
+                ventana.setVisible(true);
+
                 dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Primero debes subir una foto con el botón '¡Sonríe!'", "Foto requerida", JOptionPane.WARNING_MESSAGE);

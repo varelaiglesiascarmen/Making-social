@@ -21,13 +21,16 @@ public class attendedEvents extends JFrame {
     private UserModel currentUser;
 
     public attendedEvents(UserModel currentUser) {
+        this();
         this.currentUser = currentUser;
     }
 
     public attendedEvents(EventModel currentEvent) {
+        this();
         this.currentEvent = currentEvent;
     }
     public attendedEvents() {
+
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);

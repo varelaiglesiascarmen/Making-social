@@ -8,7 +8,6 @@ import makingSocial.view.UserProfile_View.HomePage;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.*;
 
 public class profileEditBIO extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -17,10 +16,13 @@ public class profileEditBIO extends JFrame {
     private JTextField textField_1;
     private EventModel event;
     private String photoPath; // Ruta de la imagen seleccionada
+    private UserModel currentUser;
 
-    public profileEditBIO(EventModel event, String photoPath) {
+    public profileEditBIO(UserModel currentUser, EventModel event, String photoPath) {
+        this.currentUser  = Session.getCurrentUser();
         this.event = event;
         this.photoPath = photoPath;
+
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -32,10 +34,10 @@ public class profileEditBIO extends JFrame {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/logoPequeno.png"));
         setIconImage(icon.getImage());
 
-        JLabel lblNewLabel = new JLabel("Nombre - Lorem Ipsum");
-        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
-        lblNewLabel.setBounds(66, 40, 337, 77);
-        contentPane.add(lblNewLabel);
+        JLabel lblName = new JLabel("¡Hola, " + this.currentUser.getName() + "!");
+        lblName.setFont(new Font("Tahoma", Font.PLAIN, 30));
+        lblName.setBounds(66, 40, 337, 77);
+        contentPane.add(lblName);
 
         JLabel lblPhoto = new JLabel("New label");
         lblPhoto.setIcon(new ImageIcon(photoPath)); // Mostramos la imagen seleccionada
@@ -108,7 +110,6 @@ public class profileEditBIO extends JFrame {
         contentPane.add(lblSoloLoVern);
 
         btnGoHomePage.addActionListener(e -> {
-            UserModel currentUser = Session.getCurrentUser();
             HomePage homepage = new HomePage();
             homepage.setVisible(true);
             dispose();
@@ -138,7 +139,6 @@ public class profileEditBIO extends JFrame {
 
             String bio = textField.getText();
 
-            UserModel currentUser = Session.getCurrentUser();
             profileEditBIO_DAO dao = new profileEditBIO_DAO();
             int guestID = dao.saveGuestModel(currentUser, photoPath, civilStatus, insta, bio);
 
