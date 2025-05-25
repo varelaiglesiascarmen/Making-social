@@ -19,10 +19,10 @@ public class SearchEventPublic extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JTextField textFieldPostalCode;
-    private EventModel event;
+    private EventModel currentEvent;
 
-    public SearchEventPublic(EventModel event) {
-        this.event = event;
+    public SearchEventPublic(EventModel currentEvent) {
+        this.currentEvent = currentEvent;
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -93,16 +93,40 @@ public class SearchEventPublic extends JFrame {
                         horario.setName("evento");
                         contentPane.add(horario);
 
+                        // Comprueba Description1
+                        String Description1;
+                        if (evento.getDescription1() != null && !evento.getDescription1().isEmpty()) {
+                            Description1 = evento.getDescription1();
+                        } else {
+                            Description1 = "No hay dress code";
+                        }
+
+                        // Comprueba Description2
+                        String Description2;
+                        if (evento.getDescription2() != null && !evento.getDescription2().isEmpty()) {
+                            Description2 = evento.getDescription2();
+                        } else {
+                            Description2 = "No hay temática";
+                        }
+
                         //toString
-                        JLabel descripcion = new JLabel(evento.toString());
+                        String descriptionText = String.format(
+                                "Código de vestimenta: %s | Edad permitida: %d | Temática: %s",
+                                Description1,
+                                evento.getAllowedAge(),
+                                Description2
+                        );
+
+                        JLabel descripcion = new JLabel(descriptionText);
                         descripcion.setFont(new Font("Tahoma", Font.PLAIN, 15));
-                        descripcion.setBounds(173, y + 36, 562, 33);
+                        descripcion.setBounds(173, y + 40, 650, 33);
                         descripcion.setName("evento");
+
                         contentPane.add(descripcion);
 
                         JButton btnAsistir = new JButton("Asistir");
                         btnAsistir.setFont(new Font("Tahoma", Font.PLAIN, 15));
-                        btnAsistir.setBounds(719, y, 83, 27);
+                        btnAsistir.setBounds(719, y + 20, 83, 27);
                         btnAsistir.setName("evento");
                         contentPane.add(btnAsistir);
 
@@ -116,7 +140,7 @@ public class SearchEventPublic extends JFrame {
                         });
 
                         // espacio entre eventos
-                        y += 80;
+                        y += 100;
                     }
                 }
 
