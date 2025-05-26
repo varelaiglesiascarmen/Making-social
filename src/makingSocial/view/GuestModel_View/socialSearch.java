@@ -1,63 +1,47 @@
 package makingSocial.view.GuestModel_View;
 
-import java.awt.EventQueue;
+import makingSocial.DAO.GuestModel_DAO.socialSearch_DAO;
+import makingSocial.controller.MatchManager;
+import makingSocial.model.EventModel;
+import makingSocial.model.Session;
+import makingSocial.model.GuestModel;
+import makingSocial.model.UserModel;
+import makingSocial.view.UserProfile_View.HomePage;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.UIManager;
-import javax.swing.SwingConstants;
+import java.awt.event.*;
+import java.awt.*;
+import java.util.List;
 
 public class socialSearch extends JFrame {
-
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    socialSearch frame = new socialSearch();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+    private EventModel currentEvent;
 
-    /**
-     * Create the frame.
-     */
-    public socialSearch() {
+    private List<GuestModel> guestList;
+    private int currentIndex = 0;
+
+    public socialSearch(EventModel currentEvent) {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/logoPequeno.png"));
         setIconImage(icon.getImage());
 
-        JLabel lblNewLabel = new JLabel("Nombre - Lorem Ipsum");
-        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
-        lblNewLabel.setBounds(66, 40, 337, 77);
-        contentPane.add(lblNewLabel);
+        JLabel lblUserName = new JLabel("nombre de la persona");
+        lblUserName.setFont(new Font("Tahoma", Font.PLAIN, 30));
+        lblUserName.setBounds(66, 40, 337, 77);
+        contentPane.add(lblUserName);
 
         JLabel lblPhoto = new JLabel("New label");
-        lblPhoto.setIcon(new ImageIcon("C:\\Users\\carva\\Documents\\Making-social\\Making-social-Git\\src\\makingSocial\\profile.jpg"));
+        lblPhoto.setIcon(new ImageIcon("x"));
         lblPhoto.setBounds(65, 127, 355, 481);
         contentPane.add(lblPhoto);
 
@@ -65,40 +49,31 @@ public class socialSearch extends JFrame {
         btnNewButton_1.setBounds(603, 527, 98, 40);
         contentPane.add(btnNewButton_1);
 
-
         JButton btnGoHomePage = new JButton("Volver a inicio");
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnGoHomePage.setBounds(784, 606, 140, 30);
         contentPane.add(btnGoHomePage);
 
         JButton btnNewButton_1_2 = new JButton("Conocer");
-        btnNewButton_1_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
         btnNewButton_1_2.setBounds(492, 527, 98, 40);
         contentPane.add(btnNewButton_1_2);
 
         JButton btnNewButton_1_2_1 = new JButton("Pasar");
-        btnNewButton_1_2_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
         btnNewButton_1_2_1.setBounds(711, 527, 98, 40);
         contentPane.add(btnNewButton_1_2_1);
 
-        JLabel lblNewLabelEdad = new JLabel("Edad");
-        lblNewLabelEdad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblNewLabelEdad.setBounds(492, 361, 53, 30);
-        contentPane.add(lblNewLabelEdad);
+        JLabel lblNewLabelRRSS = new JLabel("RRSS");
+        lblNewLabelRRSS.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblNewLabelRRSS.setBounds(492, 420, 53, 30);
+        contentPane.add(lblNewLabelRRSS);
 
-        JLabel lblLoremEdad = new JLabel("Lorem");
-        lblLoremEdad.setBackground(UIManager.getColor("Button.background"));
-        lblLoremEdad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblLoremEdad.setBounds(555, 361, 74, 30);
-        contentPane.add(lblLoremEdad);
+        JLabel lblLoremRRSS = new JLabel("Lorem");
+        lblLoremRRSS.setBackground(UIManager.getColor("Button.background"));
+        lblLoremRRSS.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblLoremRRSS.setBounds(555, 420, 74, 30);
+        contentPane.add(lblLoremRRSS);
 
-        JLabel lblLoremIpsumBIO = new JLabel("Lorem Ipsum");
+        JLabel lblLoremIpsumBIO = new JLabel("Saludo (BIO)");
         lblLoremIpsumBIO.setVerticalAlignment(SwingConstants.TOP);
         lblLoremIpsumBIO.setFont(new Font("Tahoma", Font.PLAIN, 40));
         lblLoremIpsumBIO.setBackground(UIManager.getColor("Button.background"));
@@ -109,5 +84,83 @@ public class socialSearch extends JFrame {
         btn.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btn.setBounds(784, 606, 140, 30);
         contentPane.add(btn);
+
+        JLabel lblLabelEdad = new JLabel("Edad");
+        lblLabelEdad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblLabelEdad.setBounds(492, 460, 53, 30);
+        contentPane.add(lblLabelEdad);
+
+        JLabel lblLoremEdad = new JLabel("Lorem");
+        lblLoremEdad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblLoremEdad.setBackground(UIManager.getColor("Button.background"));
+        lblLoremEdad.setBounds(555, 460, 74, 30);
+        contentPane.add(lblLoremEdad);
+
+        btnGoHomePage.addActionListener(e -> {
+            HomePage homepage = new HomePage();
+            homepage.setVisible(true);
+            dispose();
+        });
+
+        loadData(lblUserName, lblPhoto, lblLoremIpsumBIO, lblLoremRRSS, lblLoremEdad);
+
+        // Acciones de los botones
+        ActionListener nextProfileAction = e -> nextProfile(lblUserName, lblPhoto, lblLoremIpsumBIO, lblLoremRRSS, lblLoremEdad);
+
+        btnNewButton_1_2_1.addActionListener(nextProfileAction); // Pasar
+        btnNewButton_1.addActionListener(nextProfileAction);     // No conocer
+        btnNewButton_1_2.addActionListener(nextProfileAction);   // Conocer
+    }
+
+    private void loadData(JLabel lblUserName, JLabel lblPhoto, JLabel lblBio, JLabel lblRRSS, JLabel lblEdad) {
+        if (currentEvent == null) {
+            JOptionPane.showMessageDialog(this, "No hay evento seleccionado.");
+            dispose();
+            return;
+        }
+
+        guestList = socialSearch_DAO.getGuestsByEvent(currentEvent.getID_Event());
+
+        if (guestList.isEmpty()) {
+            // Muestra mensaje de que no hay usuarios
+        } else {
+            showProfile(0, lblUserName, lblPhoto, lblBio, lblRRSS, lblEdad);
+        }
+    }
+
+    private void showProfile(int index, JLabel lblUserName, JLabel lblPhoto, JLabel lblBio, JLabel lblRRSS, JLabel lblEdad) {
+        if (index < 0 || index >= guestList.size()) {
+            JOptionPane.showMessageDialog(this, "Ya no quedan más usuarios para revisar.");
+            dispose();
+            return;
+        }
+
+        GuestModel guest = guestList.get(index);
+        Session.setCurrentGuest(guest);
+
+        // Mostrar datos
+        lblUserName.setText(guest.getName());
+
+        if (guest.getPhoto() != null && guest.getPhoto().length > 0) {
+            ImageIcon icon = new ImageIcon(guest.getPhoto());
+            Image img = icon.getImage().getScaledInstance(lblPhoto.getWidth(), lblPhoto.getHeight(), Image.SCALE_SMOOTH);
+            lblPhoto.setIcon(new ImageIcon(img));
+        } else {
+            lblPhoto.setIcon(new ImageIcon("x")); // Imagen por defecto
+        }
+
+        lblBio.setText("Saludo (" + guest.getCivilStatus() + ")");
+        lblRRSS.setText(guest.getRRSS());
+        lblEdad.setText(String.valueOf(guest.getAge()));
+    }
+
+    private void nextProfile(JLabel lblUserName, JLabel lblPhoto, JLabel lblBio, JLabel lblRRSS, JLabel lblEdad) {
+        currentIndex++;
+        if (currentIndex < guestList.size()) {
+            showProfile(currentIndex, lblUserName, lblPhoto, lblBio, lblRRSS, lblEdad);
+        } else {
+            JOptionPane.showMessageDialog(this, "Has terminado de revisar todos los perfiles.");
+            dispose();
+        }
     }
 }

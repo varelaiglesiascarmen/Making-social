@@ -1,69 +1,53 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.DAO.GuestModel_DAO.profileEditBIO_DAO;
+import makingSocial.model.EventModel;
+import makingSocial.model.Session;
+import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
-
-import java.awt.EventQueue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.*;
 
 public class profileEditBIO extends JFrame {
-
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JTextField textField;
     private JTextField textField_1;
+    private EventModel event;
+    private String photoPath; // Ruta de la imagen seleccionada
+    private UserModel currentUser;
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    profileEditBIO frame = new profileEditBIO();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+    public profileEditBIO(UserModel currentUser, EventModel event, String photoPath) {
+        this.currentUser  = Session.getCurrentUser();
+        this.event = event;
+        this.photoPath = photoPath;
 
-    /**
-     * Create the frame.
-     */
-    public profileEditBIO() {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/logoPequeno.png"));
         setIconImage(icon.getImage());
 
-        JLabel lblNewLabel = new JLabel("Nombre - Lorem Ipsum");
-        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
-        lblNewLabel.setBounds(66, 40, 337, 77);
-        contentPane.add(lblNewLabel);
+        JLabel lblName = new JLabel("¡Hola, " + this.currentUser.getName() + "!");
+        lblName.setFont(new Font("Tahoma", Font.PLAIN, 30));
+        lblName.setBounds(66, 40, 337, 77);
+        contentPane.add(lblName);
 
         JLabel lblPhoto = new JLabel("New label");
-        lblPhoto.setIcon(new ImageIcon("C:\\Users\\carva\\Documents\\Making-social\\Making-social-Git\\src\\makingSocial\\profile.jpg"));
+        lblPhoto.setIcon(new ImageIcon(photoPath)); // Mostramos la imagen seleccionada
         lblPhoto.setBounds(65, 127, 355, 481);
         contentPane.add(lblPhoto);
 
         JButton btnNewButtonMakingSocial = new JButton("Making Social!");
         btnNewButtonMakingSocial.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnNewButtonMakingSocial.setBounds(625, 486, 127, 40);
+        btnNewButtonMakingSocial.setBounds(625, 529, 155, 40);
         contentPane.add(btnNewButtonMakingSocial);
-
 
         JButton btnGoHomePage = new JButton("Volver a inicio");
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -125,52 +109,48 @@ public class profileEditBIO extends JFrame {
         lblSoloLoVern.setBounds(642, 322, 259, 30);
         contentPane.add(lblSoloLoVern);
 
-        btnGoHomePage.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // llamar a la ventana Homepage
-                HomePage homepage = new HomePage();
-                homepage.setVisible(true);
-
-                // disppuse() cierra la venta
-                dispose();
-            }
+        btnGoHomePage.addActionListener(e -> {
+            HomePage homepage = new HomePage();
+            homepage.setVisible(true);
+            dispose();
         });
 
-        btnNewButtonMakingSocial.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String insta = textField_1.getText().trim();
+        btnNewButtonMakingSocial.addActionListener(e -> {
+            String insta = textField_1.getText().trim();
+            if (insta.isEmpty() || insta.equals("@")) {
+                JOptionPane.showMessageDialog(profileEditBIO.this,
+                        "Rellena todos los campos",
+                        "Error: Instagram",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-                // comprobar que insta esté relleno
-                if (insta.isEmpty() || insta.equals("@")) {
-                    JOptionPane.showMessageDialog(
-                            profileEditBIO.this,
-                            "Rellena todos los campos",
-                            "Error: Instagram",
-                            JOptionPane.ERROR_MESSAGE
-                    );
-                    return;
-                }
+            String civilStatus = "";
+            if (rdbtnAmistad.isSelected()) civilStatus = "Amistad";
+            else if (rdbtnLige.isSelected()) civilStatus = "Ligue";
+            else if (rdbtnAmor.isSelected()) civilStatus = "Amor";
+            else {
+                JOptionPane.showMessageDialog(profileEditBIO.this,
+                        "Selecciona una opción",
+                        "Error: Selección",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-                // uno de los radio tiene que estar selccionado
-                if (!rdbtnAmistad.isSelected() &&
-                        !rdbtnLige.isSelected() &&
-                        !rdbtnAmor.isSelected()) {
+            String bio = textField.getText();
 
-                    JOptionPane.showMessageDialog(
-                            profileEditBIO.this,
-                            "Selecciona una opción",
-                            "Error: Selección",
-                            JOptionPane.ERROR_MESSAGE
-                    );
-                    return;
-                }
+            profileEditBIO_DAO dao = new profileEditBIO_DAO();
+            int guestID = dao.saveGuestModel(currentUser, photoPath, civilStatus, insta, bio);
 
-                WelcomeToEvent welcome = new WelcomeToEvent();
-                welcome.setVisible(true);
-
+            if (guestID != -1 && dao.insertIntoLogs(guestID, event.getID_Event())) {
+                WelcomeToEvent eventFound = new WelcomeToEvent("profileEditBIO", event);
+                eventFound.setVisible(true);
                 dispose();
+            } else {
+                JOptionPane.showMessageDialog(profileEditBIO.this,
+                        "Error al guardar los datos.",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         });
     }

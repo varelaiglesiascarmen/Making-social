@@ -1,63 +1,54 @@
 package makingSocial.DAO.GuestModel_DAO;
 
-import makingSocial.controller.ConexionMySQL;
 import makingSocial.controller.ConexionSingleton;
 import makingSocial.model.EventModel;
-import makingSocial.model.UserModel;
+import makingSocial.model.Session;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class attendedEvents_DAO {
-    /*
-    public class obtenerEventosAsistidosPorUsuario(int ID_Event){
 
-    }*/
-    /*public static UserModel getCurrentUser(UserModel currentUser) {
-        String sql = "SELECT ID_Event, date, schedule, location, PostalCode, dressCode, theme, description1, description2, allowedAge, access, ID_Host FROM Event WHERE id_event = ? AND id_guestmodel = ?";
+    public static List<EventModel> obtenerEventosAsistidosPorUsuario(int userID_User) {
+        List<EventModel> eventos = new ArrayList<>();
+
+        String sql = "SELECT e.ID_Event, e.date, e.schedule, e.location, e.PostalCode, " +
+                "e.dressCode, e.theme, e.description1, e.description2, e.allowedAge, e.access, e.ID_Host " +
+                "FROM Logs l " +
+                "JOIN GuestModel g ON l.ID_GuestModel = g.ID_GuestModel " +
+                "JOIN Event e ON l.ID_Event = e.ID_Event " +
+                "WHERE g.ID_User = ?";
 
         try {
-            ConexionMySQL conexion = ConexionSingleton.getConexion();
-            Connection con = conexion.getConnection();
+            Connection con = ConexionSingleton.getConexion().getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, userID_User); // Ahora filtramos por ID_User
 
-            try (PreparedStatement stmt = con.prepareStatement(sql)) {
-                stmt.setString(1, newLog.getID_Event());
-                stmt.setString(2, newLog.getID_GuestModel());
+            ResultSet rs = stmt.executeQuery();
 
-                ResultSet rs = stmt.executeQuery();
-
-                if (rs.next()) {
-                    EventModel newEvent = new EventModel(
-                            rs.getInt("id_event"),
-                            rs.getDate("date"),
-                            rs.getDate("schedule"),
-                            rs.getString("location"),
-                            rs.getInt("PostalCode"),
-                            rs.getBoolean("dressCode"),
-                            rs.getBoolean("theme"),
-                            rs.getString("description1"),
-                            rs.getString("description2"),
-                            rs.getInt("allowedAge"),
-                            rs.getBoolean("access"),
-                            rs.getInt("ID_Host")
-                    );
-                    return newEvent;
-                } else {
-                    return null; // no se encontró usuario
-                }
+            while (rs.next()) {
+                EventModel evento = new EventModel(
+                        rs.getInt("ID_Event"),
+                        rs.getDate("date").toLocalDate(),
+                        rs.getTime("schedule").toLocalTime(),
+                        rs.getString("location"),
+                        rs.getInt("PostalCode"),
+                        rs.getBoolean("dressCode"),
+                        rs.getBoolean("theme"),
+                        rs.getString("description1"),
+                        rs.getString("description2"),
+                        rs.getInt("allowedAge"),
+                        rs.getBoolean("access"),
+                        rs.getInt("ID_Host")
+                );
+                eventos.add(evento);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
-        } finally {
-            try {
-                ConexionSingleton.closeConexion();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
         }
-    }*/
+
+        return eventos;
+    }
 }

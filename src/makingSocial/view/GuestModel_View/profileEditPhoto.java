@@ -1,44 +1,33 @@
 package makingSocial.view.GuestModel_View;
 
+import makingSocial.model.EventModel;
+import makingSocial.model.Session;
+import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
-
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.File;
 
 public class profileEditPhoto extends JFrame {
-
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-    private boolean fotoSeleccionada = false; // nueva variable
+    private boolean fotoSeleccionada = false;
+    private EventModel currentEvent;
+    private String imagePath = ""; // Almacena la ruta de la imagen
+    private UserModel currentUser;
+    private JLabel lblPhoto;
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                profileEditPhoto frame = new profileEditPhoto();
-                frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+    public profileEditPhoto(EventModel currentEvent) {
+        this.currentEvent = currentEvent;
+        this.currentUser = Session.getCurrentUser();
+        this.imagePath   = imagePath;
 
-    /**
-     * Create the frame.
-     */
-    public profileEditPhoto() {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 960, 700);
+        setBounds(100, 100, 1012, 703);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -52,17 +41,19 @@ public class profileEditPhoto extends JFrame {
         lblNewLabel.setBounds(66, 40, 409, 77);
         contentPane.add(lblNewLabel);
 
-        ImageIcon lblPhoto = new ImageIcon("/img/profile.png.png");
-        setIconImage(lblPhoto.getImage());
-
         JButton btnGoHomePage = new JButton("Volver a inicio");
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnGoHomePage.setBounds(784, 606, 140, 30);
         contentPane.add(btnGoHomePage);
 
+        lblPhoto = new JLabel();
+        lblPhoto.setBounds(76, 127, 387, 427);
+        lblPhoto.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        contentPane.add(lblPhoto);
+
         JButton btnSmile = new JButton("¡Sonríe!");
         btnSmile.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnSmile.setBounds(179, 581, 127, 40);
+        btnSmile.setBounds(207, 578, 127, 40);
         contentPane.add(btnSmile);
 
         JButton btnNewButtonMakingSocial = new JButton("Making Social!");
@@ -79,66 +70,58 @@ public class profileEditPhoto extends JFrame {
         txtrDebesHacerteUna.setTabSize(0);
         txtrDebesHacerteUna.setFont(new Font("Tahoma", Font.PLAIN, 14));
         txtrDebesHacerteUna.setText(
-                "Debes hacerte una foto del día del evento. ¡Así podrán reconocerte rápidamente!" +
-                        "\n\nDebes ser respetuos@ con el resto de asistentes del evento.\n" +
-                        "\nNo podrás ver el resto de invitados hasta que no pasen 24 hrs. \n\n¡Lo hacemos para que " +
-                        "puedas disfrutar del evento con tus amigos y no te quedes pegado al móvil!\n\n\n" +
+                "Debes hacerte una foto del día del evento.\n"+" ¡Así podrán reconocerte rápidamente!\n" +
+                        "Debes ser respetuos@ con el resto de asistentes del evento.\n\n" +
+                        "No podrás ver el resto de invitados hasta que no pasen 24 hrs. \n¡Lo hacemos para que puedas disfrutar del evento con tus amigos \n"+" y no te quedes pegado al móvil!\n\n" +
                         "¡Que disfrutes del evento!"
         );
-
         txtrDebesHacerteUna.setWrapStyleWord(true);
         txtrDebesHacerteUna.setEditable(false);
         txtrDebesHacerteUna.setBackground(UIManager.getColor("Button.background"));
-        txtrDebesHacerteUna.setBounds(524, 187, 352, 255);
+        txtrDebesHacerteUna.setBounds(524, 187, 448, 255);
         contentPane.add(txtrDebesHacerteUna);
 
-        btnGoHomePage.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                HomePage homepage = new HomePage();
-                homepage.setVisible(true);
+        btnGoHomePage.addActionListener(e -> {
+            UserModel currentUser = Session.getCurrentUser();
+            HomePage homepage = new HomePage();
+            homepage.setVisible(true);
+            dispose();
+        });
+
+        btnSmile.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Selecciona una imagen de perfil");
+            fileChooser.setAcceptAllFileFilterUsed(false);
+            fileChooser.addChoosableFileFilter(
+                    new FileNameExtensionFilter("Imágenes (.jpg, .png, .jpeg)", "jpg","jpeg","png")
+            );
+            int result = fileChooser.showOpenDialog(this);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                imagePath = selectedFile.getAbsolutePath();
+                fotoSeleccionada = true;
+
+                // Escala imagen
+                ImageIcon icon2 = new ImageIcon(imagePath);
+                Image img = icon2.getImage()
+                        .getScaledInstance(
+                                lblPhoto.getWidth(),
+                                lblPhoto.getHeight(),
+                                Image.SCALE_SMOOTH
+                        );
+                lblPhoto.setIcon(new ImageIcon(img));
+            }
+        });
+
+
+        btnNewButtonMakingSocial.addActionListener(e -> {
+            if (fotoSeleccionada) {
+                profileEditBIO ventana = new profileEditBIO(currentUser, currentEvent, imagePath);
+                ventana.setVisible(true);
+
                 dispose();
-            }
-        });
-
-        btnSmile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser();
-                fileChooser.setDialogTitle("Selecciona una imagen de perfil");
-
-                fileChooser.setAcceptAllFileFilterUsed(false);
-                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Imágenes (.jpg, .png, .jpeg)", "jpg", "jpeg", "png"));
-
-                int result = fileChooser.showOpenDialog(null);
-
-                if (result == JFileChooser.APPROVE_OPTION) {
-                    File selectedFile = fileChooser.getSelectedFile();
-                    String imagePath = selectedFile.getAbsolutePath();
-                    System.out.println("Imagen seleccionada: " + imagePath);
-
-                    // marcar que se ha subido la foto
-                    fotoSeleccionada = true;
-
-                    // opcional: podrías mostrar la imagen seleccionada en lblPhoto
-                    //lblPhoto.setIcon(new ImageIcon(imagePath));
-                } else {
-                    JOptionPane.showMessageDialog(null, "Debes seleccionar una imagen para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
-                }
-            }
-        });
-
-        btnNewButtonMakingSocial.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (fotoSeleccionada) {
-                    profileEditBIO profileBIO = new profileEditBIO();
-                    profileBIO.setVisible(true);
-
-                    dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Primero debes subir una foto con el botón '¡Sonríe!'", "Foto requerida", JOptionPane.WARNING_MESSAGE);
-                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Primero debes subir una foto con el botón '¡Sonríe!'", "Foto requerida", JOptionPane.WARNING_MESSAGE);
             }
         });
     }

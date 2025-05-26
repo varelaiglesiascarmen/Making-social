@@ -1,6 +1,7 @@
 package makingSocial.view.UserProfile_View;
 
 import makingSocial.DAO.UserProfile_DAO.Login_DAO;
+import makingSocial.model.Session;
 import makingSocial.model.UserModel;
 
 import java.awt.*;

@@ -3,33 +3,49 @@ package makingSocial.DAO.GuestModel_DAO;
 import makingSocial.controller.ConexionMySQL;
 import makingSocial.controller.ConexionSingleton;
 import makingSocial.model.EventModel;
+import makingSocial.model.GuestModel;
+import makingSocial.model.UserModel;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchEventPublic_DAO {
 
-    //imprime el string sobreescribiendo los lorem - btnSearch.addActionListener
-    public static void overWriteLorem(EventModel newEvent) {
-        String sql = "INSERT INTO Event (PostalCode) VALUES (?)";
+    public static List<EventModel> searchPublicEvent(int postalCode) {
+        List<EventModel> eventList = new ArrayList<>();
 
+        String sql = "SELECT id_event, id_host, date, schedule, location, postalcode, dresscode, theme, description1, description2, allowedage, access FROM Event WHERE postalcode = ? AND access = true";
 
         try {
             ConexionMySQL conexion = ConexionSingleton.getConexion();
             Connection con = conexion.getConnection();
 
-
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
-                stmt.setInt(1, newEvent.getPostalCode());
+                stmt.setInt(1, postalCode);
 
-                stmt.executeUpdate();
+                ResultSet rs = stmt.executeQuery();
 
-                //tiene que devolver el string modificando los lorem
+                while (rs.next()) {
+                    EventModel event = new EventModel(
+                            rs.getInt("id_event"),
+                            rs.getDate("date").toLocalDate(),
+                            rs.getTime("schedule").toLocalTime(),
+                            rs.getString("location"),
+                            rs.getInt("postalcode"),
+                            rs.getBoolean("dresscode"),
+                            rs.getBoolean("theme"),
+                            rs.getString("description1"),
+                            rs.getString("description2"),
+                            rs.getInt("allowedage"),
+                            rs.getBoolean("access"),
+                            rs.getInt("id_host")
+                    );
+
+                    eventList.add(event);
+                }
 
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -39,10 +55,9 @@ public class SearchEventPublic_DAO {
                 ex.printStackTrace();
             }
         }
+
+        return eventList;
     }
 
-    // busca si hay eventos con ese codigo (se rellena por el form - lineas 59 a 64)- btnSearch.addActionListener (funcion en lineas 139 - 144)
-    public void buscarEventosPorCodigoPostal(){
-        String sql = "INSERT INTO Event (PostalCode) VALUES (?)";
-    }
+
 }

@@ -1,9 +1,10 @@
 package makingSocial.view.GuestModel_View;
 
-import makingSocial.view.HostModel_View.CreateEvent;
+import makingSocial.model.EventModel;
+import makingSocial.model.Session;
+import makingSocial.model.UserModel;
 import makingSocial.view.UserProfile_View.HomePage;
 
-import java.awt.EventQueue;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Font;
@@ -14,27 +15,10 @@ public class SearchEvent extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    private EventModel currentEvent;
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    SearchEvent frame = new SearchEvent();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    /**
-     * Create the frame.
-     */
-    public SearchEvent() {
+    public SearchEvent(EventModel currentEvent) {
+        this.currentEvent = currentEvent;
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -56,21 +40,15 @@ public class SearchEvent extends JFrame {
         int centerY = 220;
 
         // solo pueden salir los públicos
-        JButton btnCreateEvent = new JButton("Buscar evento");
-        btnCreateEvent.setFont(new Font("Tahoma", Font.PLAIN, 30));
-        btnCreateEvent.setBounds(centerX1, centerY, btnWidth, btnHeight);
-        contentPane.add(btnCreateEvent);
+        JButton btnSearchEvent = new JButton("Buscar evento");
+        btnSearchEvent.setFont(new Font("Tahoma", Font.PLAIN, 30));
+        btnSearchEvent.setBounds(centerX1, centerY, btnWidth, btnHeight);
+        contentPane.add(btnSearchEvent);
 
-        JButton btnAttendEvent = new JButton("Introducir código");
-        btnAttendEvent.setFont(new Font("Tahoma", Font.PLAIN, 30));
-        btnAttendEvent.setBounds(centerX2, centerY, btnWidth, btnHeight);
-        contentPane.add(btnAttendEvent);
-
-        // Botón de perfil (esquina superior izquierda)
-        JButton btnProfile = new JButton("ImgPerfil");
-        btnProfile.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        btnProfile.setBounds(10, 10, 100, 40);
-        contentPane.add(btnProfile);
+        JButton btnSearchEventWCode = new JButton("Introducir código");
+        btnSearchEventWCode.setFont(new Font("Tahoma", Font.PLAIN, 30));
+        btnSearchEventWCode.setBounds(centerX2, centerY, btnWidth, btnHeight);
+        contentPane.add(btnSearchEventWCode);
 
         JButton btnGoHomePage = new JButton("Volver a inicio");
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -80,6 +58,8 @@ public class SearchEvent extends JFrame {
         btnGoHomePage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UserModel currentUser = Session.getCurrentUser();
+
                 // llamar a la ventana Homepage
                 HomePage homepage = new HomePage();
                 homepage.setVisible(true);
@@ -89,11 +69,11 @@ public class SearchEvent extends JFrame {
             }
         });
 
-        btnCreateEvent.addActionListener(new ActionListener() {
+        btnSearchEvent.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // llamar a la ventana SearchEventPublic
-                SearchEventPublic publicEvent = new SearchEventPublic();
+                SearchEventPublic publicEvent = new SearchEventPublic(currentEvent);
                 publicEvent.setVisible(true);
 
                 // disppuse() cierra la venta
@@ -101,24 +81,12 @@ public class SearchEvent extends JFrame {
             }
         });
 
-        btnAttendEvent.addActionListener(new ActionListener() {
+        btnSearchEventWCode.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // llamar a la ventana SearchEventWCode
-                SearchEventWCode wCodeEvent = new SearchEventWCode();
+                SearchEventWCode wCodeEvent = new SearchEventWCode(currentEvent);
                 wCodeEvent.setVisible(true);
-
-                // disppuse() cierra la venta
-                dispose();
-            }
-        });
-
-        btnProfile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // llamar a la ventana Profile
-                Profile img = new Profile();
-                img.setVisible(true);
 
                 // disppuse() cierra la venta
                 dispose();

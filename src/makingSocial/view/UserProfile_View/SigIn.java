@@ -22,20 +22,6 @@ public class SigIn extends JFrame {
     private JTextField textField;
     private JTextField textFieldAge;
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    SigIn frame = new SigIn();
-                    frame.setVisible(true);
-                    frame.setLocationRelativeTo(null);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
     public SigIn() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -142,9 +128,9 @@ public class SigIn extends JFrame {
 
                 // si el usuario se ha guardado bien, le manda a homepage
                 if(insert == true){
-                    // llamar a la ventana Homepage
-                    HomePage homePage = new HomePage();
-                    homePage.setVisible(true);
+                    // llamar a la ventana Login
+                    Login newLogin = new Login();
+                    newLogin.setVisible(true);
 
                     // disppuse() cierra la venta
                     dispose();
