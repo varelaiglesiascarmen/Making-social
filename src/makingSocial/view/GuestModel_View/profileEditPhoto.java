@@ -36,10 +36,10 @@ public class profileEditPhoto extends JFrame {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/logoPequeno.png"));
         setIconImage(icon.getImage());
 
-        JLabel lblNewLabel = new JLabel("¡Bienvenid@ al evento!");
-        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
-        lblNewLabel.setBounds(66, 40, 409, 77);
-        contentPane.add(lblNewLabel);
+        JLabel lblWelcome = new JLabel("¡Bienvenid@ al evento!");
+        lblWelcome.setFont(new Font("Tahoma", Font.BOLD, 35));
+        lblWelcome.setBounds(66, 40, 409, 77);
+        contentPane.add(lblWelcome);
 
         JButton btnGoHomePage = new JButton("Volver a inicio");
         btnGoHomePage.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -56,30 +56,30 @@ public class profileEditPhoto extends JFrame {
         btnSmile.setBounds(207, 578, 127, 40);
         contentPane.add(btnSmile);
 
-        JButton btnNewButtonMakingSocial = new JButton("Making Social!");
-        btnNewButtonMakingSocial.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnNewButtonMakingSocial.setBounds(625, 486, 161, 40);
-        contentPane.add(btnNewButtonMakingSocial);
+        JButton btnMakingSocial = new JButton("Making Social!");
+        btnMakingSocial.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnMakingSocial.setBounds(625, 486, 161, 40);
+        contentPane.add(btnMakingSocial);
 
-        JLabel lblNewLabel_1 = new JLabel("Recuerda:");
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 25));
-        lblNewLabel_1.setBounds(513, 127, 190, 40);
-        contentPane.add(lblNewLabel_1);
+        JLabel lblRemember = new JLabel("Recuerda:");
+        lblRemember.setFont(new Font("Tahoma", Font.PLAIN, 25));
+        lblRemember.setBounds(513, 127, 190, 40);
+        contentPane.add(lblRemember);
 
-        JTextArea txtrDebesHacerteUna = new JTextArea();
-        txtrDebesHacerteUna.setTabSize(0);
-        txtrDebesHacerteUna.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        txtrDebesHacerteUna.setText(
+        JTextArea txtrPhoto = new JTextArea();
+        txtrPhoto.setTabSize(0);
+        txtrPhoto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        txtrPhoto.setText(
                 "Debes hacerte una foto del día del evento.\n"+" ¡Así podrán reconocerte rápidamente!\n" +
                         "Debes ser respetuos@ con el resto de asistentes del evento.\n\n" +
                         "No podrás ver el resto de invitados hasta que no pasen 24 hrs. \n¡Lo hacemos para que puedas disfrutar del evento con tus amigos \n"+" y no te quedes pegado al móvil!\n\n" +
                         "¡Que disfrutes del evento!"
         );
-        txtrDebesHacerteUna.setWrapStyleWord(true);
-        txtrDebesHacerteUna.setEditable(false);
-        txtrDebesHacerteUna.setBackground(UIManager.getColor("Button.background"));
-        txtrDebesHacerteUna.setBounds(524, 187, 448, 255);
-        contentPane.add(txtrDebesHacerteUna);
+        txtrPhoto.setWrapStyleWord(true);
+        txtrPhoto.setEditable(false);
+        txtrPhoto.setBackground(UIManager.getColor("Button.background"));
+        txtrPhoto.setBounds(524, 187, 448, 255);
+        contentPane.add(txtrPhoto);
 
         btnGoHomePage.addActionListener(e -> {
             userModel currentUser = session.getCurrentUser();
@@ -114,7 +114,7 @@ public class profileEditPhoto extends JFrame {
         });
 
 
-        btnNewButtonMakingSocial.addActionListener(e -> {
+        btnMakingSocial.addActionListener(e -> {
             if (fotoSeleccionada) {
                 profileEditBIO ventana = new profileEditBIO(currentUser, currentEvent, imagePath);
                 ventana.setVisible(true);

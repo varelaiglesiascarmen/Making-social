@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 
 public class signInDAO {
-    public boolean ejecutarInsertDeleteUpdate(userModel usuario) {
+    public boolean createUser(userModel usuario) {
         String sql = "INSERT INTO UserProfile (nickname, password, name, age, e_mail) VALUES (?, ?, ?, ?, ?)";
 
         try {

@@ -45,11 +45,11 @@ public class conexionMySQL {
      *
      * @throws SQLException Se lanzará cuando haya un fallo con la base de datos
      */
-    private void registrarDriver() throws SQLException {
+    private void registerDriver() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            throw new SQLException("Error al conectar con MySQL: " + e.getMessage());
+            throw new SQLException("Error al connectToDataBase con MySQL: " + e.getMessage());
         }
     }
 
@@ -58,9 +58,9 @@ public class conexionMySQL {
      *
      * @throws SQLException Se lanzará cuando haya un fallo con la base de datos
      */
-    public void conectar() throws SQLException {
+    public void connectToDataBase() throws SQLException {
         if (connection == null || connection.isClosed()) {
-            registrarDriver();
+            registerDriver();
             // Obtengo la zona horaria
             Calendar now = Calendar.getInstance();
             zonahoraria = now.getTimeZone();
@@ -75,7 +75,7 @@ public class conexionMySQL {
      *
      * @throws SQLException Se lanzará cuando haya un fallo con la base de datos
      */
-    public void desconectar() throws SQLException {
+    public void disconnectToDataBase() throws SQLException {
         if (connection != null && !connection.isClosed()) {
             connection.close();
         }
@@ -88,7 +88,7 @@ public class conexionMySQL {
      * @return Resultado de la consulta
      * @throws SQLException Se lanzará cuando haya un fallo con la base de datos
      */
-    public ResultSet ejecutarSelect(String consulta) throws SQLException {
+    public ResultSet executeSelect(String consulta) throws SQLException {
         Statement stmt = connection.createStatement();
         ResultSet rset = stmt.executeQuery(consulta);
 
@@ -102,7 +102,7 @@ public class conexionMySQL {
      * @return Cantidad de filas afectadas
      * @throws SQLException Se lanzará cuando haya un fallo con la base de datos
      */
-    public int ejecutarInsertDeleteUpdate(String consulta) throws SQLException {
+    public int InsertDeleteUpdate(String consulta) throws SQLException {
         Statement stmt = connection.createStatement();
         int fila = stmt.executeUpdate(consulta);
 

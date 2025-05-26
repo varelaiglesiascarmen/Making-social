@@ -6,20 +6,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class replicatedUser extends JFrame {
-
+public class duplicatedUser extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
 
-    /**
-     * Launch the application.
-     */
-
-    /**
-     * Create the frame.
-     */
-    public replicatedUser() {
+    public duplicatedUser() {
         setTitle("Making Social! - 404 not found");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 420, 220);

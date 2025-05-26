@@ -14,13 +14,6 @@ public class notAllNodes extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
 
-    /**
-     * Launch the application.
-     */
-
-    /**
-     * Create the frame.
-     */
     public notAllNodes() {
         setTitle("Making Social! - 404 not found");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

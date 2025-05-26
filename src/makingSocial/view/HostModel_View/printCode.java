@@ -50,12 +50,12 @@ public class printCode extends JFrame {
         summaryTitle.setBounds(113, 264, 259, 50);
         contentPane.add(summaryTitle);
 
-        String resumenTexto = generarResumen(event);
+        String resumenTexto = generateSummary(event);
         System.out.println("Resumen generado:\n" + resumenTexto);
 
         summaryArea = new JTextArea(resumenTexto);
 
-        summaryArea = new JTextArea(generarResumen(event));
+        summaryArea = new JTextArea(generateSummary(event));
         summaryArea.setFont(new Font("Tahoma", Font.PLAIN, 20));
         summaryArea.setEditable(false);
         summaryArea.setLineWrap(true);
@@ -80,7 +80,7 @@ public class printCode extends JFrame {
 
     }
 
-    private String generarResumen(eventModel event) {
+    private String generateSummary(eventModel event) {
         StringBuilder resumen = new StringBuilder();
         resumen.append("Fecha: ").append(event.getDate()).append("\n");
         resumen.append("Hora: ").append(event.getSchedule()).append("\n");

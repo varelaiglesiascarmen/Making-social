@@ -10,13 +10,6 @@ public class userNotSave extends JFrame{
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
 
-    /**
-     * Launch the application.
-     */
-
-    /**
-     * Create the frame.
-     */
     public userNotSave() {
         setTitle("Making Social! - Error 1017");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

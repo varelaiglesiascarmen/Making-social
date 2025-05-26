@@ -123,7 +123,7 @@ public class singIn extends JFrame {
 
                 // Pasa el objeto usuario con sus datos
                 boolean insert = false;
-                insert = new signInDAO().ejecutarInsertDeleteUpdate(usuario);
+                insert = new signInDAO().createUser(usuario);
 
                 // si el usuario se ha guardado bien, le manda a homepage
                 if(insert == true){
@@ -136,7 +136,7 @@ public class singIn extends JFrame {
                 }
                 // Si no, vuelve a decirle que rellene el formulario
                 else {
-                    replicatedUser replicatedUser = new replicatedUser();
+                    duplicatedUser replicatedUser = new duplicatedUser();
                     replicatedUser.setVisible(true);
                 }
             }

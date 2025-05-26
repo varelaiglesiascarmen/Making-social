@@ -78,7 +78,7 @@ public class searchEventWCode extends JFrame {
                 try {
                     int eventId = Integer.parseInt(txtCodeInsert.getText().trim());
 
-                    eventModel event = searchEventWCodeDAO.buscarEventoPorId(eventId);
+                    eventModel event = searchEventWCodeDAO.searchEventByID2(eventId);
 
                     if (event != null) {
                         // Si el evento existe, abrir ventana welcomeToEvent

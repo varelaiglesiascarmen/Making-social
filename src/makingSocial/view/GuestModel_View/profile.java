@@ -17,11 +17,9 @@ public class profile extends JFrame {
     private eventModel currentEvent;
     private userModel currentUser;
 
-    // ✅ Constructor que recibe userModel (lo usas desde homePage)
     public profile(userModel currentUser) {
         this.currentUser = currentUser;
 
-        // ✅ Añadimos aquí toda la GUI
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -57,14 +55,14 @@ public class profile extends JFrame {
         btnMakingSocial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                attendedEvents eventosAsistidosVentana = new attendedEvents(currentUser);
-                eventosAsistidosVentana.setVisible(true);
+                attendedEvents attendedEvents = new attendedEvents(currentUser);
+                attendedEvents.setVisible(true);
                 dispose();
             }
         });
 
-        // ✅ Mostrar la ventana
-        setVisible(true); // <--- Ahora sí aparece
+        // mostrar ventana
+        setVisible(true);
     }
 
     // Otros constructores que ya tienes (no los modificamos)

@@ -90,7 +90,7 @@ public class welcomeToEvent extends JFrame {
     private void updateMessageLabel() {
         switch(window) {
             case "profileEditBIO":
-                messageLabel.setText("Desde tu perfil podrás empezar a conocer gente \n"+"24 horas después de que termine!");
+                messageLabel.setText("Desde tu perfil podrás empezar a conocer gente 24\n"+" horas después de que termine!");
                 messageLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
                 break;
             default:

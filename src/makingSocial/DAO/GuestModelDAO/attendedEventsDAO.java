@@ -9,7 +9,7 @@ import java.util.List;
 
 public class attendedEventsDAO {
 
-    public static List<eventModel> obtenerEventosAsistidosPorUsuario(int userID_User) {
+    public static List<eventModel> getEventAttendedByUser(int userID_User) {
         List<eventModel> eventos = new ArrayList<>();
 
         String sql = "SELECT e.ID_Event, e.date, e.schedule, e.location, e.PostalCode, " +

@@ -18,7 +18,7 @@ public class conexionSingleton {
     public static conexionMySQL getConexion() throws SQLException {
         if (instancia == null) {
             instancia = new conexionMySQL("root", "MakingS0cial", "MakingSocial");
-            instancia.conectar(); // Conectar solo una vez
+            instancia.connectToDataBase(); // Conectar solo una vez
         }
         return instancia;
     }
@@ -28,7 +28,7 @@ public class conexionSingleton {
      */
     public static void closeConexion() throws SQLException {
         if (instancia != null) {
-            instancia.desconectar();
+            instancia.disconnectToDataBase();
             instancia = null;
         }
     }

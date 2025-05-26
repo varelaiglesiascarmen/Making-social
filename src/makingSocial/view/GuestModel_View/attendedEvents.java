@@ -68,7 +68,7 @@ public class attendedEvents extends JFrame {
         });
 
         userModel currentUser = session.getCurrentUser();
-        List<eventModel> eventosAsistidos = attendedEventsDAO.obtenerEventosAsistidosPorUsuario(currentUser.getID_User());
+        List<eventModel> eventosAsistidos = attendedEventsDAO.getEventAttendedByUser(currentUser.getID_User());
 
         if (eventosAsistidos.isEmpty()) {
             JLabel sinEventos = new JLabel("¡Aún no has asistido a ningún evento! Busca tu próximo evento en la página de inicio.");
