@@ -17,8 +17,22 @@ public class Session {
         return currentEvent;
     }
 
+    public static void setcurrentEvent(EventModel currentEvent) {
+        Session.currentEvent = currentEvent;
+    }
+
     public static void setCurrentUser(EventModel event) {
         currentEvent = event;
+    }
+
+    private static GuestModel currentGuest;
+
+    public static GuestModel getCurrentGuest() {
+        return currentGuest;
+    }
+
+    public static void setCurrentGuest(GuestModel guest) {
+        currentGuest = guest;
     }
 }
 

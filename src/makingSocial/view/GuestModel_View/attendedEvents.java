@@ -87,13 +87,11 @@ public class attendedEvents extends JFrame {
                 btnExplorar.setBounds(680, y, 120, 30);
                 contentPane.add(btnExplorar);
 
-                btnExplorar.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        socialSearch socialchat = new socialSearch();
-                        socialchat.setVisible(true);
-                        dispose();
-                    }
+                btnExplorar.addActionListener(e -> {
+                    Session.setcurrentEvent(evento); // Asegúrate de tener esto
+                    socialSearch socialchat = new socialSearch(currentEvent);
+                    socialchat.setVisible(true);
+                    dispose();
                 });
 
                 y += 50;

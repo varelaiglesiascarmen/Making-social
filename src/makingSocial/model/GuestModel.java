@@ -2,7 +2,7 @@ package makingSocial.model;
 
 public class GuestModel extends UserModel {
     // attributes
-    // private ? Photo;
+    private byte[] photo; // LONGBLOB
     private String CivilStatus;
     private String RRSS;
     private String BIO;
@@ -20,12 +20,30 @@ public class GuestModel extends UserModel {
         this.ID_GuestModel = ID_GuestModel;
     }
 
+    public GuestModel(int ID_User, int Age, String Name, byte[] photo, String civilStatus, String RRSS, String BIO, String Attendance, int ID_GuestModel) {
+        super(ID_User, Age, Name);
+        this.photo = photo;
+        this.CivilStatus = civilStatus;
+        this.RRSS = RRSS;
+        this.BIO = BIO;
+        this.Attendance = Attendance;
+        this.ID_GuestModel = ID_GuestModel;
+    }
+
     public GuestModel(int ID_User, int ID_GuestModel) {
         super(ID_User);
         this.ID_GuestModel = ID_GuestModel;
     }
 
     // getters & setters
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
     public String getCivilStatus() { return CivilStatus; }
 
     public void setCivilStatus(String civilStatus) { CivilStatus = civilStatus; }
