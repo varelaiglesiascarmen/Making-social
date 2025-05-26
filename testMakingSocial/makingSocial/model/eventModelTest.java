@@ -20,7 +20,7 @@ class eventModelTest {
     * Así cada prueba parte de un objeto en el mismo estado conocido, y no tienes que repetir esta inicialización en cada @Test.
     * */
 
-        eventModel event = new eventModel(
+        event = new eventModel(
                 1,
                 LocalDate.of(2025, 5, 26),
                 LocalTime.of(18, 30),
