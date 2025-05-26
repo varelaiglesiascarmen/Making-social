@@ -1,12 +1,10 @@
 package makingSocial.view.GuestModel_View;
 
-import makingSocial.DAO.GuestModel_DAO.socialSearch_DAO;
-import makingSocial.controller.MatchManager;
-import makingSocial.model.EventModel;
-import makingSocial.model.Session;
-import makingSocial.model.GuestModel;
-import makingSocial.model.UserModel;
-import makingSocial.view.UserProfile_View.HomePage;
+import makingSocial.DAO.GuestModelDAO.socialSearchDAO;
+import makingSocial.model.eventModel;
+import makingSocial.model.guestModel;
+import makingSocial.model.session;
+import makingSocial.view.UserProfile_View.homePage;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -18,12 +16,12 @@ public class socialSearch extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
 
-    private EventModel currentEvent;
+    private eventModel currentEvent;
 
-    private List<GuestModel> guestList;
+    private List<guestModel> guestList;
     private int currentIndex = 0;
 
-    public socialSearch(EventModel currentEvent) {
+    public socialSearch(eventModel currentEvent) {
         setTitle("Making Social!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 700);
@@ -97,7 +95,7 @@ public class socialSearch extends JFrame {
         contentPane.add(lblLoremEdad);
 
         btnGoHomePage.addActionListener(e -> {
-            HomePage homepage = new HomePage();
+            homePage homepage = new homePage();
             homepage.setVisible(true);
             dispose();
         });
@@ -119,7 +117,7 @@ public class socialSearch extends JFrame {
             return;
         }
 
-        guestList = socialSearch_DAO.getGuestsByEvent(currentEvent.getID_Event());
+        guestList = socialSearchDAO.getGuestsByEvent(currentEvent.getID_Event());
 
         if (guestList.isEmpty()) {
             // Muestra mensaje de que no hay usuarios
@@ -135,8 +133,8 @@ public class socialSearch extends JFrame {
             return;
         }
 
-        GuestModel guest = guestList.get(index);
-        Session.setCurrentGuest(guest);
+        guestModel guest = guestList.get(index);
+        session.setCurrentGuest(guest);
 
         // Mostrar datos
         lblUserName.setText(guest.getName());

@@ -1,10 +1,10 @@
 package makingSocial.view.GuestModel_View;
 
-import makingSocial.DAO.GuestModel_DAO.profileEditBIO_DAO;
-import makingSocial.model.EventModel;
-import makingSocial.model.Session;
-import makingSocial.model.UserModel;
-import makingSocial.view.UserProfile_View.HomePage;
+import makingSocial.DAO.GuestModelDAO.profileEditBIODAO;
+import makingSocial.model.eventModel;
+import makingSocial.model.session;
+import makingSocial.model.userModel;
+import makingSocial.view.UserProfile_View.homePage;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -14,12 +14,12 @@ public class profileEditBIO extends JFrame {
     private JPanel contentPane;
     private JTextField textField;
     private JTextField textField_1;
-    private EventModel event;
+    private eventModel event;
     private String photoPath; // Ruta de la imagen seleccionada
-    private UserModel currentUser;
+    private userModel currentUser;
 
-    public profileEditBIO(UserModel currentUser, EventModel event, String photoPath) {
-        this.currentUser  = Session.getCurrentUser();
+    public profileEditBIO(userModel currentUser, eventModel event, String photoPath) {
+        this.currentUser  = session.getCurrentUser();
         this.event = event;
         this.photoPath = photoPath;
 
@@ -110,7 +110,7 @@ public class profileEditBIO extends JFrame {
         contentPane.add(lblSoloLoVern);
 
         btnGoHomePage.addActionListener(e -> {
-            HomePage homepage = new HomePage();
+            homePage homepage = new homePage();
             homepage.setVisible(true);
             dispose();
         });
@@ -139,11 +139,11 @@ public class profileEditBIO extends JFrame {
 
             String bio = textField.getText();
 
-            profileEditBIO_DAO dao = new profileEditBIO_DAO();
+            profileEditBIODAO dao = new profileEditBIODAO();
             int guestID = dao.saveGuestModel(currentUser, photoPath, civilStatus, insta, bio);
 
             if (guestID != -1 && dao.insertIntoLogs(guestID, event.getID_Event())) {
-                WelcomeToEvent eventFound = new WelcomeToEvent("profileEditBIO", event);
+                welcomeToEvent eventFound = new welcomeToEvent("profileEditBIO", event);
                 eventFound.setVisible(true);
                 dispose();
             } else {

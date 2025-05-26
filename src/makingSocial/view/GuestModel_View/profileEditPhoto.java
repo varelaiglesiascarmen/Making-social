@@ -1,28 +1,28 @@
 package makingSocial.view.GuestModel_View;
 
-import makingSocial.model.EventModel;
-import makingSocial.model.Session;
-import makingSocial.model.UserModel;
-import makingSocial.view.UserProfile_View.HomePage;
+import makingSocial.model.eventModel;
+import makingSocial.model.session;
+import makingSocial.model.userModel;
+import makingSocial.view.UserProfile_View.homePage;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.event.*;
 import java.io.File;
 
 public class profileEditPhoto extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private boolean fotoSeleccionada = false;
-    private EventModel currentEvent;
+    private eventModel currentEvent;
     private String imagePath = ""; // Almacena la ruta de la imagen
-    private UserModel currentUser;
+    private userModel currentUser;
     private JLabel lblPhoto;
 
-    public profileEditPhoto(EventModel currentEvent) {
+    public profileEditPhoto(eventModel currentEvent) {
         this.currentEvent = currentEvent;
-        this.currentUser = Session.getCurrentUser();
+        this.currentUser = session.getCurrentUser();
         this.imagePath   = imagePath;
 
         setTitle("Making Social!");
@@ -82,8 +82,8 @@ public class profileEditPhoto extends JFrame {
         contentPane.add(txtrDebesHacerteUna);
 
         btnGoHomePage.addActionListener(e -> {
-            UserModel currentUser = Session.getCurrentUser();
-            HomePage homepage = new HomePage();
+            userModel currentUser = session.getCurrentUser();
+            homePage homepage = new homePage();
             homepage.setVisible(true);
             dispose();
         });

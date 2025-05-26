@@ -1,10 +1,10 @@
 package makingSocial.view.GuestModel_View;
 
-import makingSocial.DAO.GuestModel_DAO.attendedEvents_DAO;
-import makingSocial.model.EventModel;
-import makingSocial.model.Session;
-import makingSocial.model.UserModel;
-import makingSocial.view.UserProfile_View.HomePage;
+import makingSocial.DAO.GuestModelDAO.attendedEventsDAO;
+import makingSocial.model.eventModel;
+import makingSocial.model.session;
+import makingSocial.model.userModel;
+import makingSocial.view.UserProfile_View.homePage;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -17,15 +17,15 @@ public class attendedEvents extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-    private EventModel currentEvent;
-    private UserModel currentUser;
+    private eventModel currentEvent;
+    private userModel currentUser;
 
-    public attendedEvents(UserModel currentUser) {
+    public attendedEvents(userModel currentUser) {
         this();
         this.currentUser = currentUser;
     }
 
-    public attendedEvents(EventModel currentEvent) {
+    public attendedEvents(eventModel currentEvent) {
         this();
         this.currentEvent = currentEvent;
     }
@@ -56,10 +56,10 @@ public class attendedEvents extends JFrame {
         btnGoHomePage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UserModel currentUser = Session.getCurrentUser();
+                userModel currentUser = session.getCurrentUser();
 
                 // llamar a la ventana Homepage
-                HomePage homepage = new HomePage();
+                homePage homepage = new homePage();
                 homepage.setVisible(true);
 
                 // disppuse() cierra la venta
@@ -67,8 +67,8 @@ public class attendedEvents extends JFrame {
             }
         });
 
-        UserModel currentUser = Session.getCurrentUser();
-        List<EventModel> eventosAsistidos = attendedEvents_DAO.obtenerEventosAsistidosPorUsuario(currentUser.getID_User());
+        userModel currentUser = session.getCurrentUser();
+        List<eventModel> eventosAsistidos = attendedEventsDAO.obtenerEventosAsistidosPorUsuario(currentUser.getID_User());
 
         if (eventosAsistidos.isEmpty()) {
             JLabel sinEventos = new JLabel("¡Aún no has asistido a ningún evento! Busca tu próximo evento en la página de inicio.");
@@ -77,7 +77,7 @@ public class attendedEvents extends JFrame {
             contentPane.add(sinEventos);
         } else {
             int y = 176;
-            for (EventModel evento : eventosAsistidos) {
+            for (eventModel evento : eventosAsistidos) {
                 JLabel lblCode = new JLabel("Evento ID: " + evento.getID_Event());
                 lblCode.setFont(new Font("Tahoma", Font.PLAIN, 18));
                 lblCode.setBounds(58, y, 600, 33);
@@ -88,7 +88,7 @@ public class attendedEvents extends JFrame {
                 contentPane.add(btnExplorar);
 
                 btnExplorar.addActionListener(e -> {
-                    Session.setcurrentEvent(evento); // Asegúrate de tener esto
+                    session.setcurrentEvent(evento); // Asegúrate de tener esto
                     socialSearch socialchat = new socialSearch(currentEvent);
                     socialchat.setVisible(true);
                     dispose();
