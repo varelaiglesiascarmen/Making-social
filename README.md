@@ -118,6 +118,10 @@ Pasadas **24 horas desde la hora de inicio del evento**, se activa la función d
 Puedes consultar todo el proyecto aquí:  
 [📁 GitHub - Making Social](https://github.com/varelaiglesiascarmen/Making-social)  
 
+Presentación interactiva: 
+
+[👩🏻‍🏫 Presentación interactiva](https://prezi.com/view/0qqK4ggsR9RToyQPGpdy/)
+
 ---
 
 ## ⚙️ Tecnologías usadas
