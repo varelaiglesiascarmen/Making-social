@@ -26,7 +26,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
+    <orderEntry type="module-library" exported="" scope="TEST">
       <library name="JUnit5.8.1">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/junit-jupiter-5.8.1.jar!/" />
@@ -37,6 +37,21 @@
           <root url="jar://$MODULE_DIR$/lib/junit-jupiter-params-5.8.1.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/junit-jupiter-engine-5.8.1.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/junit-platform-engine-1.8.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="" scope="TEST">
+      <library name="testng">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/testng-7.1.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jcommander-1.72.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/guice-4.1.0-no_aop.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/javax.inject-1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/aopalliance-1.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/guava-19.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/snakeyaml-1.21.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
