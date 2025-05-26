@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
 --
 -- Host: host100.tplinkdns.com    Database: MakingSocial
 -- ------------------------------------------------------
@@ -16,7 +16,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `hostModel`
+-- Table structure for table `HostModel`
 --
 
 DROP TABLE IF EXISTS `HostModel`;
@@ -29,17 +29,17 @@ CREATE TABLE `HostModel` (
   UNIQUE KEY `ID_Host_UNIQUE` (`ID_Host`),
   KEY `fk_HostModel_User` (`ID_User`),
   CONSTRAINT `fk_HostModel_User` FOREIGN KEY (`ID_User`) REFERENCES `UserProfile` (`ID_User`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `hostModel`
+-- Dumping data for table `HostModel`
 --
 
 LOCK TABLES `HostModel` WRITE;
-/*!40000 ALTER TABLE `hostModel` DISABLE KEYS */;
-INSERT INTO `HostModel` VALUES (2,1),(4,10),(1,19),(3,21),(5,22),(6,23);
-/*!40000 ALTER TABLE `hostModel` ENABLE KEYS */;
+/*!40000 ALTER TABLE `HostModel` DISABLE KEYS */;
+INSERT INTO `HostModel` VALUES (7,24);
+/*!40000 ALTER TABLE `HostModel` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-26  8:37:11
+-- Dump completed on 2025-05-26 10:52:16

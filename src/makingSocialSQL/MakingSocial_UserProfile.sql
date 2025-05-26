@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
 --
 -- Host: host100.tplinkdns.com    Database: MakingSocial
 -- ------------------------------------------------------
@@ -33,7 +33,7 @@ CREATE TABLE `UserProfile` (
   UNIQUE KEY `ID_User_UNIQUE` (`ID_User`),
   UNIQUE KEY `NickName_UNIQUE` (`NickName`),
   UNIQUE KEY `E_Mail_UNIQUE` (`E_Mail`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `UserProfile` (
 
 LOCK TABLES `UserProfile` WRITE;
 /*!40000 ALTER TABLE `UserProfile` DISABLE KEYS */;
-INSERT INTO `UserProfile` VALUES (1,'Zhou','1234','Zhou',20,'zzh0001@alu.medac.es'),(2,'ADMIN','1234','ADMIN',25,'admin@gmail.com'),(6,'ADMIN2','1234','ADMIN2',25,'admin2@gmail.com'),(9,'antonio','1234','antonio',25,'antonio@doc.medac.es'),(10,'carmen','1234','carmen',26,'cvi0004@alu.medac.es'),(14,'carmen2','1234','carmen2',26,'cvi00048@alu.medac.es'),(19,'Zhihui','1234','Zhihui',20,'zhou@gmail.com'),(20,'mari','qwerty','mari',27,'mmm@gmail.com'),(21,'marica','1234','mariquin',19,'xoxo@gmail.com'),(22,'zzhou','1234','zzhou',20,'zhouz@gmail.com'),(23,'juanma','1234','juanma',25,'juanma@gmail.com');
+INSERT INTO `UserProfile` VALUES (24,'Wan','1234','Wan',23,'wan@gmail.com'),(25,'Hector','1234','Hector',26,'hector@gmail.com'),(26,'Ana','1234','Ana',29,'ana@gmail.com'),(27,'Juan','1234','Juan',31,'juan@gmail.com'),(28,'Paula','1234','Paula',18,'paulawdes@gmail.com');
 /*!40000 ALTER TABLE `UserProfile` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-26  8:37:13
+-- Dump completed on 2025-05-26 10:52:09

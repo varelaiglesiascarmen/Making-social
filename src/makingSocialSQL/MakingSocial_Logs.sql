@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
 --
 -- Host: host100.tplinkdns.com    Database: MakingSocial
 -- ------------------------------------------------------
@@ -39,9 +39,28 @@ CREATE TABLE `Logs` (
 
 LOCK TABLES `Logs` WRITE;
 /*!40000 ALTER TABLE `Logs` DISABLE KEYS */;
-INSERT INTO `Logs` VALUES (9,12,'2025-05-25 18:21:46'),(10,12,'2025-05-25 18:28:48'),(11,12,'2025-05-25 19:22:53'),(12,16,'2025-05-25 20:21:40');
+INSERT INTO `Logs` VALUES (14,18,'2025-05-26 08:32:50'),(16,18,'2025-05-26 08:37:41'),(18,18,'2025-05-26 08:39:58'),(20,18,'2025-05-26 08:43:45');
 /*!40000 ALTER TABLE `Logs` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root2`@`%`*/ /*!50003 TRIGGER `prevent_duplicate_log` BEFORE INSERT ON `Logs` FOR EACH ROW BEGIN
+  IF EXISTS (SELECT 1 FROM Logs WHERE ID_GuestModel = NEW.ID_GuestModel AND ID_Event = NEW.ID_Event) THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El usuario ya está registrado en este evento';
+  END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -52,4 +71,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-26  8:37:14
+-- Dump completed on 2025-05-26 10:52:23
